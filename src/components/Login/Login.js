@@ -50,11 +50,11 @@ const Login = () =>  {
 					type="password"
 				/>
 				<Grid container sx={{ mr: 10, width: '11%'}} >
-				<Grid item xs>
-					<Link href="#" variant="body2">
-					Forgot password?
-					</Link>
-				</Grid>
+					<Grid item xs>
+						<Link href="#" variant="body2">
+						Forgot password?
+						</Link>
+					</Grid>
 				</Grid>	
 				<FormControlLabel
 				    sx={{ mr: 1, width: '11%'}}
