@@ -1,4 +1,5 @@
-import logo from './logo.svg';
+import { Routes, Route } from "react-router-dom"
+import Header from './components/Header/Header';
 import Login from './components/Login/Login'
 import Home from './components/Home/Home'
 
@@ -7,13 +8,12 @@ import React from "react";
 
 function App() {
   return (
-    // <main className="App">
-    //     <h1>Homewood Children's Village</h1>
-    //     <Login />
-    // </main>
       <main className="App">
-        <h1>Homewood Children's Village</h1>
-    <Home />
+        <Header />
+        <Routes>
+          <Route path="/" element={ <Login/> } />
+          <Route path="home" element={ <Home/> } />
+        </Routes>
     </main>
   );
 }

@@ -1,5 +1,5 @@
-import { useRef, useState,useEffect } from "react";
-import React from 'react';
+import { React, useRef, useState,useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -13,9 +13,11 @@ const Login = () =>  {
 	const [user, setUser] = useState('');
 	const [password, setPassword] = useState('');
 
-	useEffect(() => {
-		userRef.current.focus();
-	},[]);
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate("/home");
+	}
   return (
     <Box
 		 component = "form"
@@ -62,6 +64,7 @@ const Login = () =>  {
 					label="Remember me"
 				/>
 				<Button 
+				onClick={handleClick}
 				variant="contained" 
 				sx={{ mt: 1, mb: 2, width: '11%'}}
 				style={{
@@ -69,7 +72,7 @@ const Login = () =>  {
                 color: "white"
               	}}>
 					Sign in
-					</Button>
+				</Button>
 
 			</Box>
   )
