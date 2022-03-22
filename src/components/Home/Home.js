@@ -75,6 +75,7 @@ export default function Home() {
     const [value, setValue] = useState("");
     const [data, setData] = useState([]);
 
+
     const handleChange = e => setValue(e.target.value);
     useEffect(() => {
         getOpportunitiesData();
@@ -82,30 +83,45 @@ export default function Home() {
 
     const handleCategory = (e, newValue) => {
         setData(newValue);
-      }
+      };
 
     const getOpportunitiesData = async () => {
         try {
             const response = await getOpportunitiesListAPI();
             const opportunities = get(response, 'data', []);
-            setData(opportunities);
+            setData(opportunities['data']['opportunities']);
           }
           catch (e) {
             throw e;
           }
-      }
+      };
 
 
 
     return (
         <form className={classes.formContainer}>
-            {/* <Autocomplete
-            id="Category"
-            options={data}
-            onChange={handleCategory}
-            renderInput={(params) => <TextField {...params} label="Employee Name" variant="outlined" />}
-            /> */}
-            {/* <Button type="submit" className={classes.searchBtn} variant="contained" color="primary" disabled={!employeeName} onKeyPress={handleKeyPress}>Search</Button> */}
+            <Stack sx={{width: 300, margin: "auto"}}>
+                <Autocomplete
+                    id="Category"
+                    getOptionLabel={(data) => `${data['ageRange']}`}
+                    options={data}
+                    noOptionsText={"No information"}
+                    // onChange={handleCategory}
+                    renderInput={(params) => <TextField {...params} label="Age Group" variant="outlined" />}
+                />
+
+                <Autocomplete
+                    id="Category"
+                    getOptionLabel={(data) => `${data['orgCity']}`}
+                    options={data}
+                    noOptionsText={"No information"}
+                    // onChange={handleCategory}
+                    renderInput={(params) => <TextField {...params} label="Region" variant="outlined" />}
+                />
+            </Stack>
+
+
+             {/*<Button type="submit" className={classes.searchBtn} variant="contained" color="primary" disabled={!employeeName} onKeyPress={handleKeyPress}>Search</Button> */}
       </form>
         // <ThemeProvider theme={theme}>
         //     <CssBaseline />

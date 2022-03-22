@@ -3,7 +3,7 @@ import axios from 'axios';
 const ENDPOINT = {
 	getOpportunitiesList: (name) => {
 		const queryParams = name ? `/${name}` : '';
-		return 'http://localhost:3000/mockData.json';
+		return 'http://localhost:3000/mockData_25.json';
 	}
 } 
 
