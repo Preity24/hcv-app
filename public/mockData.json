@@ -1,0 +1,32 @@
+{
+    "data": {
+      "opportunities": [
+        {
+          "programName": "Opportunity 1",
+          "opportunityName": "",
+          "description": "Opportunity 1 desc",
+          "image": "Opportunity 1 image"
+        },
+        {
+            "name": "Opportunity 2",
+            "description": "Opportunity 2 desc",
+            "image": "Opportunity 2 image"
+        },
+        {
+            "name": "Opportunity 3",
+            "description": "Opportunity 3 desc",
+            "image": "Opportunity 3 image"
+        },
+        {
+            "name": "Opportunity 4",
+            "description": "Opportunity 4 desc",
+            "image": "Opportunity 4 image"
+        },
+        {
+            "name": "Opportunity 5",
+            "description": "Opportunity 5 desc",
+            "image": "Opportunity 5 image"
+        }
+      ]
+    }
+  }
