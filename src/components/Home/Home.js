@@ -26,20 +26,6 @@ import red from "@material-ui/core/colors/red";
   https://www.youtube.com/watch?v=7MpvrG5c3A0
  */
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Homewood Children's Village
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
-
 const theme = createTheme();
 
 const useStyles = makeStyles(theme => ({
@@ -116,27 +102,32 @@ export default function Home() {
             <CssBaseline />
             <main>
                 <form className={classes.formContainer}>
-                    <Stack sx={{width: 300, margin: "auto"}}>
-                        <Autocomplete
-                            id="Category"
-                            getOptionLabel={(option) => option['ageRange']}
-                            // getOptionLabel={(data) => `${data['ageRange']}`}
-                            options={age_categories}
-                            noOptionsText={"No information"}
-                            onChange={handleAgeFilter}
-                            renderInput={(params) => <TextField {...params} label="Age Group" variant="outlined" />}
-                        />
-
-                        <Autocomplete
-                            id="Category"
-                            // getOptionLabel={(data) => `${data['orgCity']}`}
-                            getOptionLabel={(option) => option['orgCity']}
-                            options={region_categories}
-                            noOptionsText={"No information"}
-                            onChange={handleRegionFilter}
-                            renderInput={(params) => <TextField {...params} label="Region" variant="outlined" />}
-                        />
-                    </Stack>
+                    <Container maxWidth="sm">
+                        <Grid container spacing={2} columns={16}>
+                            <Grid item xs={8}>
+                                <Autocomplete
+                                    id="Category"
+                                    getOptionLabel={(option) => option['ageRange']}
+                                    // getOptionLabel={(data) => `${data['ageRange']}`}
+                                    options={age_categories}
+                                    noOptionsText={"No information"}
+                                    onChange={handleAgeFilter}
+                                    renderInput={(params) => <TextField {...params} label="Age Group" variant="outlined" />}
+                                />
+                            </Grid>
+                            <Grid item xs={8}>
+                                <Autocomplete
+                                    id="Category"
+                                    // getOptionLabel={(data) => `${data['orgCity']}`}
+                                    getOptionLabel={(option) => option['orgCity']}
+                                    options={region_categories}
+                                    noOptionsText={"No information"}
+                                    onChange={handleRegionFilter}
+                                    renderInput={(params) => <TextField {...params} label="Region" variant="outlined" />}
+                                />
+                            </Grid>
+                        </Grid>
+                    </Container>
 
 
                     {/*<Button type="submit" className={classes.searchBtn} variant="contained" color="primary" disabled={!employeeName} onKeyPress={handleKeyPress}>Search</Button> */}
@@ -181,19 +172,7 @@ export default function Home() {
             </main>
 
 
-            {/* Footer */}
-            <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-                <Typography
-                    variant="subtitle1"
-                    align="center"
-                    color="text.secondary"
-                    component="p"
-                >
-                    Something here to give the footer a purpose!
-                </Typography>
-                <Copyright />
-            </Box>
-            {/* End footer */}
+
         </ThemeProvider>
     );
 }
