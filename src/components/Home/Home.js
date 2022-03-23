@@ -40,9 +40,6 @@ function Copyright() {
 }
 
 
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const theme = createTheme();
 
 const useStyles = makeStyles(theme => ({
@@ -74,16 +71,33 @@ export default function Home() {
     const classes = useStyles();
     const [value, setValue] = useState("");
     const [data, setData] = useState([]);
+    const [filterData, setFilterData] = useState([]);
 
 
-    const handleChange = e => setValue(e.target.value);
+    const handleChange = e => {
+        setValue(e.target.value);
+    };
+
     useEffect(() => {
         getOpportunitiesData();
       }, []);
 
     const handleCategory = (e, newValue) => {
-        setData(newValue);
-      };
+        setData(data);
+    };
+
+
+    const handleAgeFilter = (e, newValue) => {
+        setFilterData(data.filter(function(item){
+            return item.ageRange.includes(newValue.ageRange);
+        }));
+    };
+
+    const handleRegionFilter = (e, newValue) => {
+        setFilterData(data.filter(function(item){
+            return item.orgCity.includes(newValue.orgCity);
+        }));
+    };
 
     const getOpportunitiesData = async () => {
         try {
@@ -97,136 +111,114 @@ export default function Home() {
       };
 
 
-
     return (
-        <form className={classes.formContainer}>
-            <Stack sx={{width: 300, margin: "auto"}}>
-                <Autocomplete
-                    id="Category"
-                    getOptionLabel={(data) => `${data['ageRange']}`}
-                    options={data}
-                    noOptionsText={"No information"}
-                    // onChange={handleCategory}
-                    renderInput={(params) => <TextField {...params} label="Age Group" variant="outlined" />}
-                />
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <main>
+                <form className={classes.formContainer}>
+                    <Stack sx={{width: 300, margin: "auto"}}>
+                        <Autocomplete
+                            id="Category"
+                            getOptionLabel={(option) => option['ageRange']}
+                            // getOptionLabel={(data) => `${data['ageRange']}`}
+                            options={age_categories}
+                            noOptionsText={"No information"}
+                            onChange={handleAgeFilter}
+                            renderInput={(params) => <TextField {...params} label="Age Group" variant="outlined" />}
+                        />
 
-                <Autocomplete
-                    id="Category"
-                    getOptionLabel={(data) => `${data['orgCity']}`}
-                    options={data}
-                    noOptionsText={"No information"}
-                    // onChange={handleCategory}
-                    renderInput={(params) => <TextField {...params} label="Region" variant="outlined" />}
-                />
-            </Stack>
+                        <Autocomplete
+                            id="Category"
+                            // getOptionLabel={(data) => `${data['orgCity']}`}
+                            getOptionLabel={(option) => option['orgCity']}
+                            options={region_categories}
+                            noOptionsText={"No information"}
+                            onChange={handleRegionFilter}
+                            renderInput={(params) => <TextField {...params} label="Region" variant="outlined" />}
+                        />
+                    </Stack>
 
 
-             {/*<Button type="submit" className={classes.searchBtn} variant="contained" color="primary" disabled={!employeeName} onKeyPress={handleKeyPress}>Search</Button> */}
-      </form>
-        // <ThemeProvider theme={theme}>
-        //     <CssBaseline />
-        //     <main>
-        //         {/* Hero unit */}
-        //         <Box
-        //             sx={{
-        //                 bgcolor: 'background.paper',
-        //                 pt: 2,
-        //                 pb: 2,
-        //                 height: 10
-        //             }}
-        //         >
-        //             <Container maxWidth="sm">
-        //                 <Stack
-        //                     sx={{
-        //                         pt: 2
-        //                     }}
-        //                     direction="row"
-        //                     spacing={4}
-        //                     justifyContent="flex-start'"
-        //                 >
-        //                     <p className={classes.label}>Age Group</p>
-        //                     <FormControl className={classes.formControl}>
-        //                         <InputLabel
-        //                             variant={'filled'}
-        //                             sx={{
-        //                                 width:150,
-        //                                 fontSize: 12
-        //                             }}
-        //                         >Middle School</InputLabel>
-        //                         <Select className={classes.select} onChange={handleChange}>
-        //                             <MenuItem value={10}>Ten</MenuItem>
-        //                             <MenuItem value={20}>Twenty</MenuItem>
-        //                             <MenuItem value={30}>Thirty</MenuItem>
-        //                             <MenuItem value={40}>Forty</MenuItem>
-        //                         </Select>
-        //                     </FormControl>
-        //                     <p className={classes.label}>Region</p>
-        //                     <FormControl className={classes.formControl}>
-        //                         <InputLabel
-        //                             variant={'filled'}
-        //                             sx={{
-        //                                 width:150,
-        //                                 fontSize: 12
-        //                             }}>Input postal code</InputLabel>
-        //                         <Select className={classes.select}>
-        //                             <MenuItem value={10}>Ten</MenuItem>
-        //                             <MenuItem value={20}>Twenty</MenuItem>
-        //                             <MenuItem value={30}>Thirty</MenuItem>
-        //                             <MenuItem value={40}>Forty</MenuItem>
-        //                         </Select>
-        //                     </FormControl>
-        //                 </Stack>
-        //             </Container>
-        //         </Box>
-        //         <Container sx={{ py: 8 }} maxWidth="md">
-        //             {/* End hero unit */}
-        //             <Grid container spacing={4}>
-        //                 {cards.map((card) => (
-        //                     <Grid item key={card} xs={12} sm={6} md={4}>
-        //                         <Card
-        //                             sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-        //                         >
-        //                             <CardMedia
-        //                                 component="img"
-        //                                 sx={{
-        //                                     // 16:9
-        //                                     pt: '56.25%',
-        //                                 }}
-        //                                 image="https://source.unsplash.com/random"
-        //                                 alt="random"
-        //                             />
-        //                             <CardContent sx={{ flexGrow: 1 }}>
-        //                                 <Typography gutterBottom variant="h5" component="h2">
-        //                                     Heading
-        //                                 </Typography>
-        //                                 <Typography>
-        //                                     This is a media card. You can use this section to describe the
-        //                                     content.
-        //                                 </Typography>
-        //                             </CardContent>
-        //                             {/*<CardActions>*/}
-        //                             {/*  <Button size="small">View</Button>*/}
-        //                             {/*  <Button size="small">Edit</Button>*/}
-        //                             {/*</CardActions>*/}
-        //                         </Card>
-        //                     </Grid>
-        //                 ))}
-        //             </Grid>
-        //         </Container>
-        //     </main>
-        //     {/* Footer */}
-        //     <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        //         <Typography
-        //             variant="subtitle1"
-        //             align="center"
-        //             color="text.secondary"
-        //             component="p"
-        //         >
-        //             Something here to give the footer a purpose!
-        //         </Typography>
-        //         <Copyright />
-        //     </Box>
-        //     {/* End footer */}
-        // </ThemeProvider>
+                    {/*<Button type="submit" className={classes.searchBtn} variant="contained" color="primary" disabled={!employeeName} onKeyPress={handleKeyPress}>Search</Button> */}
+                </form>
+                <Container sx={{ py: 8 }} maxWidth="md">
+                    {/* End hero unit */}
+                    <Grid container spacing={4}>
+                        {filterData.map((card) => (
+                            <Grid item key={card} xs={12} sm={6} md={4}>
+                                <Card
+                                    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                                >
+                                    <CardMedia
+                                        component="img"
+                                        sx={{
+                                            // 16:9
+                                            pt: '56.25%',
+                                        }}
+                                        image="https://source.unsplash.com/random"
+                                        alt="random"
+                                    />
+                                    <CardContent sx={{ flexGrow: 1 }}>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            {card['ProgramName'] === null ? "Not available now" : card['ProgramName']}
+                                        </Typography>
+                                        <Typography>
+                                            Age Group: {card['ageRange']}
+                                        </Typography>
+                                        <Typography>
+                                            Region: {card['orgCity']}
+                                        </Typography>
+                                    </CardContent>
+                                    {/*<CardActions>*/}
+                                    {/*  <Button size="small">View</Button>*/}
+                                    {/*  <Button size="small">Edit</Button>*/}
+                                    {/*</CardActions>*/}
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Container>
+            </main>
+
+
+            {/* Footer */}
+            <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+                <Typography
+                    variant="subtitle1"
+                    align="center"
+                    color="text.secondary"
+                    component="p"
+                >
+                    Something here to give the footer a purpose!
+                </Typography>
+                <Copyright />
+            </Box>
+            {/* End footer */}
+        </ThemeProvider>
     );
 }
+
+
+const age_categories = [
+    {
+        ageRange: "9-10",
+    },
+    {
+        ageRange: "10-14",
+    },
+    {
+        ageRange: "14-19",
+    }
+];
+
+const region_categories = [
+    {
+        orgCity: "Pittsburgh",
+    },
+    {
+        orgCity: "Redmond",
+    },
+    {
+        orgCity: "Ithaca",
+    }
+];
