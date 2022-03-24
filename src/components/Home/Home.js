@@ -139,7 +139,7 @@ export default function Home() {
     };
 
     const handleOriginFilter = (e, newValue) => {
-        setFilterData([]);
+        getOpportunitiesData();
         setFilterData_by_age(false);
         setFilterData_by_region(false);
         setFilterData_by_category(false);
@@ -150,6 +150,7 @@ export default function Home() {
             const response = await getOpportunitiesListAPI();
             const opportunities = get(response, 'data', []);
             setData(opportunities['data']['opportunities']);
+            setFilterData(opportunities['data']['opportunities'])
           }
           catch (e) {
             throw e;
