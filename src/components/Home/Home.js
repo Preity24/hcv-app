@@ -234,7 +234,7 @@ export default function Home() {
                                     />
                                     <CardContent sx={{ flexGrow: 1 }}>
                                         <Typography gutterBottom variant="h5" component="h2">
-                                            {card['ProgramName'] === null ? "Not available now" : card['ProgramName']}
+                                            {card['opportunityName'] === "null" ? card['ProgramName'] : card['opportunityName']}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
                                             Age Group: {card['ageRange']}
