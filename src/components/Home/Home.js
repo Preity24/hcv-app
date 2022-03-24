@@ -147,7 +147,7 @@ export default function Home() {
 
     const getOpportunitiesData = async () => {
         try {
-            const response = await getOpportunitiesListAPI();
+            const response = await axios.get("/mockData_80.json");
             const opportunities = get(response, 'data', []);
             setData(opportunities['data']['opportunities']);
             setFilterData(opportunities['data']['opportunities'])
