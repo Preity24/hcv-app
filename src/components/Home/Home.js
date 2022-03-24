@@ -201,7 +201,7 @@ export default function Home() {
                                 <Button
                                     variant="outlined"
                                     size="medium"
-                                    style={{ fontSize: '12px' }}
+                                    style={{ fontSize: '12px', backgroundColor: "#5e5996", color: 'white'}}
                                     onClick={handleOriginFilter}
                                 >
                                     Reset Filters
