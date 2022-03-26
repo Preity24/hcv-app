@@ -12,13 +12,13 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {Select, MenuItem, FormControl, InputLabel} from "@mui/material";
-import {makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import {useState, useEffect} from "react";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { getOpportunitiesListAPI } from '../../api/APIUtils';
+import {getOpportunitiesListAPI} from '../../api/APIUtils';
 import red from "@material-ui/core/colors/red";
 import Button from "@material-ui/core/Button";
 // import Unsplash, { toJson } from 'unsplash-js';
@@ -60,17 +60,19 @@ export default function Home() {
     const [value, setValue] = useState("");
     const [data, setData] = useState([]);
     const [filterData, setFilterData] = useState([]);
-    const [filterData_by_age, setFilterData_by_age] = useState(false);
-    const [filterData_by_region, setFilterData_by_region] = useState(false);
-    const [filterData_by_category, setFilterData_by_category] = useState(false);
+    const [filterData_by_age, setFilterData_by_age] = useState("");
+    const [filterData_by_region, setFilterData_by_region] = useState("");
+    const [filterData_by_category, setFilterData_by_category] = useState("");
+    const [dropdown_ageRange, setDropdown_ageRange] = useState("");
+    const [dropdown_region, setDropdown_region] = useState("");
+    const [dropdown_category, setDropdown_category] = useState("");
 
     // const unsplash = new Unsplash({
     //     applicationId: "{YMHeEDGCR9Tf1zyh_jKmcGcAnntJtT5LGpnNT5HGd0I}",
     //     secret: "{0rW-2a-W0inOUoDkJHrdEep0rxft8PTwrlBH98Axym0}"
     // });
 
-    const [picture, setPic] = useState("")
-
+    const [picture, setPic] = useState("");
 
     const handleChange = e => {
         setValue(e.target.value);
@@ -78,72 +80,46 @@ export default function Home() {
 
     useEffect(() => {
         getOpportunitiesData();
-      }, []);
+    }, []);
+
+    function filterBy(list, cond) {
+        return list.filter(e =>
+            Object.keys(cond).every(key =>
+                e[key].includes(cond[key])
+            )
+        );
+    }
+
 
     const handleCategory = (e, newValue) => {
-        setData(data);
+
+        newValue = data.filter(item => {
+            return item.ageRange.includes(filterData_by_age) &&
+                item.orgCity.includes(filterData_by_region) &&
+                item.category.includes(filterData_by_category);
+        });
+
+        setData(newValue);
     };
 
-
-
     const handleAgeFilter = (e, newValue) => {
-        if (filterData_by_region) {
-            setFilterData(filterData.filter(function(item){
-                return item.ageRange.includes(newValue.ageRange);
-            }));
-        } else if (filterData_by_category) {
-            setFilterData(filterData.filter(function(item){
-                return item.ageRange.includes(newValue.ageRange);
-            }));
-        } else {
-            setFilterData(data.filter(function(item){
-                return item.ageRange.includes(newValue.ageRange);
-            }));
-        }
-
-        setFilterData_by_age(true);
+        setFilterData_by_age(newValue.ageRange);
     };
 
     const handleRegionFilter = (e, newValue) => {
-        if (filterData_by_age) {
-            setFilterData(filterData.filter(function(item){
-                return item.orgCity.includes(newValue.orgCity);
-            }));
-        } else if (filterData_by_category) {
-            setFilterData(filterData.filter(function(item){
-                return item.orgCity.includes(newValue.orgCity);
-            }));
-        } else {
-            setFilterData(data.filter(function(item){
-                return item.orgCity.includes(newValue.orgCity);
-            }));
-        }
-        setFilterData_by_region(true);
+        setFilterData_by_region(newValue.orgCity);
     };
 
     const handleCategoryFilter = (e, newValue) => {
-        if (filterData_by_age) {
-            setFilterData(filterData.filter(function(item){
-                return item.category.includes(newValue.category);
-            }));
-        } else if (filterData_by_region) {
-            setFilterData(filterData.filter(function(item){
-                return item.category.includes(newValue.category);
-            }));
-        } else {
-            setFilterData(data.filter(function(item){
-                return item.category.includes(newValue.category);
-            }));
-        }
-        setFilterData_by_category(true);
-        console.log(filterData)
+        setFilterData_by_category(newValue.category);
     };
 
     const handleOriginFilter = (e, newValue) => {
         getOpportunitiesData();
-        setFilterData_by_age(false);
-        setFilterData_by_region(false);
-        setFilterData_by_category(false);
+        setFilterData_by_age("");
+        setFilterData_by_region("");
+        setFilterData_by_category("");
+        clearValue();
     };
 
     const getOpportunitiesData = async () => {
@@ -152,49 +128,62 @@ export default function Home() {
             const opportunities = get(response, 'data', []);
             setData(opportunities['data']['opportunities']);
             setFilterData(opportunities['data']['opportunities'])
-          }
-          catch (e) {
+        } catch (e) {
             throw e;
-          }
-      };
+        }
+    };
+
+    const clearValue = () => {
+        setDropdown_ageRange("");
+        setDropdown_region("");
+        setDropdown_category("");
+    };
 
 
     return (
         <ThemeProvider theme={theme}>
-            <CssBaseline />
+            <CssBaseline/>
             <main>
                 <form className={classes.formContainer}>
                     <Container maxWidth="md">
                         <Grid container spacing={2} columns={40}>
                             <Grid item xs={8}>
                                 <Autocomplete
+                                    id="ageGroup"
+                                    inputValue={dropdown_ageRange}
+                                    onInputChange={(_, v) => setDropdown_ageRange(v)}
                                     getOptionLabel={(option) => option['ageRange']}
-                                    // getOptionLabel={(data) => `${data['ageRange']}`}
                                     options={age_categories}
                                     noOptionsText={"No information"}
                                     onChange={handleAgeFilter}
-                                    renderInput={(params) => <TextField {...params} label="Age Group" variant="outlined" />}
+                                    renderInput={(params) => <TextField {...params} label="Age Group"
+                                                                        variant="outlined"/>}
                                 />
                             </Grid>
                             <Grid item xs={8}>
                                 <Autocomplete
-                                    // getOptionLabel={(data) => `${data['orgCity']}`}
+                                    id="region"
+                                    inputValue={dropdown_region}
+                                    onInputChange={(_, v) => setDropdown_region(v)}
                                     getOptionLabel={(option) => option['orgCity']}
                                     options={region_categories}
                                     noOptionsText={"No information"}
                                     onChange={handleRegionFilter}
-                                    renderInput={(params) => <TextField {...params} label="Region" variant="outlined" />}
+                                    renderInput={(params) => <TextField {...params} label="Region" variant="outlined"/>}
                                 />
                             </Grid>
                             <Grid item xs={16}>
                                 <Autocomplete
-                                    // getOptionLabel={(data) => `${data['orgCity']}`}
+                                    id="category"
+                                    inputValue={dropdown_category}
+                                    onInputChange={(_, v) => setDropdown_category(v)}
                                     disablePortal
                                     getOptionLabel={(option) => option['category']}
                                     options={categories}
                                     noOptionsText={"No information"}
                                     onChange={handleCategoryFilter}
-                                    renderInput={(params) => <TextField {...params} label="Categories" variant="outlined" />}
+                                    renderInput={(params) => <TextField {...params} label="Categories"
+                                                                        variant="outlined"/>}
                                 />
 
                             </Grid>
@@ -202,8 +191,8 @@ export default function Home() {
                                 <Button
                                     variant="outlined"
                                     size="medium"
-                                    style={{ fontSize: '12px', backgroundColor: "#8DC540", color: 'white', opacity: 0.7}}
-                                    onClick={handleOriginFilter}
+                                    style={{fontSize: '12px', backgroundColor: "#8DC540", color: 'white', opacity: 0.7}}
+                                    onClick={handleCategory}
                                 >
                                     Apply Filters
                                 </Button>
@@ -212,7 +201,7 @@ export default function Home() {
                                 <Button
                                     variant="outlined"
                                     size="medium"
-                                    style={{ fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
+                                    style={{fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
                                     onClick={handleOriginFilter}
                                 >
                                     Reset Filters
@@ -224,13 +213,13 @@ export default function Home() {
 
                     {/*<Button type="submit" className={classes.searchBtn} variant="contained" color="primary" disabled={!employeeName} onKeyPress={handleKeyPress}>Search</Button> */}
                 </form>
-                <Container sx={{ py: 8 }} maxWidth="md">
+                <Container sx={{py: 8}} maxWidth="md">
                     {/* End hero unit */}
                     <Grid container spacing={4}>
-                        {filterData.map((card) => (
+                        {data.map((card) => (
                             <Grid item key={card} xs={12} sm={6} md={4}>
                                 <Card
-                                    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                                    sx={{height: '100%', display: 'flex', flexDirection: 'column'}}
                                 >
                                     <CardMedia
                                         component="img"
@@ -244,7 +233,7 @@ export default function Home() {
                                         // image="https://source.unsplash.com/random"
                                         alt="random"
                                     />
-                                    <CardContent sx={{ flexGrow: 1 }}>
+                                    <CardContent sx={{flexGrow: 1}}>
                                         <Typography gutterBottom variant="h5" component="h2">
                                             {card['opportunityName'] === "null" ? card['ProgramName'] : card['opportunityName']}
                                         </Typography>
@@ -252,10 +241,10 @@ export default function Home() {
                                             Age Group: {card['ageRange']}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
-                                             Region: {card['orgCity']}
+                                            Region: {card['orgCity']}
                                         </Typography>
-                                        <Typography variant="h8" component="div" align="left" >
-                                             Category: {card['category']}
+                                        <Typography variant="h8" component="div" align="left">
+                                            Category: {card['category']}
                                         </Typography>
                                     </CardContent>
                                     {/*<CardActions>*/}
@@ -268,7 +257,6 @@ export default function Home() {
                     </Grid>
                 </Container>
             </main>
-
 
 
         </ThemeProvider>
