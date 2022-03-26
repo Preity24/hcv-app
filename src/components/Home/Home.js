@@ -136,6 +136,7 @@ export default function Home() {
             }));
         }
         setFilterData_by_category(true);
+        console.log(filterData)
     };
 
     const handleOriginFilter = (e, newValue) => {
@@ -164,7 +165,7 @@ export default function Home() {
             <main>
                 <form className={classes.formContainer}>
                     <Container maxWidth="md">
-                        <Grid container spacing={2} columns={32}>
+                        <Grid container spacing={2} columns={40}>
                             <Grid item xs={8}>
                                 <Autocomplete
                                     getOptionLabel={(option) => option['ageRange']}
@@ -185,7 +186,7 @@ export default function Home() {
                                     renderInput={(params) => <TextField {...params} label="Region" variant="outlined" />}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={16}>
                                 <Autocomplete
                                     // getOptionLabel={(data) => `${data['orgCity']}`}
                                     disablePortal
@@ -196,6 +197,16 @@ export default function Home() {
                                     renderInput={(params) => <TextField {...params} label="Categories" variant="outlined" />}
                                 />
 
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button
+                                    variant="outlined"
+                                    size="medium"
+                                    style={{ fontSize: '12px', backgroundColor: "#8DC540", color: 'white', opacity: 0.7}}
+                                    onClick={handleOriginFilter}
+                                >
+                                    Apply Filters
+                                </Button>
                             </Grid>
                             <Grid item xs={4}>
                                 <Button
@@ -228,7 +239,8 @@ export default function Home() {
                                             // pt: '56.25%',
                                             pt: '10%'
                                         }}
-                                        image="https://s1.ax1x.com/2022/03/24/q3x6Hg.jpg"
+                                        image={!card.hasOwnProperty('image') ? "https://s1.ax1x.com/2022/03/24/q3x6Hg.jpg" : card['image']}
+                                        // image="https://s1.ax1x.com/2022/03/24/q3x6Hg.jpg"
                                         // image="https://source.unsplash.com/random"
                                         alt="random"
                                     />
