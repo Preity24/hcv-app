@@ -92,7 +92,6 @@ export default function Home() {
 
 
     const handleCategory = (e, newValue) => {
-
         newValue = data.filter(item => {
             return item.ageRange.includes(filterData_by_age) &&
                 item.orgCity.includes(filterData_by_region) &&
@@ -104,14 +103,17 @@ export default function Home() {
 
     const handleAgeFilter = (e, newValue) => {
         setFilterData_by_age(newValue.ageRange);
+        setDropdown_ageRange(newValue.ageRange)
     };
 
     const handleRegionFilter = (e, newValue) => {
         setFilterData_by_region(newValue.orgCity);
+        setDropdown_region(newValue.orgCity)
     };
 
     const handleCategoryFilter = (e, newValue) => {
         setFilterData_by_category(newValue.category);
+        setDropdown_category(newValue.category)
     };
 
     const handleOriginFilter = (e, newValue) => {
@@ -119,7 +121,9 @@ export default function Home() {
         setFilterData_by_age("");
         setFilterData_by_region("");
         setFilterData_by_category("");
-        clearValue();
+        setDropdown_ageRange("");
+        setDropdown_region("");
+        setDropdown_category("");
     };
 
     const getOpportunitiesData = async () => {
@@ -131,12 +135,6 @@ export default function Home() {
         } catch (e) {
             throw e;
         }
-    };
-
-    const clearValue = () => {
-        setDropdown_ageRange("");
-        setDropdown_region("");
-        setDropdown_category("");
     };
 
 
