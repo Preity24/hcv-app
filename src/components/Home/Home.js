@@ -82,16 +82,7 @@ export default function Home() {
         getOpportunitiesData();
     }, []);
 
-    function filterBy(list, cond) {
-        return list.filter(e =>
-            Object.keys(cond).every(key =>
-                e[key].includes(cond[key])
-            )
-        );
-    }
-
-
-    const handleCategory = (e, newValue) => {
+    const handleFilters = (e, newValue) => {
         newValue = data.filter(item => {
             return item.ageRange.includes(filterData_by_age) &&
                 item.orgCity.includes(filterData_by_region) &&
@@ -101,29 +92,8 @@ export default function Home() {
         setData(newValue);
     };
 
-    const handleAgeFilter = (e, newValue) => {
-        setFilterData_by_age(newValue.ageRange);
-        setDropdown_ageRange(newValue.ageRange)
-    };
-
-    const handleRegionFilter = (e, newValue) => {
-        setFilterData_by_region(newValue.orgCity);
-        setDropdown_region(newValue.orgCity)
-    };
-
-    const handleCategoryFilter = (e, newValue) => {
-        setFilterData_by_category(newValue.category);
-        setDropdown_category(newValue.category)
-    };
-
     const handleOriginFilter = (e, newValue) => {
         getOpportunitiesData();
-        setFilterData_by_age("");
-        setFilterData_by_region("");
-        setFilterData_by_category("");
-        setDropdown_ageRange("");
-        setDropdown_region("");
-        setDropdown_category("");
     };
 
     const getOpportunitiesData = async () => {
@@ -149,11 +119,26 @@ export default function Home() {
                                 <Autocomplete
                                     id="ageGroup"
                                     inputValue={dropdown_ageRange}
-                                    onInputChange={(_, v) => setDropdown_ageRange(v)}
+                                    onInputChange={(_, v, reason) => {
+                                        if (reason === 'clear') {
+                                            setDropdown_ageRange("");
+                                        } else {
+                                            setDropdown_ageRange(v)
+                                        }
+                                    }
+                                    }
+
                                     getOptionLabel={(option) => option['ageRange']}
                                     options={age_categories}
                                     noOptionsText={"No information"}
-                                    onChange={handleAgeFilter}
+                                    onChange={(e, v) => {
+                                        if (v !== null) {
+                                            setFilterData_by_age(v.ageRange);
+                                            return
+                                        }
+                                        setFilterData_by_age("");
+                                    }}
+                                    // onChange={handleAgeFilter}
                                     renderInput={(params) => <TextField {...params} label="Age Group"
                                                                         variant="outlined"/>}
                                 />
@@ -162,11 +147,25 @@ export default function Home() {
                                 <Autocomplete
                                     id="region"
                                     inputValue={dropdown_region}
-                                    onInputChange={(_, v) => setDropdown_region(v)}
+                                    onInputChange={(_, v, reason) => {
+
+                                        if (reason === 'clear') {
+                                            setDropdown_region("");
+                                        } else {
+                                            setDropdown_region(v)
+                                        }
+                                    }
+                                    }
                                     getOptionLabel={(option) => option['orgCity']}
                                     options={region_categories}
                                     noOptionsText={"No information"}
-                                    onChange={handleRegionFilter}
+                                    onChange={(e, v) => {
+                                        if (v !== null) {
+                                            setFilterData_by_region(v.orgCity);
+                                            return
+                                        }
+                                        setFilterData_by_region("");
+                                    }}
                                     renderInput={(params) => <TextField {...params} label="Region" variant="outlined"/>}
                                 />
                             </Grid>
@@ -174,12 +173,25 @@ export default function Home() {
                                 <Autocomplete
                                     id="category"
                                     inputValue={dropdown_category}
-                                    onInputChange={(_, v) => setDropdown_category(v)}
+                                    onInputChange={(_, v, reason) => {
+                                        if (reason === 'clear') {
+                                            setDropdown_category("");
+                                        } else {
+                                            setDropdown_category(v)
+                                        }
+                                    }
+                                    }
                                     disablePortal
                                     getOptionLabel={(option) => option['category']}
                                     options={categories}
                                     noOptionsText={"No information"}
-                                    onChange={handleCategoryFilter}
+                                    onChange={(e, v) => {
+                                        if (v !== null) {
+                                            setFilterData_by_category(v.category);
+                                            return
+                                        }
+                                        setFilterData_by_category("");
+                                    }}
                                     renderInput={(params) => <TextField {...params} label="Categories"
                                                                         variant="outlined"/>}
                                 />
@@ -190,7 +202,7 @@ export default function Home() {
                                     variant="outlined"
                                     size="medium"
                                     style={{fontSize: '12px', backgroundColor: "#8DC540", color: 'white', opacity: 0.7}}
-                                    onClick={handleCategory}
+                                    onClick={handleFilters}
                                 >
                                     Apply Filters
                                 </Button>
@@ -255,8 +267,6 @@ export default function Home() {
                     </Grid>
                 </Container>
             </main>
-
-
         </ThemeProvider>
     );
 }
