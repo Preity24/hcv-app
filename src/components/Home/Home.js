@@ -19,9 +19,9 @@ import {useState, useEffect} from "react";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {getOpportunitiesListAPI} from '../../api/APIUtils';
-import red from "@material-ui/core/colors/red";
 import Button from "@material-ui/core/Button";
 // import Unsplash, { toJson } from 'unsplash-js';
+import {useNavigate} from "react-router-dom";
 
 /* reference to
   https://github.com/mui/material-ui/blob/master/docs/data/material/getting-started/templates/album/Album.js
@@ -67,6 +67,8 @@ export default function Home() {
     const [dropdown_region, setDropdown_region] = useState("");
     const [dropdown_category, setDropdown_category] = useState("");
 
+    const navigate = useNavigate();
+
     // const unsplash = new Unsplash({
     //     applicationId: "{YMHeEDGCR9Tf1zyh_jKmcGcAnntJtT5LGpnNT5HGd0I}",
     //     secret: "{0rW-2a-W0inOUoDkJHrdEep0rxft8PTwrlBH98Axym0}"
@@ -83,6 +85,7 @@ export default function Home() {
     }, []);
 
     const handleFilters = (e, newValue) => {
+        debugger;
         newValue = data.filter(item => {
             return item.ageRange.includes(filterData_by_age) &&
                 item.orgCity.includes(filterData_by_region) &&
@@ -98,7 +101,7 @@ export default function Home() {
 
     const getOpportunitiesData = async () => {
         try {
-            const response = await axios.get("/mockData_80.json");
+            const response = await axios.get("/mockData_25.json");
             const opportunities = get(response, 'data', []);
             setData(opportunities['data']['opportunities']);
             setFilterData(opportunities['data']['opportunities'])
@@ -106,7 +109,6 @@ export default function Home() {
             throw e;
         }
     };
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -127,7 +129,6 @@ export default function Home() {
                                         }
                                     }
                                     }
-
                                     getOptionLabel={(option) => option['ageRange']}
                                     options={age_categories}
                                     noOptionsText={"No information"}
@@ -138,7 +139,6 @@ export default function Home() {
                                         }
                                         setFilterData_by_age("");
                                     }}
-                                    // onChange={handleAgeFilter}
                                     renderInput={(params) => <TextField {...params} label="Age Group"
                                                                         variant="outlined"/>}
                                 />
@@ -257,10 +257,10 @@ export default function Home() {
                                             Category: {card['category']}
                                         </Typography>
                                     </CardContent>
-                                    {/*<CardActions>*/}
-                                    {/*  <Button size="small">View</Button>*/}
-                                    {/*  <Button size="small">Edit</Button>*/}
-                                    {/*</CardActions>*/}
+                                    <CardActions>
+                                        <Button size="small" href={`/details/${card['id']}`} color={"primary"}>View</Button>
+                                      {/*<Button size="small">Edit</Button>*/}
+                                    </CardActions>
                                 </Card>
                             </Grid>
                         ))}

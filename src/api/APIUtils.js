@@ -3,7 +3,7 @@ import axios from 'axios';
 const ENDPOINT = {
 	getOpportunitiesList: (name) => {
 		const queryParams = name ? `/${name}` : '';
-		return 'https://api.npoint.io/1cafdc07b52121a52c88';
+		return 'http://localhost:3000/mockData_25.json';
 	}
 } 
 

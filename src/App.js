@@ -3,10 +3,11 @@ import Header from './components/Header/Header';
 import Login from './components/Login/Login'
 import Home from './components/Home/Home'
 import Footer from "./components/Footer/Footer";
-
+import Details from "./components/Opportunity_Details/Details";
 
 import './App.css';
 import React from "react";
+
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <Login/> } />
           <Route path="home" element={ <Home/> } />
+          <Route path='/details/:id' element={<Details/>} />
         </Routes>
         <Footer />
     </main>
