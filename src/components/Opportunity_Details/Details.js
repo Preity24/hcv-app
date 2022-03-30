@@ -20,8 +20,7 @@ const Details = () => {
             const response = await axios.get("/mockData_25.json");
             const opportunities = get(response, 'data', []);
 
-            setData(opportunities['data']['opportunities'].find(el => el.id == id));
-
+            setData(opportunities['data']['opportunities'].find(el => id == el.id));
         } catch (e) {
             throw e;
         }
@@ -33,13 +32,13 @@ const Details = () => {
                 <Box sx={{ bgcolor: 'background.paper', p: 6 }}>
                     <Typography
                         style={{ fontWeight: 600 }}
-                        variant="h6"
+                        variant="h5"
                         align="left"
                         color="text.secondary"
                         component="p"
                         gutterBottom={true}
                     >
-                        Opportunity Name: {data['opportunityName'] === "null" ? data['ProgramName'] : data['opportunityName']}
+                        {data['opportunityName'] === "null" ? data['ProgramName'] : data['opportunityName']}
                     </Typography>
                     <Typography component="p" align="left" variant="body1" gutterBottom={true}>
                         {data['description']}
