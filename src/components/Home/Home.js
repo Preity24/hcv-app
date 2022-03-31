@@ -7,13 +7,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {Select, MenuItem, FormControl, InputLabel} from "@mui/material";
 import {makeStyles} from '@material-ui/core/styles';
 import {useState, useEffect} from "react";
 import TextField from '@material-ui/core/TextField';
@@ -66,8 +62,6 @@ export default function Home() {
     const [dropdown_ageRange, setDropdown_ageRange] = useState("");
     const [dropdown_region, setDropdown_region] = useState("");
     const [dropdown_category, setDropdown_category] = useState("");
-
-    const navigate = useNavigate();
 
     // const unsplash = new Unsplash({
     //     applicationId: "{YMHeEDGCR9Tf1zyh_jKmcGcAnntJtT5LGpnNT5HGd0I}",
@@ -219,9 +213,6 @@ export default function Home() {
                             </Grid>
                         </Grid>
                     </Container>
-
-
-                    {/*<Button type="submit" className={classes.searchBtn} variant="contained" color="primary" disabled={!employeeName} onKeyPress={handleKeyPress}>Search</Button> */}
                 </form>
                 <Container sx={{py: 8}} maxWidth="md">
                     {/* End hero unit */}
@@ -238,7 +229,7 @@ export default function Home() {
                                             // pt: '56.25%',
                                             pt: '10%'
                                         }}
-                                        image={!card.hasOwnProperty('image') ? "https://s1.ax1x.com/2022/03/24/q3x6Hg.jpg" : card['image']}
+                                        image={!card.hasOwnProperty('image') ? "https://s1.ax1x.com/2022/03/31/qRuuq0.jpg" : card['image']}
                                         // image="https://s1.ax1x.com/2022/03/24/q3x6Hg.jpg"
                                         // image="https://source.unsplash.com/random"
                                         alt="random"
