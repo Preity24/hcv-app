@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import { makeStyles } from '@mui/styles';
 import Typography from "@material-ui/core/Typography";
 import banner from '../../images/Website-Banners.png';
-import avatar from '../../images/avatar.jpg';
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import Box from "@material-ui/core/Box";
@@ -41,7 +40,7 @@ function SizedAvatars(image) {
         <AvatarContainer>
             <SizedAvatar
                 size={20}
-                src={image === null ? avatar : image}
+                src={image}
             >
                 default
             </SizedAvatar>
