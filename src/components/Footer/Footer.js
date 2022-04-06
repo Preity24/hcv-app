@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../images/logo.png';
+import logo from '../../assets/images/logo.png';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from "@material-ui/core/Typography";
