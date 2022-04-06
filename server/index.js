@@ -6,7 +6,7 @@ import cors from "cors";
 const app = express();
 
 try {
-    await db.authenticate();
+    db.authenticate();
     console.log('Database connected...');
 } catch (error) {
     console.error('Connection error:', error);
