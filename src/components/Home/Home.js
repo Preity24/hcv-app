@@ -249,7 +249,7 @@ export default function Home() {
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" href={`/details/${card['id']}`} color={"primary"}>View</Button>
+                                        <Button size="small" href={`/details/${card['id']}`} color={"primary"}>View Details</Button>
                                       {/*<Button size="small">Edit</Button>*/}
                                     </CardActions>
                                 </Card>

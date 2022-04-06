@@ -7,7 +7,7 @@ import axios from "axios";
 import get from "lodash/get";
 import Link from "@material-ui/core/Link";
 
-const Details = () => {
+const OpportunityDetails = () => {
     const { id } = useParams();
     const [data, setData] = useState({});
 
@@ -122,4 +122,4 @@ const Details = () => {
     )
 };
 
-export default Details;
+export default OpportunityDetails;
