@@ -1291,7 +1291,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15206",
-            "Cost": "null"
+            "Cost": "null",
+            "image": "https://s1.ax1x.com/2022/03/25/qYJle1.jpg"
           },
           {
             "ProgramName": "Tech Nights for Girls",
@@ -1519,7 +1520,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15222",
-            "Cost": "null"
+            "Cost": "null",
+            "image": "https://s1.ax1x.com/2022/03/25/qYYvvQ.jpg"
           }
       ]
     }

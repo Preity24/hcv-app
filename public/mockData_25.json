@@ -18,7 +18,8 @@
           "orgCity": "Pittsburgh",
           "orgState": "PA",
           "orgZip": "15213",
-          "Cost": "$5 (reserve Space)"
+          "Cost": "$5 (reserve Space)",
+          "id": 1
         },
         {
             "ProgramName": "Spark Saturdays",
@@ -37,8 +38,9 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
-          },
+            "Cost": "$5 (reserve Space)",
+            "id": 2
+        },
           {
             "ProgramName": "Spark Saturdays",
             "opportunityName": "Smart Light Lab",
@@ -56,7 +58,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
+            "Cost": "$5 (reserve Space)",
+            "id": 3
           },
           {
             "ProgramName": "Spark Saturdays",
@@ -75,7 +78,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
+            "Cost": "$5 (reserve Space)",
+            "id": 4
           },
           {
             "ProgramName": "Spark Saturdays",
@@ -94,7 +98,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
+            "Cost": "$5 (reserve Space)",
+            "id": 5
           },
           {
             "ProgramName": "Spark Saturdays",
@@ -113,26 +118,29 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
+            "Cost": "$5 (reserve Space)",
+            "id": 6
           },
           {
-            "ProgramName": "Spark Saturdays",
-            "opportunityName": "Enegry Harvesting Lab",
-            "description": "Part of SPARK Saturdays - a program created by volunteers studying Electrical and Computer Engineering at Carnegie Mellon University that aims to introduce beginners to concepts within electrical and computer engineering and expose them to engineering as a potential career choice. SPARK Saturdays is structured to be six sessions, held on campus about every other Saturday. Each session lasts two hours and consist of a learning portion and a hands-on activity, led by CMU students. The entire SPARK Saturdays series is held once every semester, and aimed at high school students. No prior knowledge on the part of the students is assumed. The sessions are structured to introduce students to a wide variety of electrical and computer engineering concepts to help them decide whether this might be a good career path for them.",
-            "category": "Enrichment Exposure Exploration",
-            "ageRange": "14-19",
-            "phoneNumber": "null",
-            "organization": "Carnegie Mellon University",
-            "organizationEmail": "eceoutreach@gmail.com",
+            "ProgramName": "Shadow Observer Experience - Allegheny Health Network",
+            "opportunityName": "null",
+            "description": "The job shadow program will allow you to observe an employee performing his/her daily duties at the following facilities: Allegheny General Hospital (AGH), Allegheny Valley Hospital (AVH), Canonsburg Hospital (CH), Forbes Hospital (Forbes), Saint Vincent Hospital (Erie, Pa.), West Penn Hospital (WPH) and the Allegheny Clinic (physician offices). There is a maximum of 16 hours within a year for someone to shadow.  Students interested in experiences beyond 16 hours should contact healthsciences@ahn.org to learn more about our internship/externship guidelines.",
+            "category": "Apprenticeships",
+            "ageRange": "high school",
+            "phoneNumber": "412-359-3166",
+            "organization": "Allegheny Health Network",
+            "organizationEmail": "null",
             "contactName": "null",
-            "website": "http://eceoutreach.ece.cmu.edu/spark-saturdays/program.html",
+            "website": "https://www.ahn.org/health-care-professionals/education/career-exploration/shadow-observer-experience.html",
             "opportunityLogo": "null",
             "programLogo": "null",
             "virtual": "0",
             "orgCity": "Pittsburgh",
             "orgState": "PA",
-            "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
+            "orgZip": "15222",
+            "Cost": "null",
+            "image": "https://s1.ax1x.com/2022/03/25/qYYvvQ.jpg",
+            "id": 7
           },
           {
             "ProgramName": "Spark Saturdays",
@@ -151,7 +159,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
+            "Cost": "$5 (reserve Space)",
+            "id": 8
           },
           {
             "ProgramName": "Spark Saturdays",
@@ -170,7 +179,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
+            "Cost": "$5 (reserve Space)",
+            "id": 9
           },
           {
             "ProgramName": "Spark Saturdays",
@@ -189,7 +199,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$5 (reserve Space)"
+            "Cost": "$5 (reserve Space)",
+            "id": 10
           },
           {
             "ProgramName": "Snap Circuits Lab",
@@ -208,7 +219,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "null"
+            "Cost": "null",
+            "id": 11
           },
           {
             "ProgramName": "CMU Engineering Workshop",
@@ -227,7 +239,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$900"
+            "Cost": "$900",
+            "id": 12
           },
           {
             "ProgramName": "Moving 4th Into Engineering ",
@@ -246,7 +259,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "null"
+            "Cost": "null",
+            "id": 13
           },
           {
             "ProgramName": "Everyday Engineering (virtual)",
@@ -265,7 +279,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "null"
+            "Cost": "null",
+            "id": 14
           },
           {
             "ProgramName": "Summer Engineering Experience for Girls (SEE)",
@@ -284,7 +299,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 15
           },
           {
             "ProgramName": "SUCCEED: the Summer Center for Climate, Energy, and Environmental Decision-making",
@@ -303,7 +319,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 16
           },
           {
             "ProgramName": "Be an Engineer",
@@ -322,7 +339,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 17
           },
           {
             "ProgramName": "Career Exploration Series (virtual)",
@@ -341,7 +359,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 18
           },
           {
             "ProgramName": "FIRST Robotics Competition (FRC)",
@@ -360,26 +379,28 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 19
           },
           {
-            "ProgramName": "Linguistic Olymiad",
-            "opportunityName": "null",
-            "description": "This olympiad is a contest in which high-school students solve linguistic puzzles. In solving the problems, students learn about the diversity and consistency of language, while exercising logic skills. No prior knowledge of linguistics or second languages is necessary. Professionals in linguistics, computational linguistics and language technologies use dozens of languages to create engaging problems that represent cutting edge issues in their fields. The competition has attracted top students to study and work in those same fields. It is truly an opportunity for young people to experience a taste of natural-language processing in the 21st century.",
-            "category": "Competitions",
-            "ageRange": "14-19",
-            "phoneNumber": "412-268-7517",
-            "organization": "North American Computational Linguistics Open Competition",
-            "organizationEmail": "lsl@cs.cmu.edu",
-            "contactName": "Mary Jo Bensasi",
-            "website": "https://www.lti.cs.cmu.edu/naclo-cmu",
+            "ProgramName": "CMU Athletic Camps ",
+            "opportunityName": "Women's Elite ID Fall Mini Camp - Fall 2022",
+            "description": "Part of CMU's variety of camps and clinics are offered each summer. For competitive female soccer players interested in attending Carnegie Mellon University.",
+            "category": "Sports Teams",
+            "ageRange": "14-18",
+            "phoneNumber": " 412-268-1236",
+            "organization": "Carnegie Mellon University",
+            "organizationEmail": "ystruble@andrew.cmu.edu",
+            "contactName": "Coach Yon Struble",
+            "website": "https://athletics.cmu.edu/athletics/camps-clinics",
             "opportunityLogo": "null",
             "programLogo": "null",
             "virtual": "0",
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$0"
+            "Cost": "null",
+            "id": 20
           },
           {
             "ProgramName": "The Pennsylvania Governor's School for the Sciences (PGSS)",
@@ -398,7 +419,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 21
           },
           {
             "ProgramName": "SWE++ Coding Camp",
@@ -417,7 +439,8 @@
             "orgCity": "Pittsburgh",
             "orgState": "PA",
             "orgZip": "15213",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 22
           },
           {
             "ProgramName": "National CodeBozu CS Fellowship learning coding with Ivy League Students",
@@ -436,7 +459,8 @@
             "orgCity": "Ithaca",
             "orgState": "NY",
             "orgZip": "14850",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 23
           },
           {
             "ProgramName": "National Blacks at Microsoft (BAM) Scholarship",
@@ -455,7 +479,8 @@
             "orgCity": "Redmond",
             "orgState": "CA",
             "orgZip": "98052",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 24
           },
           {
             "ProgramName": "National HOLA",
@@ -474,7 +499,8 @@
             "orgCity": "Redmond",
             "orgState": "CA",
             "orgZip": "98052",
-            "Cost": "$0"
+            "Cost": "$0",
+            "id": 25
           }
       ]
     }
