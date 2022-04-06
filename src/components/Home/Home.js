@@ -15,8 +15,10 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {makeStyles} from '@material-ui/core/styles';
 import {useState, useEffect} from "react";
 import {getOpportunitiesListAPI} from '../../api/APIUtils';
-// import Unsplash, { toJson } from 'unsplash-js';
+import { Button as BootButton } from "react-bootstrap";
+import { IoMdAddCircle } from "react-icons/io";
 import {searchCategories} from '../config';
+import Avatar from "@material-ui/core/Avatar";
 
 /* reference to
   https://github.com/mui/material-ui/blob/master/docs/data/material/getting-started/templates/album/Album.js
@@ -33,7 +35,7 @@ const useStyles = makeStyles(theme => ({
             flexDirection: 'column',
             alignItems: 'center',
             mt: 1,
-            minWidth: 700,
+            minWidth: 900,
         },
         width: 150,
     },
@@ -109,7 +111,7 @@ export default function Home() {
             <main>
                 <form className={classes.formContainer}>
                     <Container maxWidth="md">
-                        <Grid container spacing={2} columns={40}>
+                        <Grid container spacing={2} columns={45}>
                             <Grid item xs={8}>
                                 <Autocomplete
                                     id="ageGroup"
@@ -190,7 +192,7 @@ export default function Home() {
                                 />
 
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={5}>
                                 <Button
                                     variant="outlined"
                                     size="medium"
@@ -200,7 +202,7 @@ export default function Home() {
                                     Apply Filters
                                 </Button>
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={5}>
                                 <Button
                                     variant="outlined"
                                     size="medium"
@@ -208,6 +210,15 @@ export default function Home() {
                                     onClick={handleOriginFilter}
                                 >
                                     Reset Filters
+                                </Button>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Button
+                                    size="medium"
+                                >
+                                    <div style={{color: '#5e5996'}}>
+                                        <IoMdAddCircle size={40} />
+                                    </div>
                                 </Button>
                             </Grid>
                         </Grid>
