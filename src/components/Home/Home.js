@@ -215,9 +215,10 @@ export default function Home() {
                             <Grid item xs={2}>
                                 <Button
                                     size="medium"
+                                    href={`/addOpportunity`}
                                 >
                                     <div style={{color: '#5e5996'}}>
-                                        <IoMdAddCircle size={40} />
+                                        <IoMdAddCircle size={45} />
                                     </div>
                                 </Button>
                             </Grid>
