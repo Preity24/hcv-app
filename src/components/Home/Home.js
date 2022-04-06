@@ -1,23 +1,22 @@
 import * as React from 'react';
 import get from 'lodash/get';
-import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
+import Button from "@material-ui/core/Button";
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {makeStyles} from '@material-ui/core/styles';
 import {useState, useEffect} from "react";
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import {getOpportunitiesListAPI} from '../../api/APIUtils';
-import Button from "@material-ui/core/Button";
 // import Unsplash, { toJson } from 'unsplash-js';
-import {useNavigate} from "react-router-dom";
+import {searchCategories} from '../config';
 
 /* reference to
   https://github.com/mui/material-ui/blob/master/docs/data/material/getting-started/templates/album/Album.js
@@ -124,7 +123,7 @@ export default function Home() {
                                     }
                                     }
                                     getOptionLabel={(option) => option['ageRange']}
-                                    options={age_categories}
+                                    options={searchCategories.age_categories}
                                     noOptionsText={"No information"}
                                     onChange={(e, v) => {
                                         if (v !== null) {
@@ -151,7 +150,7 @@ export default function Home() {
                                     }
                                     }
                                     getOptionLabel={(option) => option['orgCity']}
-                                    options={region_categories}
+                                    options={searchCategories.region_categories}
                                     noOptionsText={"No information"}
                                     onChange={(e, v) => {
                                         if (v !== null) {
@@ -177,7 +176,7 @@ export default function Home() {
                                     }
                                     disablePortal
                                     getOptionLabel={(option) => option['category']}
-                                    options={categories}
+                                    options={searchCategories.categories}
                                     noOptionsText={"No information"}
                                     onChange={(e, v) => {
                                         if (v !== null) {
@@ -263,81 +262,4 @@ export default function Home() {
 }
 
 
-const age_categories = [
-    {
-        ageRange: "9-10",
-    },
-    {
-        ageRange: "10-14",
-    },
-    {
-        ageRange: "14-19",
-    }
-];
-
-const region_categories = [
-    {
-        orgCity: "Pittsburgh",
-    },
-    {
-        orgCity: "Redmond",
-    },
-    {
-        orgCity: "Ithaca",
-    }
-];
-
-const categories = [
-    {
-        category: "Enrichment Exposure Exploration",
-    },
-    {
-        category: "Internships",
-    },
-    {
-        category: "Apprenticeships",
-    },
-    {
-        category: "Summer Camps",
-    },
-    {
-        category: "Sports Teams",
-    },
-    {
-        category: "Volunteer Opportunities",
-    },
-    {
-        category: "Local Clubs",
-    },
-    {
-        category: "Honor Societies",
-    },
-    {
-        category: "Academic Societies",
-    },
-    {
-        category: "Scholarships",
-    },
-    {
-        category: "Awards",
-    },
-    {
-        category: "Fellowships",
-    },
-    {
-        category: "Skills Training",
-    },
-    {
-        category: "Local Events",
-    },
-    {
-        category: "Study Abroad",
-    },
-    {
-        category: "Dual Enrollment",
-    },
-    {
-        category: "College Tours",
-    }
-];
 
