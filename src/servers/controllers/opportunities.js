@@ -42,7 +42,6 @@ export const createOpportunity = async (req, res) => {
             start_date: req.body.start_date === "" ? null : req.body.start_date,
             end_date: req.body.end_date === "" ? null : req.body.end_date,
             application_deadline: req.body.application_deadline === "" ? null : req.body.application_deadline,
-
         };
         await Opportunity.create(data);
         res.json({
