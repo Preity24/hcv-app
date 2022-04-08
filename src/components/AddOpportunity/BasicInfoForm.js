@@ -13,6 +13,8 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import { useNavigate } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
+import {searchCategories} from '../config';
+import ListItemText from '@mui/material/ListItemText';
 
 const defaultValues = {
     name: "",
@@ -91,16 +93,6 @@ export default function BasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    {/*<TextField*/}
-                    {/*    required*/}
-                    {/*    id="category"*/}
-                    {/*    name="category"*/}
-                    {/*    label="Category"*/}
-                    {/*    fullWidth*/}
-                    {/*    variant="standard"*/}
-                    {/*    value={formValues.category}*/}
-                    {/*    onChange={handleInputChange}*/}
-                    {/*/>*/}
                     <FormControl variant="standard" fullWidth>
                         <InputLabel id="categoryLabel">Category</InputLabel>
                         <Select
@@ -111,9 +103,13 @@ export default function BasicInfoForm() {
                             label="category"
                             onChange={handleInputChange}
                         >
-                            <MenuItem value={"9-10"}>9-10</MenuItem>
-                            <MenuItem value={"10-14"}>10-14</MenuItem>
-                            <MenuItem value={"14-19"}>14-19</MenuItem>
+                            {Object.values(searchCategories.categories).map((value) =>
+                                <MenuItem
+                                    value={value['category']}
+                                >
+                                    <Typography align="left">{value['category']} </Typography>
+                                </MenuItem>
+                            )}
                         </Select>
                     </FormControl>
 
@@ -143,16 +139,25 @@ export default function BasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        // required
-                        id="ageRange"
-                        name="ageRange"
-                        label="Targeted Age Group"
-                        fullWidth
-                        variant="standard"
-                        value={formValues.ageRange}
-                        onChange={handleInputChange}
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="categoryLabel">Targeted Age Group</InputLabel>
+                        <Select
+                            labelId="ageRange"
+                            name="ageRange"
+                            id="ageRange"
+                            value={formValues.ageRange}
+                            label="Targeted Age Group"
+                            onChange={handleInputChange}
+                        >
+                            {Object.values(searchCategories.age_categories).map((value) =>
+                                <MenuItem
+                                    value={value['ageRange']}
+                                >
+                                    <Typography align="left">{value['ageRange']} </Typography>
+                                </MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
