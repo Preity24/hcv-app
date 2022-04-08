@@ -48,7 +48,13 @@ const Opportunity = db.define('opportunities',{
     },
     application_deadline:{
         type: DataTypes.DATE
-    }
+    },
+    ageRange:{
+        type: DataTypes.STRING
+    },
+    orgCity:{
+        type: DataTypes.STRING
+    },
 },{
     freezeTableName: true, // Model tableName will be the same as the model name
     timestamps: false

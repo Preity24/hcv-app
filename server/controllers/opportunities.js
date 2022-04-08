@@ -42,6 +42,8 @@ export const createOpportunity = async (req, res) => {
             start_date: req.body.start_date === "" ? null : req.body.start_date,
             end_date: req.body.end_date === "" ? null : req.body.end_date,
             application_deadline: req.body.application_deadline === "" ? null : req.body.application_deadline,
+            ageRange: req.body.ageRange,
+            orgCity: req.body.orgCity
         };
         await Opportunity.create(data);
         res.json({
@@ -71,6 +73,8 @@ export const updateOpportunity = async (req, res) => {
             start_date: req.body.start_date === "" ? null : req.body.start_date,
             end_date: req.body.end_date === "" ? null : req.body.end_date,
             application_deadline: req.body.application_deadline === "" ? null : req.body.application_deadline,
+            ageRange: req.body.ageRange,
+            orgCity: req.body.orgCity
         };
         await Opportunity.update(data, {
             where: {

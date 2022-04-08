@@ -54,6 +54,8 @@ export default function EditBasicInfoForm() {
             start_date: null,
             end_date: null,
             application_deadline: null,
+            ageRange: formValues.ageRange,
+            orgCity: formValues.orgCity
         });
         navigate("/home");
     };

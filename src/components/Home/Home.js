@@ -88,7 +88,7 @@ export default function Home() {
                 item.orgCity.includes(filterData_by_region) &&
                 item.category.includes(filterData_by_category);
         });
-
+        debugger;
         setData(newValue);
     };
 
@@ -99,7 +99,6 @@ export default function Home() {
 
     const getOpportunities = async () => {
         const response = await axios.get('http://localhost:5001/opportunities/');
-        debugger
         console.log(response.data);
         setData(response.data);
         setFilterData(response.data)

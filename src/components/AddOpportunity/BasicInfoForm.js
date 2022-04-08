@@ -19,7 +19,9 @@ const defaultValues = {
     cost: 0,
     stipend: 0,
     financial_aid: false,
-    image_path: ""
+    image_path: "",
+    ageRange: "",
+    orgCity: ""
 };
 
 export default function BasicInfoForm() {
@@ -56,6 +58,8 @@ export default function BasicInfoForm() {
             start_date: null,
             end_date: null,
             application_deadline: null,
+            ageRange: formValues.ageRange,
+            orgCity: formValues.orgCity
         });
         navigate("/home");
     };
@@ -119,13 +123,13 @@ export default function BasicInfoForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         // required
-                        id="ageGroup"
-                        name="ageGroup"
+                        id="ageRange"
+                        name="ageRange"
                         label="Targeted Age Group"
                         fullWidth
                         variant="standard"
-                        // value={formValues.name}
-                        // onChange={handleInputChange}
+                        value={formValues.ageRange}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -334,6 +338,8 @@ export default function BasicInfoForm() {
                         label="Organization City:"
                         fullWidth
                         variant="standard"
+                        value={formValues.orgCity}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
