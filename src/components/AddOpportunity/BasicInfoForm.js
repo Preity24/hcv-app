@@ -88,6 +88,7 @@ export default function BasicInfoForm() {
                         label="Opportunity Name"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                         value={formValues.name}
                         onChange={handleInputChange}
                     />
@@ -122,6 +123,7 @@ export default function BasicInfoForm() {
                         label="Describe the misson and the scope of the opportunity"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                         value={formValues.description}
                         onChange={handleInputChange}
                     />
@@ -134,6 +136,7 @@ export default function BasicInfoForm() {
                         label="Website"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                         value={formValues.website}
                         onChange={handleInputChange}
                     />
@@ -238,6 +241,7 @@ export default function BasicInfoForm() {
                         label="Event Name"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -248,6 +252,7 @@ export default function BasicInfoForm() {
                         label="Start Date:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -258,6 +263,7 @@ export default function BasicInfoForm() {
                         label="End Date:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -268,6 +274,7 @@ export default function BasicInfoForm() {
                         label="Application Deadline:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -278,6 +285,7 @@ export default function BasicInfoForm() {
                         label="Event Address Line 1:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -288,6 +296,7 @@ export default function BasicInfoForm() {
                         label="Event Address Line 2:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -298,6 +307,7 @@ export default function BasicInfoForm() {
                         label="Event City:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -308,6 +318,7 @@ export default function BasicInfoForm() {
                         label="Event Zip:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
             </Grid>
@@ -325,6 +336,7 @@ export default function BasicInfoForm() {
                         label="Organization Name:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -335,6 +347,7 @@ export default function BasicInfoForm() {
                         label="Organization Email:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -345,6 +358,7 @@ export default function BasicInfoForm() {
                         label="Organization Address Line 1:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -355,6 +369,7 @@ export default function BasicInfoForm() {
                         label="Organization Address Line 2:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -365,6 +380,7 @@ export default function BasicInfoForm() {
                         label="Organization City:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                         value={formValues.orgCity}
                         onChange={handleInputChange}
                     />
@@ -377,6 +393,7 @@ export default function BasicInfoForm() {
                         label="Organization Zip Code:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
             </Grid>
