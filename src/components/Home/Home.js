@@ -274,7 +274,7 @@ export default function Home() {
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" href={`/details/${card['id']}`} color={"primary"}>View Details</Button>
-                                      {/*<Button size="small">Edit</Button>*/}
+                                        <Button size="small" href={`/editOpportunity/${card['id']}`} color={"primary"}>Edit</Button>
                                     </CardActions>
                                 </Card>
                             </Grid>

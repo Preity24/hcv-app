@@ -8,6 +8,7 @@ import AddOpportunity from "./components/AddOpportunity/AddOpportunity";
 import About from "./components/About/About";
 import './App.css';
 import React from "react";
+import EditOpportunity from "./components/EditOpportunity/EditOpportunity";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="about" element={ <About/> } />
           <Route path='/details/:id' element={<OpportunityDetails/>} />
           <Route path='/addOpportunity' element={<AddOpportunity/>} />
+          <Route path='/editOpportunity/:id' element={<EditOpportunity/>} />
         </Routes>
         <Footer />
     </main>
