@@ -49,30 +49,6 @@ const defaultValues = {
 };
 
 const AddOpportunity = () => {
-
-    const [activeStep, setActiveStep] = React.useState(0);
-    const handleNext = () => {
-        setActiveStep(activeStep + 1);
-    };
-    const handleBack = () => {
-        setActiveStep(activeStep - 1);
-    };
-
-    const [formValues, setFormValues] = useState(defaultValues);
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormValues({
-            ...formValues,
-            [name]: value,
-        });
-        // console.log(formValues)
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // console.log(formValues);
-    };
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -81,43 +57,11 @@ const AddOpportunity = () => {
                         <Typography component="h1" variant="h4" align="left" gutterBottom={true} style={{ fontWeight: 600 }}>
                             Add New Opportunity
                         </Typography>
-                        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-                            {steps.map((label) => (
-                                <Step key={label}>
-                                    <StepLabel>{label}</StepLabel>
-                                </Step>
-                            ))}
-                        </Stepper>
-                        <React.Fragment>
-                            {activeStep === steps.length ? (
-                                <React.Fragment>
-                                    <Typography variant="h5" gutterBottom>
-                                        Opportunity has been added.
-                                    </Typography>
-                                    <Typography variant="subtitle1">
-                                        You can go back to opportunity page to find the opportunity you just added.
-                                    </Typography>
-                                </React.Fragment>
-                            ) : (
-                                <React.Fragment>
-                                    {getStepContent(activeStep)}
-                                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                        {activeStep !== 0 && (
-                                            <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                                                Back
-                                            </Button>
-                                        )}
 
-                                        <Button
-                                            variant="contained"
-                                            onClick={handleNext}
-                                            sx={{ mt: 3, ml: 1 }}
-                                        >
-                                            {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
-                                        </Button>
-                                    </Box>
+                        <React.Fragment>
+                                <React.Fragment>
+                                    <BasicInfoForm/>
                                 </React.Fragment>
-                            )}
                         </React.Fragment>
                 </Paper>
             </Container>
