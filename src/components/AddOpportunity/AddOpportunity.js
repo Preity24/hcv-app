@@ -33,6 +33,8 @@ function getStepContent(step) {
     }
 }
 
+const theme = createTheme();
+
 const defaultValues = {
     name: "",
     category: "",
@@ -46,13 +48,7 @@ const defaultValues = {
     image_path: ""
 };
 
-const theme = createTheme();
-
 const AddOpportunity = () => {
-    const DEFAULT_INPUT_WIDTH = 200;
-    const [inputWidth, setInputWidth] = useState(DEFAULT_INPUT_WIDTH);
-
-    const [formValues, setFormValues] = useState(defaultValues);
 
     const [activeStep, setActiveStep] = React.useState(0);
     const handleNext = () => {
@@ -62,13 +58,17 @@ const AddOpportunity = () => {
         setActiveStep(activeStep - 1);
     };
 
+    const [formValues, setFormValues] = useState(defaultValues);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormValues({
             ...formValues,
             [name]: value,
         });
+        // console.log(formValues)
     };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log(formValues);

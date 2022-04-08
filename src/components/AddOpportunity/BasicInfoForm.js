@@ -4,8 +4,39 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from "@material-ui/core/Button";
 import Stack from "@mui/material/Stack";
+import {useState} from "react";
+
+const defaultValues = {
+    name: "",
+    category: "",
+    description: "",
+    website: "",
+    age_group: "",
+    paid: false,
+    cost: 0,
+    stipend: 0,
+    financial_aid: false,
+    image_path: ""
+};
 
 export default function BasicInfoForm() {
+
+    const [formValues, setFormValues] = useState(defaultValues);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues({
+            ...formValues,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        debugger;
+        console.log(formValues);
+    };
+
     return (
         <React.Fragment>
             <Typography variant="h5" align="left" style={{ fontWeight: 600 }} gutterBottom>
@@ -15,11 +46,13 @@ export default function BasicInfoForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="OpportunityName"
-                        name="OpportunityName"
+                        id="name"
+                        name="name"
                         label="Opportunity Name"
                         fullWidth
                         variant="standard"
+                        value={formValues.name}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -30,6 +63,8 @@ export default function BasicInfoForm() {
                         label="Category"
                         fullWidth
                         variant="standard"
+                        value={formValues.category}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -40,6 +75,8 @@ export default function BasicInfoForm() {
                         label="Describe the misson and the scope of the opportunity"
                         fullWidth
                         variant="standard"
+                        value={formValues.description}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -50,16 +87,20 @@ export default function BasicInfoForm() {
                         label="Website"
                         fullWidth
                         variant="standard"
+                        value={formValues.website}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        required
+                        // required
                         id="ageGroup"
                         name="ageGroup"
                         label="Targeted Age Group"
                         fullWidth
                         variant="standard"
+                        // value={formValues.name}
+                        // onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -70,6 +111,8 @@ export default function BasicInfoForm() {
                         label="Is it a paid opportunity?"
                         fullWidth
                         variant="standard"
+                        value={formValues.paid}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -79,6 +122,9 @@ export default function BasicInfoForm() {
                         label="Cost of the Opportunity"
                         fullWidth
                         variant="standard"
+                        type="number"
+                        value={formValues.cost}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -89,6 +135,9 @@ export default function BasicInfoForm() {
                         label="Is there any stipend?"
                         fullWidth
                         variant="standard"
+                        type="number"
+                        value={formValues.stipend}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -99,6 +148,8 @@ export default function BasicInfoForm() {
                         label="Is there any financial aid?"
                         fullWidth
                         variant="standard"
+                        value={formValues.financial_aid}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -114,8 +165,10 @@ export default function BasicInfoForm() {
                             >
                                 Upload
                             </Button>
+                            <Button onClick={handleSubmit}>
+                                Submit
+                            </Button>
                     </Stack>
-
                 </Grid>
             </Grid>
         </React.Fragment>
