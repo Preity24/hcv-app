@@ -18,6 +18,7 @@ import {getOpportunitiesListAPI} from '../../api/APIUtils';
 import { Button as BootButton } from "react-bootstrap";
 import { IoMdAddCircle } from "react-icons/io";
 import {searchCategories} from '../config';
+import axios from 'axios';
 import Avatar from "@material-ui/core/Avatar";
 
 /* reference to
@@ -76,7 +77,8 @@ export default function Home() {
     };
 
     useEffect(() => {
-        getOpportunitiesData();
+        // getOpportunitiesData();
+        getOpportunities();
     }, []);
 
     const handleFilters = (e, newValue) => {
@@ -91,19 +93,28 @@ export default function Home() {
     };
 
     const handleOriginFilter = (e, newValue) => {
-        getOpportunitiesData();
+        // getOpportunitiesData();
+        getOpportunities();
     };
 
-    const getOpportunitiesData = async () => {
-        try {
-            const response = await getOpportunitiesListAPI();
-            const opportunities = get(response, 'data', []);
-            setData(opportunities['data']['opportunities']);
-            setFilterData(opportunities['data']['opportunities'])
-        } catch (e) {
-            throw e;
-        }
+    const getOpportunities = async () => {
+        const response = await axios.get('http://localhost:5001/opportunities/');
+        debugger
+        console.log(response.data);
+        setData(response.data);
+        setFilterData(response.data)
     };
+
+    // const getOpportunitiesData = async () => {
+    //     try {
+    //         const response = await getOpportunitiesListAPI();
+    //         const opportunities = get(response, 'data', []);
+    //         setData(opportunities['data']['opportunities']);
+    //         setFilterData(opportunities['data']['opportunities'])
+    //     } catch (e) {
+    //         throw e;
+    //     }
+    // };
 
     return (
         <ThemeProvider theme={theme}>
@@ -247,13 +258,15 @@ export default function Home() {
                                     />
                                     <CardContent sx={{flexGrow: 1}}>
                                         <Typography gutterBottom variant="h5" component="h2">
-                                            {card['opportunityName'] === "null" ? card['ProgramName'] : card['opportunityName']}
+                                            {card['name']}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
-                                            Age Group: {card['ageRange']}
+                                            Age Group: 14-19
+                                            {/*Age Group: {card['ageRange']}*/}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
-                                            Region: {card['orgCity']}
+                                            Region: Pittsburgh
+                                            {/*Region: {card['orgCity']}*/}
                                         </Typography>
                                         <Typography variant="h8" component="div" align="left">
                                             Category: {card['category']}

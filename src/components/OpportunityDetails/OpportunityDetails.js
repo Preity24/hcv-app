@@ -12,19 +12,27 @@ const OpportunityDetails = () => {
     const [data, setData] = useState({});
 
     useEffect(() => {
-        getOpportunitiesData();
+        // getOpportunitiesData();
+        getOpportunities()
     }, []);
 
-    const getOpportunitiesData = async () => {
-        try {
-            const response = await axios.get("/mockData_25.json");
-            const opportunities = get(response, 'data', []);
-
-            setData(opportunities['data']['opportunities'].find(el => id == el.id));
-        } catch (e) {
-            throw e;
-        }
+    const getOpportunities = async () => {
+        const response = await axios.get('http://localhost:5001/opportunities/' + id);
+        debugger
+        console.log(response.data);
+        setData(response.data);
     };
+
+    // const getOpportunitiesData = async () => {
+    //     try {
+    //         const response = await axios.get("/mockData_25.json");
+    //         const opportunities = get(response, 'data', []);
+    //
+    //         setData(opportunities['data']['opportunities'].find(el => id == el.id));
+    //     } catch (e) {
+    //         throw e;
+    //     }
+    // };
 
     return (
         <Grid container spacing={2}>
@@ -38,13 +46,13 @@ const OpportunityDetails = () => {
                         component="p"
                         gutterBottom={true}
                     >
-                        {data['opportunityName'] === "null" ? data['ProgramName'] : data['opportunityName']}
+                        {data['name']}
                     </Typography>
                     <Typography component="p" align="left" variant="body1" gutterBottom={true}>
                         {data['description']}
                     </Typography>
                     <Typography component="p" align="left" variant="body1">
-                        <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['ageRange']} | <strong>Price:</strong> {data['Cost']}
+                        <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['ageRange']} | <strong>Price:</strong> {data['cost']}
                     </Typography>
                 </Box>
 
@@ -84,7 +92,7 @@ const OpportunityDetails = () => {
                         component="p"
                         gutterBottom={true}
                     >
-                        {data['organizationEmail']}
+                        {!data.hasOwnProperty('organizationEmail') ? "null" : data['organizationEmail'] }
                     </Typography>
                     <Typography
                         style={{ marginBottom: '20px'}}
@@ -104,7 +112,7 @@ const OpportunityDetails = () => {
                         component="p"
                         gutterBottom={true}
                     >
-                        Address: {data['orgCity']}
+                        Address: {!data.hasOwnProperty('orgCity') ? "null" : data['orgCity']}
                     </Typography>
                     <Typography
                         style={{ marginBottom: '20px'}}
