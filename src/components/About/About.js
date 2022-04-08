@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import { makeStyles } from '@mui/styles';
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import banner from '../../assets/images/Website-Banners.png';
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import Box from "@material-ui/core/Box";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@mui/material/Avatar";
 import avatar_lisa from '../../assets/images/Lisa-Avatar.png';
 import avatar_preeti from '../../assets/images/Preeti-Avatar.png';
 import avatar_ruoyu from '../../assets/images/Ruoyu-Avatar.png';
@@ -17,8 +17,8 @@ import avatar_tina from '../../assets/images/Tina-Avatar.png';
 import avatar_zimo from '../../assets/images/ZimoYang-cropped.png';
 import Stack from "@mui/material/Stack";
 import styled from "styled-components";
-import { useTheme } from "@material-ui/core/styles";
-import CardHeader from "@material-ui/core/CardHeader";
+import { useTheme } from "@mui/styles";
+import CardHeader from "@mui/material/CardHeader";
 
 const AvatarContainer = styled.div`
   display: flex;

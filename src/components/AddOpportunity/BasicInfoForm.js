@@ -2,12 +2,17 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import {useState} from "react";
 import Box from "@mui/material/Box";
 import axios from 'axios';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
 import { useNavigate } from 'react-router-dom';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 const defaultValues = {
     name: "",
@@ -65,6 +70,7 @@ export default function BasicInfoForm() {
     };
 
     return (
+        <StyledEngineProvider injectFirst>
         <React.Fragment>
             <Box sx={{ display: 'flex', ml: 1, mt: 3, align: 'left'}}>
                 <Typography variant="h5" align="left" style={{ fontWeight: 600 }} gutterBottom>
@@ -85,16 +91,32 @@ export default function BasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="category"
-                        name="category"
-                        label="Category"
-                        fullWidth
-                        variant="standard"
-                        value={formValues.category}
-                        onChange={handleInputChange}
-                    />
+                    {/*<TextField*/}
+                    {/*    required*/}
+                    {/*    id="category"*/}
+                    {/*    name="category"*/}
+                    {/*    label="Category"*/}
+                    {/*    fullWidth*/}
+                    {/*    variant="standard"*/}
+                    {/*    value={formValues.category}*/}
+                    {/*    onChange={handleInputChange}*/}
+                    {/*/>*/}
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="categoryLabel">Category</InputLabel>
+                        <Select
+                            labelId="category"
+                            name="category"
+                            id="category"
+                            value={formValues.category}
+                            label="category"
+                            onChange={handleInputChange}
+                        >
+                            <MenuItem value={"9-10"}>9-10</MenuItem>
+                            <MenuItem value={"10-14"}>10-14</MenuItem>
+                            <MenuItem value={"14-19"}>14-19</MenuItem>
+                        </Select>
+                    </FormControl>
+
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
@@ -411,5 +433,6 @@ export default function BasicInfoForm() {
                 </Button>
             </Box>
         </React.Fragment>
+        </StyledEngineProvider>
     );
 }

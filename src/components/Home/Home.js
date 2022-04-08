@@ -1,25 +1,24 @@
 import * as React from 'react';
 import get from 'lodash/get';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/lab/Autocomplete';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles} from '@mui/styles';
 import {useState, useEffect} from "react";
 import {getOpportunitiesListAPI} from '../../api/APIUtils';
 import { Button as BootButton } from "react-bootstrap";
 import { IoMdAddCircle } from "react-icons/io";
 import {searchCategories} from '../config';
 import axios from 'axios';
-import Avatar from "@material-ui/core/Avatar";
 
 /* reference to
   https://github.com/mui/material-ui/blob/master/docs/data/material/getting-started/templates/album/Album.js

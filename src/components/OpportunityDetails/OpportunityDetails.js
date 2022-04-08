@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import {useParams} from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 import axios from "axios";
-import get from "lodash/get";
-import Link from "@material-ui/core/Link";
+import Link from "@mui/material/Link";
 
 const OpportunityDetails = () => {
     const { id } = useParams();

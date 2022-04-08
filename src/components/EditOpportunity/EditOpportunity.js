@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 import {useParams} from "react-router-dom";
 import CssBaseline from '@mui/material/CssBaseline';
-import Button from "@material-ui/core/Button";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import get from "lodash/get";
-import Link from "@material-ui/core/Link";
 import OpportunityDetails from "../OpportunityDetails/OpportunityDetails";
 import Container from '@mui/material/Container';
 import BasicInfoForm from './EditBasicInfoForm';
-import Paper from "@material-ui/core/Paper";
+import Paper from "@mui/material/Paper";
 
 const theme = createTheme();
 
