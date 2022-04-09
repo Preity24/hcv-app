@@ -9,6 +9,15 @@ import Box from "@mui/material/Box";
 import axios from 'axios';
 import { useNavigate, useRoute } from 'react-router-dom';
 import {useEffect} from "react";
+import InputLabel from "@mui/material/InputLabel";
+import {searchCategories} from "../config";
+import MenuItem from "@mui/material/MenuItem";
+import Select from '@mui/material/Select';
+import FormControl from "@mui/material/FormControl";
+import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
+import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
+import {DatePicker} from "@mui/x-date-pickers/DatePicker";
+import AlertMessage from "../../utils/AlertMessage";
 
 const id = window.location.href.split('/')[4];
 
@@ -20,10 +29,15 @@ export default function EditBasicInfoForm() {
     }, []);
 
     const [formValues, setFormValues] = useState({});
+    const [start_date, setStartDate] = useState(new Date());
+    const [end_date, setEndDate] = useState(new Date());
+    const [date_status, setDateStatus] = useState("Success");
 
     const getOpportunitiyByID = async () => {
         const response = await axios.get('http://localhost:5001/opportunities/' + id);
         setFormValues(response.data);
+        setStartDate(response.data.start_date);
+        setEndDate(response.data.end_date);
     };
 
     const handleInputChange = (e) => {
@@ -37,27 +51,31 @@ export default function EditBasicInfoForm() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        await axios.patch('http://localhost:5001/opportunities/' + id,{
-            name: formValues.name,
-            category: formValues.category,
-            description: formValues.description,
-            qualifications: "null",
-            modality: "null",
-            paid: formValues.paid,
-            cost: formValues.cost,
-            stipend: formValues.stipend,
-            financial_aid: formValues.financial_aid,
-            website: formValues.website,
-            image_path: "null",
-            reviews: "null",
-            start_date: null,
-            end_date: null,
-            application_deadline: null,
-            ageRange: formValues.ageRange,
-            orgCity: formValues.orgCity
-        });
-        navigate("/home");
+        if (new Date(start_date) > new Date(end_date)) {
+            setDateStatus({ msg: "Start Date should not exceed End Date!", key: Math.random()});
+        } else {
+            event.preventDefault();
+            await axios.patch('http://localhost:5001/opportunities/' + id, {
+                name: formValues.name,
+                category: formValues.category,
+                description: formValues.description,
+                qualifications: "null",
+                modality: "null",
+                paid: formValues.paid,
+                cost: formValues.cost,
+                stipend: formValues.stipend,
+                financial_aid: formValues.financial_aid,
+                website: formValues.website,
+                image_path: "null",
+                reviews: "null",
+                start_date: start_date,
+                end_date: end_date,
+                application_deadline: null,
+                ageRange: formValues.ageRange,
+                orgCity: formValues.orgCity
+            });
+            navigate("/home");
+        }
     };
 
     return (
@@ -82,17 +100,26 @@ export default function EditBasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="category"
-                        name="category"
-                        label="Category"
-                        fullWidth
-                        variant="standard"
-                        value={formValues.category}
-                        onChange={handleInputChange}
-                        InputLabelProps={{ shrink: true }}
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="categoryLabel">Category</InputLabel>
+                        <Select
+                            labelId="category"
+                            name="category"
+                            id="category"
+                            value={String(formValues.category)}
+                            label="category"
+                            onChange={handleInputChange}
+
+                        >
+                            {Object.values(searchCategories.categories).map((value) =>
+                                <MenuItem
+                                    value={value['category']}
+                                >
+                                    <Typography align="left">{value['category']} </Typography>
+                                </MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
@@ -121,29 +148,41 @@ export default function EditBasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        // required
-                        id="ageGroup"
-                        name="ageGroup"
-                        label="Targeted Age Group"
-                        fullWidth
-                        variant="standard"
-                        // value={formValues.name}
-                        // onChange={handleInputChange}
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="ageRangeLabel">Targeted Age Group</InputLabel>
+                        <Select
+                            labelId="ageRange"
+                            name="ageRange"
+                            id="ageRange"
+                            value={String(formValues.ageRange)}
+                            label="Targeted Age Group"
+                            onChange={handleInputChange}
+                        >
+                            {Object.values(searchCategories.age_categories).map((value) =>
+                                <MenuItem
+                                    value={value['ageRange']}
+                                >
+                                    <Typography align="left">{value['ageRange']} </Typography>
+                                </MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="paid"
-                        name="paid"
-                        label="Is it a paid opportunity?"
-                        fullWidth
-                        variant="standard"
-                        value={formValues.paid}
-                        onChange={handleInputChange}
-                        InputLabelProps={{ shrink: true }}
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="paidLabel">Is it a paid opportunity?</InputLabel>
+                        <Select
+                            labelId="paid"
+                            id="paid"
+                            name="paid"
+                            value={formValues.paid ? "true" : "false"}
+                            label="paid"
+                            onChange={handleInputChange}
+                        >
+                            <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
+                            <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -173,17 +212,20 @@ export default function EditBasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="financialAid"
-                        name="financialAid"
-                        label="Is there any financial aid?"
-                        fullWidth
-                        variant="standard"
-                        value={formValues.financial_aid}
-                        onChange={handleInputChange}
-                        InputLabelProps={{ shrink: true }}
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="financialAidLabel">Is there any financial aid?</InputLabel>
+                        <Select
+                            labelId="financialAid"
+                            id="financialAid"
+                            name="financialAid"
+                            value={formValues.financial_aid ? "true" : "false"}
+                            label="financialAid"
+                            onChange={handleInputChange}
+                        >
+                            <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
+                            <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Stack direction="row" spacing={2}>
@@ -218,24 +260,48 @@ export default function EditBasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="startDate"
-                        name="startDate"
-                        label="Start Date:"
-                        fullWidth
-                        variant="standard"
-                    />
+                    <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                id="start_date"
+                                name="start_date"
+                                label="Start Date:"
+                                value={start_date}
+                                onChange={(newValue) => {
+                                    setStartDate(newValue);
+                                }}
+                                PopoverProps={{
+                                    anchorOrigin: { horizontal: "center", vertical: "bottom" },
+                                    transformOrigin: { horizontal: "center", vertical: "bottom" }
+                                }}
+                                InputAdornmentProps={{ position: 'start' }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                    </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="endDate"
-                        name="endDate"
-                        label="End Date:"
-                        fullWidth
-                        variant="standard"
-                    />
+                    <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                id="end_date"
+                                name="end_date"
+                                label="End Date:"
+                                value={end_date}
+                                onChange={(newValue) => {
+                                    debugger
+                                    setEndDate(newValue);
+                                }}
+                                PopoverProps={{
+                                    placement: 'left',
+                                    anchorOrigin: { horizontal: "center", vertical: "bottom" },
+                                    transformOrigin: { horizontal: "center", vertical: "bottom" }
+                                }}
+                                InputAdornmentProps={{ position: 'start' }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                    </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -335,14 +401,25 @@ export default function EditBasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="orgCity"
-                        name="orgCity"
-                        label="Organization City:"
-                        fullWidth
-                        variant="standard"
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="orgCityLabel">Organization City:</InputLabel>
+                        <Select
+                            labelId="orgCity"
+                            name="orgCity"
+                            id="orgCity"
+                            value={String(formValues.orgCity)}
+                            label="Organization City:"
+                            onChange={handleInputChange}
+                        >
+                            {Object.values(searchCategories.region_categories).map((value) =>
+                                <MenuItem
+                                    value={value['orgCity']}
+                                >
+                                    <Typography align="left">{value['orgCity']} </Typography>
+                                </MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
@@ -369,6 +446,7 @@ export default function EditBasicInfoForm() {
                         label="Contact Name:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -379,6 +457,7 @@ export default function EditBasicInfoForm() {
                         label="Title: "
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -389,6 +468,7 @@ export default function EditBasicInfoForm() {
                         label="Contact Phone:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -399,6 +479,7 @@ export default function EditBasicInfoForm() {
                         label="Contact Email:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
             </Grid>
@@ -412,6 +493,7 @@ export default function EditBasicInfoForm() {
                     Submit
                 </Button>
             </Box>
+            {date_status === 'Success' ? null : <AlertMessage key={date_status.key} message={date_status.msg}/> }
         </React.Fragment>
     );
 }
