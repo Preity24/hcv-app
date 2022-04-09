@@ -143,7 +143,7 @@ export default function BasicInfoForm() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <FormControl variant="standard" fullWidth>
-                        <InputLabel id="categoryLabel">Targeted Age Group</InputLabel>
+                        <InputLabel id="ageRangeLabel">Targeted Age Group</InputLabel>
                         <Select
                             labelId="ageRange"
                             name="ageRange"
@@ -163,16 +163,20 @@ export default function BasicInfoForm() {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="paid"
-                        name="paid"
-                        label="Is it a paid opportunity?"
-                        fullWidth
-                        variant="standard"
-                        value={formValues.paid}
-                        onChange={handleInputChange}
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="paidLabel">Is it a paid opportunity?</InputLabel>
+                        <Select
+                            labelId="paid"
+                            id="paid"
+                            name="paid"
+                            value={formValues.paid}
+                            label="paid"
+                            onChange={handleInputChange}
+                        >
+                            <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
+                            <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -200,16 +204,20 @@ export default function BasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="financialAid"
-                        name="financialAid"
-                        label="Is there any financial aid?"
-                        fullWidth
-                        variant="standard"
-                        value={formValues.financial_aid}
-                        onChange={handleInputChange}
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="financialAidLabel">Is there any financial aid?</InputLabel>
+                        <Select
+                            labelId="financialAid"
+                            id="financialAid"
+                            name="financialAid"
+                            value={formValues.financial_aid}
+                            label="financialAid"
+                            onChange={handleInputChange}
+                        >
+                            <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
+                            <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Stack direction="row" spacing={2}>
@@ -373,17 +381,25 @@ export default function BasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="orgCity"
-                        name="orgCity"
-                        label="Organization City:"
-                        fullWidth
-                        variant="standard"
-                        autoComplete="new-password"
-                        value={formValues.orgCity}
-                        onChange={handleInputChange}
-                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="orgCityLabel">Organization City:</InputLabel>
+                        <Select
+                            labelId="orgCity"
+                            name="orgCity"
+                            id="orgCity"
+                            value={formValues.orgCity}
+                            label="Organization City:"
+                            onChange={handleInputChange}
+                        >
+                            {Object.values(searchCategories.region_categories).map((value) =>
+                                <MenuItem
+                                    value={value['orgCity']}
+                                >
+                                    <Typography align="left">{value['orgCity']} </Typography>
+                                </MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
@@ -411,6 +427,7 @@ export default function BasicInfoForm() {
                         label="Contact Name:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -421,6 +438,7 @@ export default function BasicInfoForm() {
                         label="Title: "
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -431,6 +449,7 @@ export default function BasicInfoForm() {
                         label="Contact Phone:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -441,6 +460,7 @@ export default function BasicInfoForm() {
                         label="Contact Email:"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                     />
                 </Grid>
             </Grid>
