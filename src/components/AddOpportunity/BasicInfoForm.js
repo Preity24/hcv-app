@@ -14,7 +14,10 @@ import FormControl from '@mui/material/FormControl';
 import { useNavigate } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
 import {searchCategories} from '../config';
-import ListItemText from '@mui/material/ListItemText';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import AlertMessage from "../../utils/AlertMessage";
 
 const defaultValues = {
     name: "",
@@ -34,6 +37,9 @@ const defaultValues = {
 export default function BasicInfoForm() {
 
     const [formValues, setFormValues] = useState(defaultValues);
+    const [start_date, setStartDate] = useState(new Date());
+    const [end_date, setEndDate] = useState(new Date());
+    const [date_status, setDateStatus] = useState("Success");
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -46,29 +52,33 @@ export default function BasicInfoForm() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formValues);
-        await axios.post('http://localhost:5001/opportunities',{
-            id: formValues.id,
-            name: formValues.name,
-            category: formValues.category,
-            description: formValues.description,
-            qualifications: "null",
-            modality: "null",
-            paid: formValues.paid,
-            cost: formValues.cost,
-            stipend: formValues.stipend,
-            financial_aid: formValues.financial_aid,
-            website: formValues.website,
-            image_path: "null",
-            reviews: "null",
-            start_date: null,
-            end_date: null,
-            application_deadline: null,
-            ageRange: formValues.ageRange,
-            orgCity: formValues.orgCity
-        });
-        navigate("/home");
+        if (start_date > end_date) {
+            setDateStatus({ msg: "Start Date should not exceed End Date!", key: Math.random()});
+        } else {
+            event.preventDefault();
+            console.log(formValues);
+            await axios.post('http://localhost:5001/opportunities', {
+                id: formValues.id,
+                name: formValues.name,
+                category: formValues.category,
+                description: formValues.description,
+                qualifications: "null",
+                modality: "null",
+                paid: formValues.paid,
+                cost: formValues.cost,
+                stipend: formValues.stipend,
+                financial_aid: formValues.financial_aid,
+                website: formValues.website,
+                image_path: "null",
+                reviews: "null",
+                start_date: start_date,
+                end_date: end_date,
+                application_deadline: null,
+                ageRange: formValues.ageRange,
+                orgCity: formValues.orgCity
+            });
+            navigate("/home");
+        }
     };
 
     return (
@@ -253,26 +263,47 @@ export default function BasicInfoForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="startDate"
-                        name="startDate"
-                        label="Start Date:"
-                        fullWidth
-                        variant="standard"
-                        autoComplete="new-password"
-                    />
+                    <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                id="start_date"
+                                name="start_date"
+                                label="Start Date:"
+                                value={start_date}
+                                onChange={(newValue) => {
+                                    setStartDate(newValue);
+                                }}
+                                PopoverProps={{
+                                    anchorOrigin: { horizontal: "center", vertical: "bottom" },
+                                    transformOrigin: { horizontal: "center", vertical: "bottom" }
+                                }}
+                                InputAdornmentProps={{ position: 'start' }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                    </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="endDate"
-                        name="endDate"
-                        label="End Date:"
-                        fullWidth
-                        variant="standard"
-                        autoComplete="new-password"
-                    />
+                    <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                id="end_date"
+                                name="end_date"
+                                label="End Date:"
+                                value={end_date}
+                                onChange={(newValue) => {
+                                    setEndDate(newValue);
+                                }}
+                                PopoverProps={{
+                                    placement: 'left',
+                                    anchorOrigin: { horizontal: "center", vertical: "bottom" },
+                                    transformOrigin: { horizontal: "center", vertical: "bottom" }
+                                }}
+                                InputAdornmentProps={{ position: 'start' }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                    </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -474,6 +505,7 @@ export default function BasicInfoForm() {
                     Submit
                 </Button>
             </Box>
+            {date_status === 'Success' ? null : <AlertMessage key={date_status.key} message={date_status.msg}/> }
         </React.Fragment>
         </StyledEngineProvider>
     );
