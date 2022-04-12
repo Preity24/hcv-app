@@ -17,7 +17,6 @@ import avatar_tina from '../../assets/images/Tina-Avatar.png';
 import avatar_zimo from '../../assets/images/ZimoYang-cropped.png';
 import Stack from "@mui/material/Stack";
 import styled from "styled-components";
-import { useTheme } from "@mui/styles";
 import CardHeader from "@mui/material/CardHeader";
 
 const AvatarContainer = styled.div`
@@ -28,22 +27,20 @@ const AvatarContainer = styled.div`
   }
 `;
 
-const SizedAvatar = styled(Avatar)`
-  ${({ size }) => `
-    width: ${useTheme().spacing(size)}px; 
-    height: ${useTheme().spacing(size)}px; 
-  `};
-`;
+const StyledAvatar = ({ children, ...props }) => (
+    <Avatar sx={{ height: '150px', width: '150px' }} {...props}>
+        {children}
+    </Avatar>
+);
 
 function SizedAvatars(image) {
     return (
         <AvatarContainer>
-            <SizedAvatar
-                size={20}
+            <StyledAvatar
                 src={image}
             >
                 default
-            </SizedAvatar>
+            </StyledAvatar>
         </AvatarContainer>
     );
 }
@@ -66,6 +63,7 @@ const useStyles = makeStyles(  theme => ({
     custom: {
         color: "#5E5996",
         fontWeight: "bold",
+
     }
 }));
 
