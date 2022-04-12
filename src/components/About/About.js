@@ -63,7 +63,6 @@ const useStyles = makeStyles(  theme => ({
     custom: {
         color: "#5E5996",
         fontWeight: "bold",
-
     }
 }));
 
@@ -109,7 +108,7 @@ export default function About() {
                         subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong></Typography>}
                     />
                 </Stack>
-                <Stack direction="row" spacing={6.9} alignItems="center">
+                <Stack direction="row" spacing={6.3} alignItems="center">
                     <CardHeader
                         avatar={SizedAvatars(avatar_sanjana)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Sanjana Parmar</strong></Typography>}
