@@ -81,13 +81,11 @@ export default function Home() {
     }, []);
 
     const handleFilters = (e, newValue) => {
-        debugger;
         newValue = data.filter(item => {
             return item.ageRange.includes(filterData_by_age) &&
                 item.orgCity.includes(filterData_by_region) &&
                 item.category.includes(filterData_by_category);
         });
-        debugger;
         setData(newValue);
     };
 
@@ -98,7 +96,6 @@ export default function Home() {
 
     const getOpportunities = async () => {
         const response = await axios.get('http://localhost:5001/opportunities/');
-        console.log(response.data);
         setData(response.data);
         setFilterData(response.data)
     };
@@ -119,7 +116,7 @@ export default function Home() {
             <CssBaseline/>
             <main>
                 <form className={classes.formContainer}>
-                    <Container maxWidth="md">
+                    <Container maxWidth="md" sx={{ mt: 4 }}>
                         <Grid container spacing={2} columns={45}>
                             <Grid item xs={8}>
                                 <Autocomplete
