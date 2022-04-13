@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
 import Link from "@mui/material/Link";
+import Container from "@mui/material/Container";
 
 const OpportunityDetails = () => {
     const { id } = useParams();
@@ -34,98 +35,100 @@ const OpportunityDetails = () => {
     // };
 
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={8}>
-                <Box sx={{ bgcolor: 'background.paper', p: 6 }}>
-                    <Typography
-                        style={{ fontWeight: 600 }}
-                        variant="h5"
-                        align="left"
-                        color="text.secondary"
-                        component="p"
-                        gutterBottom={true}
-                    >
-                        {data['name']}
-                    </Typography>
-                    <Typography component="p" align="left" variant="body1" gutterBottom={true}>
-                        {data['description']}
-                    </Typography>
-                    <Typography component="p" align="left" variant="body1">
-                        <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['ageRange']} | <strong>Price:</strong> {data['cost']}
-                    </Typography>
-                </Box>
+        <Container sx={{py: 2}} maxWidth="xl">
+            <Grid container spacing={2}>
+                <Grid item xs={8} xl={10}>
+                    <Box sx={{ bgcolor: 'background.paper', pt: 3 }}>
+                        <Typography
+                            style={{ fontWeight: 600 }}
+                            variant="h5"
+                            align="left"
+                            color="text.secondary"
+                            component="p"
+                            gutterBottom={true}
+                        >
+                            {data['name']}
+                        </Typography>
+                        <Typography component="p" align="left" variant="body1" gutterBottom={true}>
+                            {data['description']}
+                        </Typography>
+                        <Typography component="p" align="left" variant="body1">
+                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['ageRange']} | <strong>Price:</strong> {data['cost']}
+                        </Typography>
+                    </Box>
 
-            </Grid>
-            <Grid item xs={4}>
-                <Box sx={{
-                    width: 300,
-                    height: 600,
-                    bgcolor: '#F2F2F2',
-                    p: 3
-                }}>
+                </Grid>
+                <Grid item xs={8} xl={2}>
+                    <Box sx={{
+                        width: 350,
+                        height: 600,
+                        bgcolor: '#F2F2F2',
+                        p: 3
+                    }}>
 
-                    <Typography
-                        style={{ fontWeight: 600, marginBottom: '16px'}}
-                        variant="h6"
-                        align="left"
-                        color="text.secondary"
-                        component="p"
-                        gutterBottom={true}
-                    >
-                        Contact:
-                    </Typography>
-                    <Typography
-                        variant="body1"
-                        align="left"
-                        color="text.secondary"
-                        component="p"
-                        gutterBottom={true}
-                    >
-                        Email:
-                    </Typography>
-                    <Typography
-                        style={{ marginBottom: '20px'}}
-                        variant="body1"
-                        align="left"
-                        color="text.secondary"
-                        component="p"
-                        gutterBottom={true}
-                    >
-                        {!data.hasOwnProperty('organizationEmail') ? "null" : data['organizationEmail'] }
-                    </Typography>
-                    <Typography
-                        style={{ marginBottom: '20px'}}
-                        variant="body1"
-                        align="left"
-                        color="text.secondary"
-                        component="p"
-                        gutterBottom={true}
-                    >
-                        Phone: (412) xxx-xxxx
-                    </Typography>
-                    <Typography
-                        style={{ marginBottom: '20px'}}
-                        variant="body1"
-                        align="left"
-                        color="text.secondary"
-                        component="p"
-                        gutterBottom={true}
-                    >
-                        Address: {!data.hasOwnProperty('orgCity') ? "null" : data['orgCity']}
-                    </Typography>
-                    <Typography
-                        style={{ marginBottom: '20px'}}
-                        variant="body1"
-                        align="left"
-                        color="text.secondary"
-                        component="p"
-                        gutterBottom={true}
-                    >
-                        Website: <Link href={data['website']}>{data['website']}</Link>
-                    </Typography>
-                </Box>
+                        <Typography
+                            style={{ fontWeight: 600, marginBottom: '16px'}}
+                            variant="h6"
+                            align="left"
+                            color="text.secondary"
+                            component="p"
+                            gutterBottom={true}
+                        >
+                            Contact:
+                        </Typography>
+                        <Typography
+                            variant="body1"
+                            align="left"
+                            color="text.secondary"
+                            component="p"
+                            gutterBottom={true}
+                        >
+                            Email:
+                        </Typography>
+                        <Typography
+                            style={{ marginBottom: '20px'}}
+                            variant="body1"
+                            align="left"
+                            color="text.secondary"
+                            component="p"
+                            gutterBottom={true}
+                        >
+                            {!data.hasOwnProperty('organizationEmail') ? "null" : data['organizationEmail'] }
+                        </Typography>
+                        <Typography
+                            style={{ marginBottom: '20px'}}
+                            variant="body1"
+                            align="left"
+                            color="text.secondary"
+                            component="p"
+                            gutterBottom={true}
+                        >
+                            Phone: (412) xxx-xxxx
+                        </Typography>
+                        <Typography
+                            style={{ marginBottom: '20px'}}
+                            variant="body1"
+                            align="left"
+                            color="text.secondary"
+                            component="p"
+                            gutterBottom={true}
+                        >
+                            Address: {!data.hasOwnProperty('orgCity') ? "null" : data['orgCity']}
+                        </Typography>
+                        <Typography
+                            style={{ marginBottom: '20px'}}
+                            variant="body1"
+                            align="left"
+                            color="text.secondary"
+                            component="p"
+                            gutterBottom={true}
+                        >
+                            Website: <Link href={data['website']}>{data['website']}</Link>
+                        </Typography>
+                    </Box>
+                </Grid>
             </Grid>
-        </Grid>
+        </Container>
     )
 };
 

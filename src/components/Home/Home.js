@@ -116,7 +116,7 @@ export default function Home() {
             <CssBaseline/>
             <main>
                 <form className={classes.formContainer}>
-                    <Container maxWidth="md" sx={{ mt: 4 }}>
+                    <Container maxWidth="lg" sx={{ mt: 4 }}>
                         <Grid container spacing={2} columns={45}>
                             <Grid item xs={8}>
                                 <Autocomplete
@@ -231,7 +231,7 @@ export default function Home() {
                         </Grid>
                     </Container>
                 </form>
-                <Container sx={{py: 8}} maxWidth="md">
+                <Container sx={{py: 8}} maxWidth="lg">
                     {/* End hero unit */}
                     <Grid container spacing={4}>
                         {data.map((card) => (
