@@ -256,11 +256,11 @@ export default function Home() {
                                             {card['name']}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
-                                            Age Group: 14-19
+                                            Age Group: {card['ageRange']}
                                             {/*Age Group: {card['ageRange']}*/}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
-                                            Region: Pittsburgh
+                                            Region: {card['orgCity']}
                                             {/*Region: {card['orgCity']}*/}
                                         </Typography>
                                         <Typography variant="h8" component="div" align="left">
