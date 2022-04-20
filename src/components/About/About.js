@@ -18,6 +18,8 @@ import avatar_zimo from '../../assets/images/ZimoYang-cropped.png';
 import Stack from "@mui/material/Stack";
 import styled from "styled-components";
 import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import Link from "@mui/material/Link";
 
 const AvatarContainer = styled.div`
   display: flex;
@@ -90,44 +92,52 @@ export default function About() {
                     <CardHeader
                         avatar={SizedAvatars(avatar_lisa)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Lisa Guiotoko</strong></Typography>}
-                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong></Typography>}
+                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong>
+                            <br/><Link href="">Linkedin Page</Link></Typography>}
                     />
                     <CardHeader
                         avatar={SizedAvatars(avatar_preeti)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Preeti Kumari</strong></Typography>}
-                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Web App Team</strong></Typography>}
+                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Web App Team</strong>
+                            <br/><Link href="https://www.linkedin.com/in/preeti-kumari-03a54092/">Linkedin Page</Link></Typography>}
                     />
                     <CardHeader
                         avatar={SizedAvatars(avatar_ruoyu)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Ruoyu Lu</strong></Typography>}
-                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong></Typography>}
+                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong>
+                            <br/><Link href="https://www.linkedin.com/in/ruoyu-lu-766149115">Linkedin Page</Link></Typography>}
                     />
                     <CardHeader
                         avatar={SizedAvatars(avatar_lidia)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Lidia Ortiz Zamora</strong></Typography>}
-                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong></Typography>}
+                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong>
+                            <br/><Link href="https://www.linkedin.com/in/ml-ortiz/">Linkedin Page</Link></Typography>}
                     />
                 </Stack>
                 <Stack direction="row" spacing={6.3} alignItems="center">
                     <CardHeader
                         avatar={SizedAvatars(avatar_sanjana)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Sanjana Parmar</strong></Typography>}
-                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong></Typography>}
+                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong>
+                            <br/><Link href="http://www.linkedin.com/in/sanjana-parmar">Linkedin Page</Link></Typography>}
                     />
                     <CardHeader
                         avatar={SizedAvatars(avatar_velie)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Velie-Velia Sando</strong></Typography>}
-                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong></Typography>}
+                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Database Team</strong>
+                            <br/><Link href="https://www.linkedin.com/in/velie-velia-sando-952197104">Linkedin Page</Link></Typography>}
                     />
                     <CardHeader
                         avatar={SizedAvatars(avatar_tina)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Tina Wu</strong></Typography>}
-                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Web App Team</strong></Typography>}
+                        subheader={<Typography paragraph={true} noWrap={true} variant={"subtitle"}><strong>Web App Team</strong>
+                            <br/><Link href="http://linkedin.com/in/guoyuw-creativity">Linkedin Page</Link></Typography>}
                     />
                     <CardHeader
                         avatar={SizedAvatars(avatar_zimo)}
                         title={<Typography noWrap={true} variant={"h6"} className={classes.custom}><strong>Zimo Yang</strong></Typography>}
-                        subheader={<Typography noWrap={true} variant={"subtitle"}><strong>Web App Team</strong></Typography>}
+                        subheader={<Typography paragraph={true} noWrap={true} variant={"subtitle"}><strong>Web App Team</strong>
+                            <br/><Link href="https://www.linkedin.com/in/zimo-yang0201/">Linkedin Page</Link></Typography>}
                     />
                 </Stack>
             </Container>
