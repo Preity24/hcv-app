@@ -7,7 +7,7 @@ export const searchCategories = {
             ageRange: "10-14",
         },
         {
-            ageRange: "14-19",
+            ageRange: "14-18",
         }
     ], 
     region_categories: [

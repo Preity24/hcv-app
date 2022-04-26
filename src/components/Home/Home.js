@@ -64,13 +64,6 @@ export default function Home() {
     const [dropdown_region, setDropdown_region] = useState("");
     const [dropdown_category, setDropdown_category] = useState("");
 
-    // const unsplash = new Unsplash({
-    //     applicationId: "{YMHeEDGCR9Tf1zyh_jKmcGcAnntJtT5LGpnNT5HGd0I}",
-    //     secret: "{0rW-2a-W0inOUoDkJHrdEep0rxft8PTwrlBH98Axym0}"
-    // });
-
-    const [picture, setPic] = useState("");
-
     const handleChange = e => {
         setValue(e.target.value);
     };
@@ -82,10 +75,11 @@ export default function Home() {
 
     const handleFilters = (e, newValue) => {
         newValue = data.filter(item => {
-            return item.ageRange.includes(filterData_by_age) &&
-                item.orgCity.includes(filterData_by_region) &&
-                item.category.includes(filterData_by_category);
+            return (item.age_range === null ? false : item.age_range.includes(filterData_by_age == null ? "" : filterData_by_age)) &&
+                (item.org_city === null ? false : item.org_city.includes(filterData_by_region == null ? "" : filterData_by_region)) &&
+                (item.category === null ? false : item.category.includes(filterData_by_category));
         });
+        debugger;
         setData(newValue);
     };
 
@@ -253,14 +247,14 @@ export default function Home() {
                                     />
                                     <CardContent sx={{flexGrow: 1}}>
                                         <Typography gutterBottom variant="h5" component="h2">
-                                            {card['name']}
+                                            {card['subprogram_name'] === null ? card['program_name'] : card['subprogram_name']}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
-                                            Age Group: {card['ageRange']}
+                                            Age Group: {card['age_range']}
                                             {/*Age Group: {card['ageRange']}*/}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
-                                            Region: {card['orgCity']}
+                                            Region: {card['org_city']}
                                             {/*Region: {card['orgCity']}*/}
                                         </Typography>
                                         <Typography variant="h8" component="div" align="left">

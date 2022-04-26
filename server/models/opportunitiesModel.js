@@ -3,8 +3,11 @@ import db from "../config/db.js";
 
 const { DataTypes } = Sequelize;
 
-const Opportunity = db.define('opportunities',{
-    name:{
+const Opportunity = db.define('hcv_data_view',{
+    program_name:{
+        type: DataTypes.STRING
+    },
+    subprogram_name:{
         type: DataTypes.STRING
     },
     category:{
@@ -13,7 +16,7 @@ const Opportunity = db.define('opportunities',{
     description:{
         type: DataTypes.STRING
     },
-    qualifications:{
+    qualification:{
         type: DataTypes.STRING
     },
     modality:{
@@ -25,35 +28,59 @@ const Opportunity = db.define('opportunities',{
     cost:{
         type: DataTypes.INTEGER
     },
-    stipend:{
-        type: DataTypes.INTEGER
-    },
-    financial_aid:{
-        type: DataTypes.BOOLEAN
+    source:{
+        type: DataTypes.STRING
     },
     website:{
         type: DataTypes.STRING
     },
-    image_path:{
+    images:{
+        type: DataTypes.BLOB
+    },
+    grade_level:{
         type: DataTypes.STRING
     },
-    reviews:{
-        type: DataTypes.STRING
-    },
-    start_date:{
+    date:{
         type: DataTypes.DATE
     },
-    end_date:{
-        type: DataTypes.DATE
-    },
-    application_deadline:{
-        type: DataTypes.DATE
-    },
-    ageRange:{
+    age_range:{
         type: DataTypes.STRING
     },
-    orgCity:{
+    org_city:{
         type: DataTypes.STRING
+    },
+    org_state:{
+        type: DataTypes.STRING
+    },
+    org_zip:{
+        type: DataTypes.INTEGER
+    },
+    program_email:{
+        type: DataTypes.STRING
+    },
+    contact_full_name:{
+        type: DataTypes.STRING
+    },
+    contact_email:{
+        type: DataTypes.STRING
+    },
+    phone_number:{
+        type: DataTypes.STRING
+    },
+    event_address_line1:{
+        type: DataTypes.STRING
+    },
+    event_address_line2:{
+        type: DataTypes.STRING
+    },
+    event_city: {
+        type: DataTypes.STRING
+    },
+    event_state:{
+        type: DataTypes.STRING
+    },
+    event_zip:{
+        type: DataTypes.INTEGER
     },
 },{
     freezeTableName: true, // Model tableName will be the same as the model name

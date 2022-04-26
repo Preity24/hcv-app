@@ -53,7 +53,7 @@ const OpportunityDetails = () => {
                             {data['description']}
                         </Typography>
                         <Typography component="p" align="left" variant="body1">
-                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['ageRange']} | <strong>Price:</strong> {data['cost']}
+                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Price:</strong> {data['cost']}
                         </Typography>
                     </Box>
 
@@ -83,7 +83,27 @@ const OpportunityDetails = () => {
                             component="p"
                             gutterBottom={true}
                         >
-                            Email:
+                            Email: {(data['contact_email'] === null || data['contact_email'] === '' ) ? "Not Applicable" : data['contact_email']}
+                        </Typography>
+                        {/*<Typography*/}
+                        {/*    style={{ marginBottom: '20px'}}*/}
+                        {/*    variant="body1"*/}
+                        {/*    align="left"*/}
+                        {/*    color="text.secondary"*/}
+                        {/*    component="p"*/}
+                        {/*    gutterBottom={true}*/}
+                        {/*>*/}
+                        {/*    {(data['contact_email'] === null || data['contact_email'] === '' ) ? "Not Applicable" : data['contact_email']}*/}
+                        {/*</Typography>*/}
+                        <Typography
+                            style={{ marginBottom: '20px'}}
+                            variant="body1"
+                            align="left"
+                            color="text.secondary"
+                            component="p"
+                            gutterBottom={true}
+                        >
+                            Phone: {data['phone_number'] === '' ? "Not Applicable" : data['phone_number']}
                         </Typography>
                         <Typography
                             style={{ marginBottom: '20px'}}
@@ -93,27 +113,8 @@ const OpportunityDetails = () => {
                             component="p"
                             gutterBottom={true}
                         >
-                            {!data.hasOwnProperty('organizationEmail') ? "null" : data['organizationEmail'] }
-                        </Typography>
-                        <Typography
-                            style={{ marginBottom: '20px'}}
-                            variant="body1"
-                            align="left"
-                            color="text.secondary"
-                            component="p"
-                            gutterBottom={true}
-                        >
-                            Phone: (412) xxx-xxxx
-                        </Typography>
-                        <Typography
-                            style={{ marginBottom: '20px'}}
-                            variant="body1"
-                            align="left"
-                            color="text.secondary"
-                            component="p"
-                            gutterBottom={true}
-                        >
-                            Address: {!data.hasOwnProperty('orgCity') ? "null" : data['orgCity']}
+                            Address: {data['event_address_line1'] === null ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2'] + ", " +
+                            data['event_city'] + ", " + data['event_state'] + ", " + data['event_zip']}
                         </Typography>
                         <Typography
                             style={{ marginBottom: '20px'}}
