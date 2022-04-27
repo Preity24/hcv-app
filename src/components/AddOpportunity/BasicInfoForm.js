@@ -20,25 +20,37 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import AlertMessage from "../../utils/AlertMessage";
 
 const defaultValues = {
-    name: "",
+    program_name: "",
+    event_name: "",
     category: "",
     description: "",
     website: "",
-    age_group: "",
     paid: false,
     cost: 0,
-    stipend: 0,
     financial_aid: false,
-    image_path: "",
-    ageRange: "",
-    orgCity: ""
+    age_range: "",
+    org_city: "",
+    images: null,
+    date: null,
+    org_name: "",
+    org_state: "",
+    org_zip: 0,
+    org_address_name_line_1: "",
+    org_address_name_line_2: "",
+    program_email: "",
+    phone_number: "",
+    contact_full_name: "",
+    contact_email: "",
+    event_address_line1: "",
+    event_address_line2: "",
+    event_city: "",
+    event_zip: 0
 };
 
 export default function BasicInfoForm() {
 
     const [formValues, setFormValues] = useState(defaultValues);
-    const [start_date, setStartDate] = useState(new Date());
-    const [end_date, setEndDate] = useState(new Date());
+    const [date, setDate] = useState(new Date());
     const [date_status, setDateStatus] = useState("Success");
 
     const handleInputChange = (e) => {
@@ -52,33 +64,43 @@ export default function BasicInfoForm() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        if (start_date > end_date) {
-            setDateStatus({ msg: "Start Date should not exceed End Date!", key: Math.random()});
-        } else {
-            event.preventDefault();
-            console.log(formValues);
-            await axios.post('http://localhost:5001/opportunities', {
-                id: formValues.id,
-                name: formValues.name,
-                category: formValues.category,
-                description: formValues.description,
-                qualifications: "null",
-                modality: "null",
-                paid: formValues.paid,
-                cost: formValues.cost,
-                stipend: formValues.stipend,
-                financial_aid: formValues.financial_aid,
-                website: formValues.website,
-                image_path: "null",
-                reviews: "null",
-                start_date: start_date,
-                end_date: end_date,
-                application_deadline: null,
-                ageRange: formValues.ageRange,
-                orgCity: formValues.orgCity
-            });
-            navigate("/home");
-        }
+        // if (start_date > end_date) {
+        //     setDateStatus({ msg: "Start Date should not exceed End Date!", key: Math.random()});
+        // } else {
+        event.preventDefault();
+        debugger;
+        console.log(formValues);
+        await axios.post('http://localhost:5001/opportunities', {
+            id: formValues.id,
+            category: formValues.category,
+            description: formValues.description,
+            qualifications: "null",
+            modality: "null",
+            paid: formValues.paid,
+            cost: formValues.cost,
+            website: formValues.website,
+            images: null,
+            program_name: formValues.program_name,
+            event_name: formValues.event_name,
+            age_range: formValues.age_range,
+            org_name: formValues.org_name,
+            org_city: formValues.org_city,
+            date: date,
+            org_state: formValues.org_state,
+            org_zip: formValues.org_zip,
+            org_address_name_line_1: formValues.org_address_name_line_1,
+            org_address_name_line_2: formValues.org_address_name_line_2,
+            program_email: formValues.program_email,
+            phone_number: formValues.phone_number,
+            contact_full_name: formValues.contact_full_name,
+            contact_email: formValues.contact_email,
+            event_address_line1: formValues.event_address_line1,
+            event_address_line2: formValues.event_address_line2,
+            event_city: formValues.event_city,
+            event_zip: formValues.event_zip
+        });
+        navigate("/home");
+        // }
     };
 
     return (
@@ -93,13 +115,13 @@ export default function BasicInfoForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="name"
-                        name="name"
+                        id="program_name"
+                        name="program_name"
                         label="Opportunity Name"
                         fullWidth
                         variant="standard"
                         autoComplete="new-password"
-                        value={formValues.name}
+                        value={formValues.program_name}
                         onChange={handleInputChange}
                     />
                 </Grid>
@@ -130,7 +152,7 @@ export default function BasicInfoForm() {
                         required
                         id="description"
                         name="description"
-                        label="Describe the misson and the scope of the opportunity"
+                        label="Describe the mission and the scope of the opportunity"
                         fullWidth
                         variant="standard"
                         autoComplete="new-password"
@@ -155,10 +177,10 @@ export default function BasicInfoForm() {
                     <FormControl variant="standard" fullWidth>
                         <InputLabel id="ageRangeLabel">Targeted Age Group</InputLabel>
                         <Select
-                            labelId="ageRange"
-                            name="ageRange"
-                            id="ageRange"
-                            value={formValues.ageRange}
+                            labelId="age_range"
+                            name="age_range"
+                            id="age_range"
+                            value={formValues.age_range}
                             label="Targeted Age Group"
                             onChange={handleInputChange}
                         >
@@ -188,7 +210,7 @@ export default function BasicInfoForm() {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={12}>
                     <TextField
                         id="cost"
                         name="cost"
@@ -199,35 +221,6 @@ export default function BasicInfoForm() {
                         value={formValues.cost}
                         onChange={handleInputChange}
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="stipend"
-                        name="stipend"
-                        label="Is there any stipend?"
-                        fullWidth
-                        variant="standard"
-                        type="number"
-                        value={formValues.stipend}
-                        onChange={handleInputChange}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <FormControl variant="standard" fullWidth>
-                        <InputLabel id="financialAidLabel">Is there any financial aid?</InputLabel>
-                        <Select
-                            labelId="financialAid"
-                            id="financialAid"
-                            name="financialAid"
-                            value={formValues.financial_aid}
-                            label="financialAid"
-                            onChange={handleInputChange}
-                        >
-                            <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
-                            <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
-                        </Select>
-                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Stack direction="row" spacing={2}>
@@ -253,25 +246,26 @@ export default function BasicInfoForm() {
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <TextField
-                        required
-                        id="eventName"
-                        name="eventName"
+                        id="event_name"
+                        name="event_name"
                         label="Event Name"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.event_name}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DatePicker
-                                id="start_date"
-                                name="start_date"
+                                id="date"
+                                name="date"
                                 label="Start Date:"
-                                value={start_date}
+                                value={date}
                                 onChange={(newValue) => {
-                                    setStartDate(newValue);
+                                    setDate(newValue);
                                 }}
                                 PopoverProps={{
                                     anchorOrigin: { horizontal: "center", vertical: "bottom" },
@@ -282,82 +276,57 @@ export default function BasicInfoForm() {
                             />
                         </LocalizationProvider>
                     </Box>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                id="end_date"
-                                name="end_date"
-                                label="End Date:"
-                                value={end_date}
-                                onChange={(newValue) => {
-                                    setEndDate(newValue);
-                                }}
-                                PopoverProps={{
-                                    placement: 'left',
-                                    anchorOrigin: { horizontal: "center", vertical: "bottom" },
-                                    transformOrigin: { horizontal: "center", vertical: "bottom" }
-                                }}
-                                InputAdornmentProps={{ position: 'start' }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
-                    </Box>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="application_ddl"
-                        name="application_ddl"
-                        label="Application Deadline:"
-                        fullWidth
-                        variant="standard"
-                        autoComplete="new-password"
-                    />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="addressLine1"
-                        name="addressLine1"
+                        id="event_address_line1"
+                        name="event_address_line1"
                         label="Event Address Line 1:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.event_address_line1}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="addressLine2"
-                        name="addressLine2"
+                        id="event_address_line2"
+                        name="event_address_line2"
                         label="Event Address Line 2:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.event_address_line2}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="eventCity"
-                        name="eventCity"
+                        id="event_city"
+                        name="event_city"
                         label="Event City:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.event_city}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="eventZip"
-                        name="eventZip"
+                        id="event_zip"
+                        name="event_zip"
                         label="Event Zip:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.event_zip}
+                        onChange={handleInputChange}
                     />
                 </Grid>
             </Grid>
@@ -370,55 +339,50 @@ export default function BasicInfoForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="organizationName"
-                        name="organizationName"
+                        id="org_name"
+                        name="org_name"
                         label="Organization Name:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="organizationEmail"
-                        name="organizationEmail"
-                        label="Organization Email:"
-                        fullWidth
-                        variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.org_name}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="orgAddressLine1"
-                        name="orgAddressLine1"
+                        id="org_address_name_line_1"
+                        name="org_address_name_line_1"
                         label="Organization Address Line 1:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.org_address_name_line_1}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="orgAddressLine2"
-                        name="orgAddressLine2"
+                        id="org_address_name_line_2"
+                        name="org_address_name_line_2"
                         label="Organization Address Line 2:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.org_address_name_line_2}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <FormControl variant="standard" fullWidth>
                         <InputLabel id="orgCityLabel">Organization City:</InputLabel>
                         <Select
-                            labelId="orgCity"
-                            name="orgCity"
-                            id="orgCity"
-                            value={formValues.orgCity}
+                            labelId="org_city"
+                            name="org_city"
+                            id="org_city"
+                            value={formValues.org_city}
                             label="Organization City:"
                             onChange={handleInputChange}
                         >
@@ -435,12 +399,14 @@ export default function BasicInfoForm() {
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="orgZip"
-                        name="orgZip"
+                        id="org_zip"
+                        name="org_zip"
                         label="Organization Zip Code:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.org_zip}
+                        onChange={handleInputChange}
                     />
                 </Grid>
             </Grid>
@@ -453,45 +419,53 @@ export default function BasicInfoForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="contactName"
-                        name="contactName"
+                        id="contact_full_name"
+                        name="contact_full_name"
                         label="Contact Name:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.contact_full_name}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="contactTitle"
-                        name="contactTitle"
+                        id="contact_title"
+                        name="contact_title"
                         label="Title: "
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.contact_title}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="contactPhone"
-                        name="contactPhone"
-                        label="Contact Phone:"
+                        id="phone_number"
+                        name="phone_number"
+                        label="Contact Phone: "
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.phone_number}
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="contactEmail"
-                        name="contactEmail"
+                        id="contact_email"
+                        name="contact_email"
                         label="Contact Email:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.contact_email}
+                        onChange={handleInputChange}
                     />
                 </Grid>
             </Grid>

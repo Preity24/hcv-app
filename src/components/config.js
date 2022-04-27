@@ -1,26 +1,73 @@
 export const searchCategories = {
     age_categories: [
         {
-            ageRange: "9-10",
+            ageRange: "5-11",
         },
         {
-            ageRange: "10-14",
+            ageRange: "11-14",
         },
         {
             ageRange: "14-18",
         }
     ], 
-    region_categories: [
-        {
-            orgCity: "Pittsburgh",
-        },
-        {
-            orgCity: "Redmond",
-        },
-        {
-            orgCity: "Ithaca",
-        }
-    ],
+    region_categories:
+
+        [
+            {
+                orgCity : "Pittsburgh"
+            },
+            {
+                orgCity : "Williamsport"
+            },
+            {
+                orgCity : "Ithaca"
+            },
+            {
+                orgCity : "Redmond"
+            },
+            {
+                orgCity : "Seattle"
+            },
+            {
+                orgCity : "Greenville"
+            },
+            {
+                orgCity : "Washington"
+            },
+            {
+                orgCity : "Los Angeles"
+            },
+            {
+                orgCity : "Philadelphia"
+            },
+            {
+                orgCity : "Harrisburg"
+            },
+            {
+                orgCity : "Pittsburgh "
+            },
+            {
+                orgCity : "Oakmont"
+            },
+            {
+                orgCity : "Erie"
+            },
+            {
+                orgCity : "Fort Meade"
+            },
+            {
+                orgCity : "San Francisco"
+            },
+            {
+                orgCity: "Penn Hills"
+            },
+            {
+                orgCity : "University Park"
+            },
+            {
+                orgCity : "Piitsburgh"
+            }
+        ],
     categories: [
         {
             category: "Enrichment Exposure Exploration",

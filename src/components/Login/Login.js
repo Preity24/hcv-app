@@ -26,6 +26,7 @@ const Login = () =>  {
 		 autoComplete="off"
 		 sx={{
             marginTop: 4,
+			 marginBottom:50,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -33,7 +34,7 @@ const Login = () =>  {
           }}
 		 >
 				<TextField
-					sx={{ mt: 1, mb: 1, width: '11%'}}
+					sx={{ mt: 1, mb: 3, width: '11%'}}
 					autoFocus
 					ref={userRef}
 					onChange={(e) => setUser(e.target.value)}
@@ -45,24 +46,12 @@ const Login = () =>  {
 					<TextField
 					margin="normal"
 					required
-					sx={{ mt: 1, mb: 1, width: '11%'}}
+					sx={{ mt: 1, mb: 6, width: '11%'}}
 					onChange={(e) => setPassword(e.target.value)}
 					value={password}
 					id="outlined-password-input"
 					label="Password"
 					type="password"
-				/>
-				<Grid container sx={{ mr: 10, width: '11%'}} >
-					<Grid item xs>
-						<Link href="#" variant="body2">
-						Forgot password?
-						</Link>
-					</Grid>
-				</Grid>	
-				<FormControlLabel
-				    sx={{ mr: 1, width: '11%'}}
-					control={<Checkbox value="remember" color="primary" />}
-					label="Remember me"
 				/>
 				<Button 
 				onClick={handleClick}

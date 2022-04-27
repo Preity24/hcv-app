@@ -46,6 +46,9 @@ const Opportunity = db.define('hcv_data_view',{
     age_range:{
         type: DataTypes.STRING
     },
+    org_name:{
+        type: DataTypes.STRING
+    },
     org_city:{
         type: DataTypes.STRING
     },
@@ -55,6 +58,12 @@ const Opportunity = db.define('hcv_data_view',{
     org_zip:{
         type: DataTypes.INTEGER
     },
+    org_address_name_line_1:{
+        type: DataTypes.STRING
+    },
+    org_address_name_line_2:{
+        type: DataTypes.STRING
+    },
     program_email:{
         type: DataTypes.STRING
     },
@@ -62,6 +71,9 @@ const Opportunity = db.define('hcv_data_view',{
         type: DataTypes.STRING
     },
     contact_email:{
+        type: DataTypes.STRING
+    },
+    contact_title:{
         type: DataTypes.STRING
     },
     phone_number:{
