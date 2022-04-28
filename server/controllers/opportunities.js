@@ -26,7 +26,7 @@ export const createOpportunity = async (req, res) => {
     try {
         // Create a opportunity data json
         const data = {
-            id: req.body.id,
+            opportunity_id: req.body.opportunity_id,
             program_name: req.body.program_name,
             subprogram_name: req.body.subprogram_name,
             category: req.body.category,
@@ -35,11 +35,8 @@ export const createOpportunity = async (req, res) => {
             modality: req.body.modality === "" ? "null" : req.body.modality,
             paid: req.body.paid === "true",
             cost: parseInt(req.body.cost),
-            grade_level: req.body.grade_level,
-            financial_aid: req.body.financial_aid === "true",
             website: req.body.website,
-            images: null,
-            reviews: req.body.reviews === "" ? "null" : req.body.reviews,
+            images: req.files[0]['buffer'],
             date: req.body.date === "" ? null : req.body.date,
             age_range: req.body.age_range,
             org_name: req.body.org_name,

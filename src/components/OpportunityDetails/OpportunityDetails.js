@@ -20,7 +20,6 @@ const OpportunityDetails = () => {
         const response = await axios.get('http://localhost:5001/opportunities/' + id);
         console.log(response.data);
         setData(response.data);
-        debugger;
     };
 
     // const getOpportunitiesData = async () => {

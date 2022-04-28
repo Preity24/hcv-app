@@ -17,7 +17,7 @@ import {searchCategories} from '../config';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import ImageUploader from "react-images-upload";
+import { Buffer } from 'buffer';
 import AlertMessage from "../../utils/AlertMessage";
 
 const defaultValues = {
@@ -31,8 +31,6 @@ const defaultValues = {
     financial_aid: false,
     age_range: "",
     org_city: "",
-    images: null,
-    date: null,
     org_name: "",
     org_state: "",
     org_zip: 0,
@@ -65,48 +63,59 @@ export default function BasicInfoForm() {
     };
 
     const handleResetImage = (e) => {
-        debugger;
         setSelectedImage(null)
     };
 
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        // if (start_date > end_date) {
-        //     setDateStatus({ msg: "Start Date should not exceed End Date!", key: Math.random()});
-        // } else {
         event.preventDefault();
-        debugger;
         console.log(formValues);
-        await axios.post('http://localhost:5001/opportunities', {
-            id: formValues.id,
-            category: formValues.category,
-            description: formValues.description,
-            qualifications: "null",
-            modality: "null",
-            paid: formValues.paid,
-            cost: formValues.cost,
-            website: formValues.website,
-            images: selectedImage,
-            program_name: formValues.program_name,
-            event_name: formValues.event_name,
-            age_range: formValues.age_range,
-            org_name: formValues.org_name,
-            org_city: formValues.org_city,
-            date: date,
-            org_state: formValues.org_state,
-            org_zip: formValues.org_zip,
-            org_address_name_line_1: formValues.org_address_name_line_1,
-            org_address_name_line_2: formValues.org_address_name_line_2,
-            program_email: formValues.program_email,
-            phone_number: formValues.phone_number,
-            contact_full_name: formValues.contact_full_name,
-            contact_email: formValues.contact_email,
-            event_address_line1: formValues.event_address_line1,
-            event_address_line2: formValues.event_address_line2,
-            event_city: formValues.event_city,
-            event_zip: formValues.event_zip
-        });
+
+        let data = new FormData();
+        data.append('category', formValues.category);
+        data.append('description', formValues.description);
+        data.append('qualification',"null");
+        data.append('modality', 0);
+        data.append('paid', formValues.paid);
+        data.append('cost', formValues.cost);
+        data.append('website', formValues.website);
+        data.append('images', selectedImage);
+        data.append('subprogram_name', formValues.program_name);
+        data.append('program_name', formValues.program_name);
+        data.append('event_name', formValues.event_name);
+        data.append('age_range', formValues.age_range);
+        data.append('org_name', formValues.org_name);
+        data.append('org_city', formValues.org_city);
+        data.append('date', date);
+        data.append('org_state', formValues.org_state);
+        data.append('org_zip', formValues.org_zip);
+        data.append('org_address_name_line_1', formValues.org_address_name_line_1);
+        data.append('org_address_name_line_2', formValues.org_address_name_line_2);
+        data.append('program_email', formValues.program_email);
+        data.append('phone_number', formValues.phone_number);
+        data.append('contact_full_name', formValues.contact_full_name);
+        data.append('contact_email', formValues.contact_email);
+        data.append('event_address_line1', formValues.event_address_line1);
+        data.append('event_address_line2', formValues.event_address_line2);
+        data.append('event_city', formValues.event_city);
+        data.append('event_zip', formValues.event_zip);
+        await axios({
+            method: "post",
+            url: "http://localhost:5001/opportunities",
+            data: data,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(function (response) {
+                //handle success
+                console.log(response);
+            })
+            .catch(function (response) {
+                //handle error
+                console.log(response);
+            });
         navigate("/home");
         // }
     };

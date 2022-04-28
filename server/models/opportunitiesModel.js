@@ -3,7 +3,11 @@ import db from "../config/db.js";
 
 const { DataTypes } = Sequelize;
 
-const Opportunity = db.define('hcv_data_view',{
+const Opportunity = db.define('hcv_data_opportunity',{
+    opportunity_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+    },
     program_name:{
         type: DataTypes.STRING
     },
@@ -28,17 +32,11 @@ const Opportunity = db.define('hcv_data_view',{
     cost:{
         type: DataTypes.INTEGER
     },
-    source:{
-        type: DataTypes.STRING
-    },
     website:{
         type: DataTypes.STRING
     },
     images:{
-        type: DataTypes.BLOB
-    },
-    grade_level:{
-        type: DataTypes.STRING
+        type: DataTypes.BLOB('long')
     },
     date:{
         type: DataTypes.DATE

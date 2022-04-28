@@ -79,9 +79,18 @@ export default function Home() {
                 (item.org_city === null ? false : item.org_city.includes(filterData_by_region == null ? "" : filterData_by_region)) &&
                 (item.category === null ? false : item.category.includes(filterData_by_category));
         });
-        debugger;
         setData(newValue);
     };
+
+    function toBase64(arr) {
+        //arr = new Uint8Array(arr) if it's an ArrayBuffer
+        // var b64 = Buffer.from(arr).toString('base64');
+        // return window.btoa(String.fromCharCode.apply(null, arr));
+        return window.btoa(
+            arr.reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+    }
+
 
     const handleOriginFilter = (e, newValue) => {
         // getOpportunitiesData();
@@ -91,7 +100,7 @@ export default function Home() {
     const getOpportunities = async () => {
         const response = await axios.get('http://localhost:5001/opportunities/');
         setData(response.data);
-        setFilterData(response.data)
+        setFilterData(response.data);
     };
 
     // const getOpportunitiesData = async () => {
@@ -240,7 +249,7 @@ export default function Home() {
                                             // pt: '56.25%',
                                             pt: '10%'
                                         }}
-                                        image={!card.hasOwnProperty('image') ? "https://s1.ax1x.com/2022/03/31/qRuuq0.jpg" : card['image']}
+                                        image={(card['images'] === null || card['images']['data'].length === 0 ) ? "https://s1.ax1x.com/2022/03/31/qRuuq0.jpg" : 'data:image/jpeg;base64,' + toBase64(new Uint8Array(card['images']['data']))}
                                         // image="https://s1.ax1x.com/2022/03/24/q3x6Hg.jpg"
                                         // image="https://source.unsplash.com/random"
                                         alt="random"

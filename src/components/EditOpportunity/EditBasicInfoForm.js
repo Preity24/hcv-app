@@ -289,7 +289,6 @@ export default function EditBasicInfoForm() {
                                 label="End Date:"
                                 value={end_date}
                                 onChange={(newValue) => {
-                                    debugger
                                     setEndDate(newValue);
                                 }}
                                 PopoverProps={{
