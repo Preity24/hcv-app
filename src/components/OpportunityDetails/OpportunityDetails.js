@@ -22,17 +22,6 @@ const OpportunityDetails = () => {
         setData(response.data);
     };
 
-    // const getOpportunitiesData = async () => {
-    //     try {
-    //         const response = await axios.get("/mockData_25.json");
-    //         const opportunities = get(response, 'data', []);
-    //
-    //         setData(opportunities['data']['opportunities'].find(el => id == el.id));
-    //     } catch (e) {
-    //         throw e;
-    //     }
-    // };
-
     return (
         <Container sx={{py: 2}} maxWidth="xl">
             <Grid container spacing={2}>
@@ -58,7 +47,7 @@ const OpportunityDetails = () => {
                         // bgcolor: '#F2F2F2',
                     }}>
                         <Typography component="p" align="left" variant="body1" sx={{mb: 3}}>
-                            <strong>Event Address:</strong> {data['event_address_line1'] === null ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2']
+                            <strong>Event Address:</strong> {(data['event_address_line1'] === null || data['event_address_line1'] === 'null') ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2']
                          + ", " + data['event_city'] + ", " + data['event_state'] + ", " +  data['event_zip']}
                         </Typography>
                         <Typography component="p" align="left" variant="body1">
@@ -139,7 +128,7 @@ const OpportunityDetails = () => {
                             component="p"
                             gutterBottom={true}
                         >
-                            Address: {data['event_address_line1'] === null ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2'] + ", " +
+                            Address: {(data['event_address_line1'] === null || data['event_address_line1'] === 'null') ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2'] + ", " +
                             data['event_city'] + ", " + data['event_state'] + ", " + data['event_zip']}
                         </Typography>
                         <Typography

@@ -22,7 +22,6 @@ import AlertMessage from "../../utils/AlertMessage";
 
 const defaultValues = {
     program_name: "",
-    event_name: "",
     category: "",
     description: "",
     website: "",
@@ -83,7 +82,6 @@ export default function BasicInfoForm() {
         data.append('images', selectedImage);
         data.append('subprogram_name', formValues.program_name);
         data.append('program_name', formValues.program_name);
-        data.append('event_name', formValues.event_name);
         data.append('age_range', formValues.age_range);
         data.append('org_name', formValues.org_name);
         data.append('org_city', formValues.org_city);
@@ -277,18 +275,6 @@ export default function BasicInfoForm() {
                 </Typography>
             </Box>
             <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <TextField
-                        id="event_name"
-                        name="event_name"
-                        label="Event Name"
-                        fullWidth
-                        variant="standard"
-                        type="standard"
-                        value={formValues.event_name}
-                        onChange={handleInputChange}
-                    />
-                </Grid>
                 <Grid item xs={12} sm={6}>
                     <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>

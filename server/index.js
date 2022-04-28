@@ -2,7 +2,7 @@ import express from "express";
 import db from "./config/db.js";
 import OppRoutes from "./routes/index.js";
 import cors from "cors";
-import multer from "multer";
+import multer, { memoryStorage } from "multer";
 
 const app = express();
 

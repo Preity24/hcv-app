@@ -29,15 +29,19 @@ export default function EditBasicInfoForm() {
     }, []);
 
     const [formValues, setFormValues] = useState({});
-    const [start_date, setStartDate] = useState(new Date());
-    const [end_date, setEndDate] = useState(new Date());
+    const [date, setDate] = useState(new Date());
     const [date_status, setDateStatus] = useState("Success");
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleResetImage = (e) => {
+        setSelectedImage(null)
+    };
 
     const getOpportunitiyByID = async () => {
         const response = await axios.get('http://localhost:5001/opportunities/' + id);
         setFormValues(response.data);
-        setStartDate(response.data.start_date);
-        setEndDate(response.data.end_date);
+        setDate(response.data.date);
+        debugger;
     };
 
     const handleInputChange = (e) => {
@@ -51,31 +55,62 @@ export default function EditBasicInfoForm() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        if (new Date(start_date) > new Date(end_date)) {
-            setDateStatus({ msg: "Start Date should not exceed End Date!", key: Math.random()});
-        } else {
-            event.preventDefault();
-            await axios.patch('http://localhost:5001/opportunities/' + id, {
-                name: formValues.name,
-                category: formValues.category,
-                description: formValues.description,
-                qualifications: "null",
-                modality: "null",
-                paid: formValues.paid,
-                cost: formValues.cost,
-                stipend: formValues.stipend,
-                financial_aid: formValues.financial_aid,
-                website: formValues.website,
-                image_path: "null",
-                reviews: "null",
-                start_date: start_date,
-                end_date: end_date,
-                application_deadline: null,
-                ageRange: formValues.ageRange,
-                orgCity: formValues.orgCity
+        // if (new Date(start_date) > new Date(end_date)) {
+        //     setDateStatus({ msg: "Start Date should not exceed End Date!", key: Math.random()});
+        // } else {
+        event.preventDefault();
+        console.log(formValues);
+
+        let data = new FormData();
+        data.append('opportunity_id', id);
+        data.append('category', formValues.category);
+        data.append('description', formValues.description);
+        data.append('qualification',"null");
+        data.append('modality', 0);
+        data.append('paid', formValues.paid);
+        data.append('cost', formValues.cost);
+        data.append('website', formValues.website);
+        data.append('images', selectedImage);
+        data.append('subprogram_name', formValues.program_name);
+        data.append('program_name', formValues.program_name);
+        data.append('age_range', formValues.age_range);
+        data.append('org_name', formValues.org_name);
+        data.append('org_city', formValues.org_city);
+        data.append('date', date === null ? new Date().toISOString().slice(0, 10) : date);
+        data.append('org_state', formValues.org_state);
+        data.append('org_zip', formValues.org_zip === null ? 0 : formValues.org_zip);
+        data.append('org_address_name_line_1', formValues.org_address_name_line_1);
+        data.append('org_address_name_line_2', formValues.org_address_name_line_2);
+        data.append('program_email', formValues.program_email);
+        data.append('phone_number', formValues.phone_number);
+        data.append('contact_full_name', formValues.contact_full_name);
+        data.append('contact_title', formValues.contact_title);
+        data.append('contact_email', formValues.contact_email);
+        data.append('event_address_line1', formValues.event_address_line1);
+        data.append('event_address_line2', formValues.event_address_line2);
+        data.append('event_city', formValues.event_city);
+        data.append('event_zip', formValues.event_zip === null ? 0 : formValues.event_zip);
+        debugger
+        await axios({
+            method: "patch",
+            url: "http://localhost:5001/opportunities/" + id,
+            data: data,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(function (response) {
+                //handle success
+                debugger
+                console.log(response);
+            })
+            .catch(function (response) {
+                //handle error
+                debugger
+                console.log(response);
             });
             navigate("/home");
-        }
+        // }
     };
 
     return (
@@ -89,12 +124,13 @@ export default function EditBasicInfoForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="name"
-                        name="name"
+                        id="program_name"
+                        name="program_name"
                         label="Opportunity Name"
                         fullWidth
                         variant="standard"
-                        value={formValues.name}
+                        autoComplete="new-password"
+                        value={formValues.program_name}
                         onChange={handleInputChange}
                         InputLabelProps={{ shrink: true }}
                     />
@@ -109,7 +145,6 @@ export default function EditBasicInfoForm() {
                             value={String(formValues.category)}
                             label="category"
                             onChange={handleInputChange}
-
                         >
                             {Object.values(searchCategories.categories).map((value) =>
                                 <MenuItem
@@ -120,15 +155,17 @@ export default function EditBasicInfoForm() {
                             )}
                         </Select>
                     </FormControl>
+
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
                         id="description"
                         name="description"
-                        label="Describe the misson and the scope of the opportunity"
+                        label="Describe the mission and the scope of the opportunity"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                         value={formValues.description}
                         onChange={handleInputChange}
                         InputLabelProps={{ shrink: true }}
@@ -142,6 +179,7 @@ export default function EditBasicInfoForm() {
                         label="Website"
                         fullWidth
                         variant="standard"
+                        autoComplete="new-password"
                         value={formValues.website}
                         onChange={handleInputChange}
                         InputLabelProps={{ shrink: true }}
@@ -151,10 +189,10 @@ export default function EditBasicInfoForm() {
                     <FormControl variant="standard" fullWidth>
                         <InputLabel id="ageRangeLabel">Targeted Age Group</InputLabel>
                         <Select
-                            labelId="ageRange"
-                            name="ageRange"
-                            id="ageRange"
-                            value={String(formValues.ageRange)}
+                            labelId="age_range"
+                            name="age_range"
+                            id="age_range"
+                            value={String(formValues.age_range)}
                             label="Targeted Age Group"
                             onChange={handleInputChange}
                         >
@@ -184,48 +222,17 @@ export default function EditBasicInfoForm() {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={12}>
                     <TextField
                         id="cost"
                         name="cost"
                         label="Cost of the Opportunity"
                         fullWidth
                         variant="standard"
-                        type="number"
                         value={formValues.cost}
                         onChange={handleInputChange}
                         InputLabelProps={{ shrink: true }}
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="stipend"
-                        name="stipend"
-                        label="Is there any stipend?"
-                        fullWidth
-                        variant="standard"
-                        type="number"
-                        value={formValues.stipend}
-                        onChange={handleInputChange}
-                        InputLabelProps={{ shrink: true }}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <FormControl variant="standard" fullWidth>
-                        <InputLabel id="financialAidLabel">Is there any financial aid?</InputLabel>
-                        <Select
-                            labelId="financialAid"
-                            id="financialAid"
-                            name="financialAid"
-                            value={formValues.financial_aid ? "true" : "false"}
-                            label="financialAid"
-                            onChange={handleInputChange}
-                        >
-                            <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
-                            <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
-                        </Select>
-                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Stack direction="row" spacing={2}>
@@ -236,9 +243,25 @@ export default function EditBasicInfoForm() {
                             variant="outlined"
                             size="medium"
                             style={{fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
-                            // onClick={handleOriginFilter}
+                            component="label"
                         >
                             Upload
+                            <input
+                                accept="image/*"
+                                type="file"
+                                id="select-image"
+                                style={{ display: 'none' }}
+                                onChange={e => setSelectedImage(e.target.files[0])}
+                            />
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            size="medium"
+                            style={{fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
+                            component="label"
+                            onClick={handleResetImage}
+                        >
+                            Reset
                         </Button>
                     </Stack>
                 </Grid>
@@ -249,26 +272,16 @@ export default function EditBasicInfoForm() {
                 </Typography>
             </Box>
             <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="eventName"
-                        name="eventName"
-                        label="Event Name"
-                        fullWidth
-                        variant="standard"
-                    />
-                </Grid>
                 <Grid item xs={12} sm={6}>
                     <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DatePicker
-                                id="start_date"
-                                name="start_date"
+                                id="date"
+                                name="date"
                                 label="Start Date:"
-                                value={start_date}
+                                value={date}
                                 onChange={(newValue) => {
-                                    setStartDate(newValue);
+                                    setDate(newValue);
                                 }}
                                 PopoverProps={{
                                     anchorOrigin: { horizontal: "center", vertical: "bottom" },
@@ -279,77 +292,61 @@ export default function EditBasicInfoForm() {
                             />
                         </LocalizationProvider>
                     </Box>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Box sx={{ display: 'flex', mt: 3, align: 'left'}}>
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                id="end_date"
-                                name="end_date"
-                                label="End Date:"
-                                value={end_date}
-                                onChange={(newValue) => {
-                                    setEndDate(newValue);
-                                }}
-                                PopoverProps={{
-                                    placement: 'left',
-                                    anchorOrigin: { horizontal: "center", vertical: "bottom" },
-                                    transformOrigin: { horizontal: "center", vertical: "bottom" }
-                                }}
-                                InputAdornmentProps={{ position: 'start' }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
-                    </Box>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="application_ddl"
-                        name="application_ddl"
-                        label="Application Deadline:"
-                        fullWidth
-                        variant="standard"
-                    />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="addressLine1"
-                        name="addressLine1"
+                        id="event_address_line1"
+                        name="event_address_line1"
                         label="Event Address Line 1:"
                         fullWidth
                         variant="standard"
+                        type="standard"
+                        value={formValues.event_address_line1}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="addressLine2"
-                        name="addressLine2"
+                        id="event_address_line2"
+                        name="event_address_line2"
                         label="Event Address Line 2:"
                         fullWidth
                         variant="standard"
+                        type="standard"
+                        value={formValues.event_address_line2}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="eventCity"
-                        name="eventCity"
+                        id="event_city"
+                        name="event_city"
                         label="Event City:"
                         fullWidth
                         variant="standard"
+                        type="standard"
+                        value={formValues.event_city}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="eventZip"
-                        name="eventZip"
+                        id="event_zip"
+                        name="event_zip"
                         label="Event Zip:"
                         fullWidth
                         variant="standard"
+                        type="standard"
+                        value={formValues.event_zip}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
             </Grid>
@@ -362,51 +359,53 @@ export default function EditBasicInfoForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="organizationName"
-                        name="organizationName"
+                        id="org_name"
+                        name="org_name"
                         label="Organization Name:"
                         fullWidth
                         variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="organizationEmail"
-                        name="organizationEmail"
-                        label="Organization Email:"
-                        fullWidth
-                        variant="standard"
+                        type="standard"
+                        value={formValues.org_name}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="orgAddressLine1"
-                        name="orgAddressLine1"
+                        id="org_address_name_line_1"
+                        name="org_address_name_line_1"
                         label="Organization Address Line 1:"
                         fullWidth
                         variant="standard"
+                        type="standard"
+                        value={formValues.org_address_name_line_1}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="orgAddressLine2"
-                        name="orgAddressLine2"
+                        id="org_address_name_line_2"
+                        name="org_address_name_line_2"
                         label="Organization Address Line 2:"
                         fullWidth
                         variant="standard"
+                        type="standard"
+                        value={formValues.org_address_name_line_2}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <FormControl variant="standard" fullWidth>
                         <InputLabel id="orgCityLabel">Organization City:</InputLabel>
                         <Select
-                            labelId="orgCity"
-                            name="orgCity"
-                            id="orgCity"
-                            value={String(formValues.orgCity)}
+                            labelId="org_city"
+                            name="org_city"
+                            id="org_city"
+                            value={String(formValues.org_city)}
                             label="Organization City:"
                             onChange={handleInputChange}
                         >
@@ -423,11 +422,15 @@ export default function EditBasicInfoForm() {
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="orgZip"
-                        name="orgZip"
+                        id="org_zip"
+                        name="org_zip"
                         label="Organization Zip Code:"
                         fullWidth
                         variant="standard"
+                        type="standard"
+                        value={formValues.org_zip}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
             </Grid>
@@ -440,45 +443,57 @@ export default function EditBasicInfoForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="contactName"
-                        name="contactName"
+                        id="contact_full_name"
+                        name="contact_full_name"
                         label="Contact Name:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.contact_full_name}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="contactTitle"
-                        name="contactTitle"
+                        id="contact_title"
+                        name="contact_title"
                         label="Title: "
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.contact_title}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="contactPhone"
-                        name="contactPhone"
-                        label="Contact Phone:"
+                        id="phone_number"
+                        name="phone_number"
+                        label="Contact Phone: "
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.phone_number}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="contactEmail"
-                        name="contactEmail"
+                        id="contact_email"
+                        name="contact_email"
                         label="Contact Email:"
                         fullWidth
                         variant="standard"
-                        autoComplete="new-password"
+                        type="standard"
+                        value={formValues.contact_email}
+                        onChange={handleInputChange}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
             </Grid>

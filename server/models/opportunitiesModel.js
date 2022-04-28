@@ -30,7 +30,7 @@ const Opportunity = db.define('hcv_data_opportunity',{
         type: DataTypes.BOOLEAN
     },
     cost:{
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
     },
     website:{
         type: DataTypes.STRING
