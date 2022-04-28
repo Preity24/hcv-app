@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     inputLabel: {
         fontSize: 2,
         alignSelf: "center"
-    }
+    },
 }));
 
 export default function Home() {

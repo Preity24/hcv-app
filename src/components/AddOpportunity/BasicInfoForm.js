@@ -52,6 +52,9 @@ export default function BasicInfoForm() {
     const [date, setDate] = useState(new Date());
     const [date_status, setDateStatus] = useState("Success");
     const [selectedImage, setSelectedImage] = useState(null);
+    const [uploadAlert, setUploadAlert] = useState(false);
+    const [resetAlert, setResetAlert] = useState(false);
+    const [alertContent, setAlertContent] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -61,8 +64,18 @@ export default function BasicInfoForm() {
         });
     };
 
+    const handleImage = (e) => {
+        setSelectedImage(e.target.files[0]);
+        setAlertContent("Upload Successfully");
+        setUploadAlert(true);
+        setResetAlert(false);
+    };
+
     const handleResetImage = (e) => {
-        setSelectedImage(null)
+        setSelectedImage(null);
+        setUploadAlert(false);
+        setResetAlert(true);
+        setAlertContent("Reset Successfully");
     };
 
     const navigate = useNavigate();
@@ -108,6 +121,7 @@ export default function BasicInfoForm() {
         })
             .then(function (response) {
                 //handle success
+
                 console.log(response);
             })
             .catch(function (response) {
@@ -254,7 +268,7 @@ export default function BasicInfoForm() {
                                     type="file"
                                     id="select-image"
                                     style={{ display: 'none' }}
-                                    onChange={e => setSelectedImage(e.target.files[0])}
+                                    onChange={handleImage}
                                 />
                             </Button>
                             <Button
@@ -499,6 +513,8 @@ export default function BasicInfoForm() {
                 </Button>
             </Box>
             {date_status === 'Success' ? null : <AlertMessage key={date_status.key} message={date_status.msg}/> }
+            {!uploadAlert ? null : <AlertMessage message={alertContent}/> }
+            {!resetAlert ? null : <AlertMessage message={alertContent}/> }
         </React.Fragment>
         </StyledEngineProvider>
     );

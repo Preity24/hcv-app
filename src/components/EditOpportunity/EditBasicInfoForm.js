@@ -32,9 +32,22 @@ export default function EditBasicInfoForm() {
     const [date, setDate] = useState(new Date());
     const [date_status, setDateStatus] = useState("Success");
     const [selectedImage, setSelectedImage] = useState(null);
+    const [uploadAlert, setUploadAlert] = useState(false);
+    const [resetAlert, setResetAlert] = useState(false);
+    const [alertContent, setAlertContent] = useState('');
+
+    const handleImage = (e) => {
+        setSelectedImage(e.target.files[0]);
+        setAlertContent("Upload Successfully");
+        setUploadAlert(true);
+        setResetAlert(false);
+    };
 
     const handleResetImage = (e) => {
-        setSelectedImage(null)
+        setSelectedImage(null);
+        setUploadAlert(false);
+        setResetAlert(true);
+        setAlertContent("Reset Successfully");
     };
 
     const getOpportunitiyByID = async () => {
@@ -90,7 +103,6 @@ export default function EditBasicInfoForm() {
         data.append('event_address_line2', formValues.event_address_line2);
         data.append('event_city', formValues.event_city);
         data.append('event_zip', formValues.event_zip === null ? 0 : formValues.event_zip);
-        debugger
         await axios({
             method: "patch",
             url: "http://localhost:5001/opportunities/" + id,
@@ -101,7 +113,6 @@ export default function EditBasicInfoForm() {
         })
             .then(function (response) {
                 //handle success
-                debugger
                 console.log(response);
             })
             .catch(function (response) {
@@ -251,7 +262,7 @@ export default function EditBasicInfoForm() {
                                 type="file"
                                 id="select-image"
                                 style={{ display: 'none' }}
-                                onChange={e => setSelectedImage(e.target.files[0])}
+                                onChange={handleImage}
                             />
                         </Button>
                         <Button
@@ -508,6 +519,8 @@ export default function EditBasicInfoForm() {
                 </Button>
             </Box>
             {date_status === 'Success' ? null : <AlertMessage key={date_status.key} message={date_status.msg}/> }
+            {!uploadAlert ? null : <AlertMessage message={alertContent}/> }
+            {!resetAlert ? null : <AlertMessage message={alertContent}/> }
         </React.Fragment>
     );
 }
