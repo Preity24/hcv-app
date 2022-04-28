@@ -18,9 +18,9 @@ const OpportunityDetails = () => {
 
     const getOpportunities = async () => {
         const response = await axios.get('http://localhost:5001/opportunities/' + id);
-        debugger
         console.log(response.data);
         setData(response.data);
+        debugger;
     };
 
     // const getOpportunitiesData = async () => {
@@ -38,26 +38,37 @@ const OpportunityDetails = () => {
         <Container sx={{py: 2}} maxWidth="xl">
             <Grid container spacing={2}>
                 <Grid item xs={8} xl={10}>
-                    <Box sx={{ bgcolor: 'background.paper', pt: 3 }}>
-                        <Typography
-                            style={{ fontWeight: 600 }}
-                            variant="h5"
-                            align="left"
-                            color="text.secondary"
-                            component="p"
-                            gutterBottom={true}
-                        >
-                            {data['name']}
+                    <Box sx={{ bgcolor: 'background.paper', pt: 3, pb: 8 }}>
+                        <Typography component="p" align="left" variant="h5" sx={{mb: 4}}>
+                            <strong>{data['subprogram_name'] === null ? data['program_name'] : data['subprogram_name']}</strong>
                         </Typography>
                         <Typography component="p" align="left" variant="body1" gutterBottom={true}>
                             {data['description']}
                         </Typography>
                         <Typography component="p" align="left" variant="body1">
-                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Price:</strong> {data['cost']}
+                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Price:</strong> {data['cost'] === "" ? 0 : data['cost']}
+                        </Typography>
+                    </Box>
+                    <Typography component="p" align="left" variant="h6" sx={{mb: 4}}>
+                        <strong>Event Info</strong>
+                    </Typography>
+                    <Box sx={{
+                        // p: 3,
+                        width: 1200,
+                        height: 275,
+                        // bgcolor: '#F2F2F2',
+                    }}>
+                        <Typography component="p" align="left" variant="body1" sx={{mb: 3}}>
+                            <strong>Event Address:</strong> {data['event_address_line1'] === null ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2']
+                         + ", " + data['event_city'] + ", " + data['event_state'] + ", " +  data['event_zip']}
+                        </Typography>
+                        <Typography component="p" align="left" variant="body1">
+                            <strong>Start Date:</strong> {data['date'] === null ? "Not Applicable" : data['date']}
                         </Typography>
                     </Box>
 
                 </Grid>
+
                 <Grid item xs={8} xl={2}>
                     <Box sx={{
                         width: 350,
@@ -77,13 +88,21 @@ const OpportunityDetails = () => {
                             Contact:
                         </Typography>
                         <Typography
+                            component="p"
+                            align="left"
+                            variant="body1"
+                            gutterBottom={true}
+                        >
+                            <strong>{data['contact_full_name'] + ", " + data['contact_title']}</strong>
+                        </Typography>
+                        <Typography
                             variant="body1"
                             align="left"
                             color="text.secondary"
                             component="p"
                             gutterBottom={true}
                         >
-                            Email: {(data['contact_email'] === null || data['contact_email'] === '' ) ? "Not Applicable" : data['contact_email']}
+                            {(data['contact_email'] === null || data['contact_email'] === '') ? "" : "Email: " + data['contact_email']}
                         </Typography>
                         {/*<Typography*/}
                         {/*    style={{ marginBottom: '20px'}}*/}
@@ -103,7 +122,15 @@ const OpportunityDetails = () => {
                             component="p"
                             gutterBottom={true}
                         >
-                            Phone: {data['phone_number'] === '' ? "Not Applicable" : data['phone_number']}
+                             {(data['phone_number'] === null || data['phone_number'] === '') ? "" : "Phone: " + data['phone_number']}
+                        </Typography>
+                        <Typography
+                            component="p"
+                            align="left"
+                            variant="body1"
+                            gutterBottom={true}
+                        >
+                            <strong>{(data['org_name'] === null || data['org_name'] === '') ? "" : data['org_name']}</strong>
                         </Typography>
                         <Typography
                             style={{ marginBottom: '20px'}}

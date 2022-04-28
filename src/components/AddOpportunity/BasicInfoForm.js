@@ -17,6 +17,7 @@ import {searchCategories} from '../config';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import ImageUploader from "react-images-upload";
 import AlertMessage from "../../utils/AlertMessage";
 
 const defaultValues = {
@@ -47,11 +48,13 @@ const defaultValues = {
     event_zip: 0
 };
 
+
 export default function BasicInfoForm() {
 
     const [formValues, setFormValues] = useState(defaultValues);
     const [date, setDate] = useState(new Date());
     const [date_status, setDateStatus] = useState("Success");
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -59,6 +62,11 @@ export default function BasicInfoForm() {
             ...formValues,
             [name]: value,
         });
+    };
+
+    const handleResetImage = (e) => {
+        debugger;
+        setSelectedImage(null)
     };
 
     const navigate = useNavigate();
@@ -79,7 +87,7 @@ export default function BasicInfoForm() {
             paid: formValues.paid,
             cost: formValues.cost,
             website: formValues.website,
-            images: null,
+            images: selectedImage,
             program_name: formValues.program_name,
             event_name: formValues.event_name,
             age_range: formValues.age_range,
@@ -231,9 +239,25 @@ export default function BasicInfoForm() {
                                 variant="outlined"
                                 size="medium"
                                 style={{fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
-                                // onClick={handleOriginFilter}
+                                component="label"
                             >
                                 Upload
+                                <input
+                                    accept="image/*"
+                                    type="file"
+                                    id="select-image"
+                                    style={{ display: 'none' }}
+                                    onChange={e => setSelectedImage(e.target.files[0])}
+                                />
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                size="medium"
+                                style={{fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
+                                component="label"
+                                onClick={handleResetImage}
+                            >
+                                Reset
                             </Button>
                     </Stack>
                 </Grid>

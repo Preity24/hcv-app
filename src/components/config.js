@@ -11,7 +11,6 @@ export const searchCategories = {
         }
     ], 
     region_categories:
-
         [
             {
                 orgCity : "Pittsburgh"
@@ -68,58 +67,62 @@ export const searchCategories = {
                 orgCity : "Piitsburgh"
             }
         ],
-    categories: [
-        {
-            category: "Enrichment Exposure Exploration",
-        },
-        {
-            category: "Internships",
-        },
-        {
-            category: "Apprenticeships",
-        },
-        {
-            category: "Summer Camps",
-        },
-        {
-            category: "Sports Teams",
-        },
-        {
-            category: "Volunteer Opportunities",
-        },
-        {
-            category: "Local Clubs",
-        },
-        {
-            category: "Honor Societies",
-        },
-        {
-            category: "Academic Societies",
-        },
-        {
-            category: "Scholarships",
-        },
-        {
-            category: "Awards",
-        },
-        {
-            category: "Fellowships",
-        },
-        {
-            category: "Skills Training",
-        },
-        {
-            category: "Local Events",
-        },
-        {
-            category: "Study Abroad",
-        },
-        {
-            category: "Dual Enrollment",
-        },
-        {
-            category: "College Tours",
-        }
-    ]
+    categories:
+        [
+            {
+                category : "Enrichment Exposure Exploration"
+            },
+            {
+                category : "Local Clubs"
+            },
+            {
+                category : "Competitions"
+            },
+            {
+                category : "Fellowships"
+            },
+            {
+                category : "Scholarships"
+            },
+            {
+                category : "Summer Camps"
+            },
+            {
+                category : "Sports Teams"
+            },
+            {
+                category : "Apprenticeships"
+            },
+            {
+                category : "College Campus Tour"
+            },
+            {
+                category : "Skills Training"
+            },
+            {
+                category : "Internships"
+            },
+            {
+                category : "Skills Training "
+            },
+            {
+                category : "Volunteer Opportunities"
+            },
+            {
+                category : "Pre-College Programs"
+            },
+            {
+                category : "Dual Enrollment"
+            },
+            {
+                category : "Local Events"
+            },
+            {
+                category : "Alternative Education"
+            },
+            {
+                category : "High School Diploma"
+            }
+        ]
 }
 
