@@ -54,7 +54,6 @@ export default function EditBasicInfoForm() {
         const response = await axios.get('http://localhost:5001/opportunities/' + id);
         setFormValues(response.data);
         setDate(response.data.date);
-        debugger;
     };
 
     const handleInputChange = (e) => {
@@ -68,9 +67,6 @@ export default function EditBasicInfoForm() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        // if (new Date(start_date) > new Date(end_date)) {
-        //     setDateStatus({ msg: "Start Date should not exceed End Date!", key: Math.random()});
-        // } else {
         event.preventDefault();
         console.log(formValues);
 
@@ -117,7 +113,6 @@ export default function EditBasicInfoForm() {
             })
             .catch(function (response) {
                 //handle error
-                debugger
                 console.log(response);
             });
             navigate("/home");

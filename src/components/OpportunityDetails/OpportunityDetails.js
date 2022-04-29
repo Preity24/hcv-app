@@ -12,7 +12,6 @@ const OpportunityDetails = () => {
     const [data, setData] = useState({});
 
     useEffect(() => {
-        // getOpportunitiesData();
         getOpportunities()
     }, []);
 

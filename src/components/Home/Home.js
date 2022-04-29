@@ -1,5 +1,4 @@
 import * as React from 'react';
-import get from 'lodash/get';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/lab/Autocomplete';
 import Card from '@mui/material/Card';
@@ -14,8 +13,6 @@ import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {makeStyles} from '@mui/styles';
 import {useState, useEffect} from "react";
-import {getOpportunitiesListAPI} from '../../api/APIUtils';
-import { Button as BootButton } from "react-bootstrap";
 import { IoMdAddCircle } from "react-icons/io";
 import {searchCategories} from '../config';
 import axios from 'axios';
@@ -69,7 +66,6 @@ export default function Home() {
     };
 
     useEffect(() => {
-        // getOpportunitiesData();
         getOpportunities();
     }, []);
 
@@ -83,9 +79,6 @@ export default function Home() {
     };
 
     function toBase64(arr) {
-        //arr = new Uint8Array(arr) if it's an ArrayBuffer
-        // var b64 = Buffer.from(arr).toString('base64');
-        // return window.btoa(String.fromCharCode.apply(null, arr));
         return window.btoa(
             arr.reduce((data, byte) => data + String.fromCharCode(byte), '')
         );
@@ -93,7 +86,6 @@ export default function Home() {
 
 
     const handleOriginFilter = (e, newValue) => {
-        // getOpportunitiesData();
         getOpportunities();
     };
 
@@ -102,17 +94,6 @@ export default function Home() {
         setData(response.data);
         setFilterData(response.data);
     };
-
-    // const getOpportunitiesData = async () => {
-    //     try {
-    //         const response = await getOpportunitiesListAPI();
-    //         const opportunities = get(response, 'data', []);
-    //         setData(opportunities['data']['opportunities']);
-    //         setFilterData(opportunities['data']['opportunities'])
-    //     } catch (e) {
-    //         throw e;
-    //     }
-    // };
 
     return (
         <ThemeProvider theme={theme}>
@@ -199,7 +180,6 @@ export default function Home() {
                                     renderInput={(params) => <TextField {...params} label="Categories"
                                                                         variant="outlined"/>}
                                 />
-
                             </Grid>
                             <Grid item xs={5}>
                                 <Button
@@ -235,7 +215,6 @@ export default function Home() {
                     </Container>
                 </form>
                 <Container sx={{py: 8}} maxWidth="lg">
-                    {/* End hero unit */}
                     <Grid container spacing={4}>
                         {data.map((card) => (
                             <Grid item key={card} xs={12} sm={6} md={4}>
@@ -250,8 +229,6 @@ export default function Home() {
                                             pt: '10%'
                                         }}
                                         image={(card['images'] === null || card['images']['data'].length === 0 ) ? "https://s1.ax1x.com/2022/03/31/qRuuq0.jpg" : 'data:image/jpeg;base64,' + toBase64(new Uint8Array(card['images']['data']))}
-                                        // image="https://s1.ax1x.com/2022/03/24/q3x6Hg.jpg"
-                                        // image="https://source.unsplash.com/random"
                                         alt="random"
                                     />
                                     <CardContent sx={{flexGrow: 1}}>
@@ -260,11 +237,9 @@ export default function Home() {
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
                                             Age Group: {card['age_range']}
-                                            {/*Age Group: {card['ageRange']}*/}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
                                             Region: {card['org_city']}
-                                            {/*Region: {card['orgCity']}*/}
                                         </Typography>
                                         <Typography variant="h8" component="div" align="left">
                                             Category: {card['category']}

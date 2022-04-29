@@ -17,7 +17,6 @@ import {searchCategories} from '../config';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Buffer } from 'buffer';
 import AlertMessage from "../../utils/AlertMessage";
 
 const defaultValues = {
@@ -65,7 +64,6 @@ export default function BasicInfoForm() {
     };
 
     const handleImage = (e) => {
-        debugger;
         if (e.target.files[0].size > 1024 ** 2) {
             setAlertContent("Image size cannot exceed 2MB");
             setUploadAlert(true);
