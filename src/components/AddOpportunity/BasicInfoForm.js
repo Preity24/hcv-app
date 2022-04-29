@@ -65,10 +65,17 @@ export default function BasicInfoForm() {
     };
 
     const handleImage = (e) => {
-        setSelectedImage(e.target.files[0]);
-        setAlertContent("Upload Successfully");
-        setUploadAlert(true);
-        setResetAlert(false);
+        debugger;
+        if (e.target.files[0].size > 1024 ** 2) {
+            setAlertContent("Image size cannot exceed 2MB");
+            setUploadAlert(true);
+        } else {
+            setSelectedImage(e.target.files[0]);
+            setAlertContent("Upload Successfully");
+            setUploadAlert(true);
+            setResetAlert(false);
+        }
+
     };
 
     const handleResetImage = (e) => {
