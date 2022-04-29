@@ -43,9 +43,6 @@ export const searchCategories = {
                 orgCity : "Harrisburg"
             },
             {
-                orgCity : "Pittsburgh "
-            },
-            {
                 orgCity : "Oakmont"
             },
             {
@@ -62,9 +59,6 @@ export const searchCategories = {
             },
             {
                 orgCity : "University Park"
-            },
-            {
-                orgCity : "Piitsburgh"
             }
         ],
     categories:

@@ -81,7 +81,7 @@ const OpportunityDetails = () => {
                             variant="body1"
                             gutterBottom={true}
                         >
-                            <strong>{data['contact_full_name'] + ", " + data['contact_title']}</strong>
+                            <strong>{data['contact_title'] ? data['contact_full_name'] + ", " + data['contact_title'] : data['contact_full_name']}</strong>
                         </Typography>
                         <Typography
                             variant="body1"
@@ -92,16 +92,6 @@ const OpportunityDetails = () => {
                         >
                             {(data['contact_email'] === null || data['contact_email'] === '') ? "" : "Email: " + data['contact_email']}
                         </Typography>
-                        {/*<Typography*/}
-                        {/*    style={{ marginBottom: '20px'}}*/}
-                        {/*    variant="body1"*/}
-                        {/*    align="left"*/}
-                        {/*    color="text.secondary"*/}
-                        {/*    component="p"*/}
-                        {/*    gutterBottom={true}*/}
-                        {/*>*/}
-                        {/*    {(data['contact_email'] === null || data['contact_email'] === '' ) ? "Not Applicable" : data['contact_email']}*/}
-                        {/*</Typography>*/}
                         <Typography
                             style={{ marginBottom: '20px'}}
                             variant="body1"
