@@ -210,23 +210,17 @@ export default function BasicInfoForm() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <FormControl variant="standard" fullWidth>
-                        <InputLabel id="ageRangeLabel">Targeted Age Group</InputLabel>
-                        <Select
-                            labelId="age_range"
-                            name="age_range"
+                        <TextField
+                            required
                             id="age_range"
+                            name="age_range"
+                            label="age_range"
+                            fullWidth
+                            variant="standard"
+                            autoComplete="new-password"
                             value={formValues.age_range}
-                            label="Targeted Age Group"
                             onChange={handleInputChange}
-                        >
-                            {Object.values(searchCategories.age_categories).map((value) =>
-                                <MenuItem
-                                    value={value['ageRange']}
-                                >
-                                    <Typography align="left">{value['ageRange']} </Typography>
-                                </MenuItem>
-                            )}
-                        </Select>
+                        />
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
