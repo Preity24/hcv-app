@@ -20,6 +20,7 @@ import {DatePicker} from "@mui/x-date-pickers/DatePicker";
 import AlertMessage from "../../utils/AlertMessage";
 
 const id = window.location.href.split('/')[4];
+const host = 'https://hcv-demo.herokuapp.com/opportunities/';
 
 
 export default function EditBasicInfoForm() {
@@ -51,7 +52,7 @@ export default function EditBasicInfoForm() {
     };
 
     const getOpportunitiyByID = async () => {
-        const response = await axios.get('https://hcv-demo.herokuapp.com/opportunities/' + id);
+        const response = await axios.get(host + id);
         setFormValues(response.data);
         setDate(response.data.date);
         setSelectedImage(new Blob([(new Uint8Array(response.data.images.data))]))
@@ -109,7 +110,7 @@ export default function EditBasicInfoForm() {
         data.append('event_zip', formValues.event_zip === null ? 0 : formValues.event_zip);
         await axios({
             method: "patch",
-            url: "https://hcv-demo.herokuapp.com/" + id,
+            url: host + id,
             data: data,
             headers: {
                 'Content-Type': 'multipart/form-data'

@@ -43,6 +43,7 @@ const defaultValues = {
     event_city: "",
     event_zip: 0
 };
+const host = 'https://hcv-demo.herokuapp.com/opportunities/';
 
 
 export default function BasicInfoForm() {
@@ -119,7 +120,7 @@ export default function BasicInfoForm() {
         data.append('event_zip', formValues.event_zip);
         await axios({
             method: "post",
-            url: "https://hcv-demo.herokuapp.com/opportunities",
+            url: host,
             data: data,
             headers: {
                 'Content-Type': 'multipart/form-data'

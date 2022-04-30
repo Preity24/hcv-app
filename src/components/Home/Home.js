@@ -21,7 +21,7 @@ import axios from 'axios';
   https://github.com/mui/material-ui/blob/master/docs/data/material/getting-started/templates/album/Album.js
   https://www.youtube.com/watch?v=7MpvrG5c3A0
  */
-
+const host = 'https://hcv-demo.herokuapp.com/opportunities/';
 const theme = createTheme();
 
 const useStyles = makeStyles(theme => ({
@@ -90,7 +90,7 @@ export default function Home() {
     };
 
     const getOpportunities = async () => {
-        const response = await axios.get('https://hcv-demo.herokuapp.com/opportunities/');
+        const response = await axios.get(host);
         setData(response.data);
         setFilterData(response.data);
     };

@@ -7,6 +7,7 @@ import axios from "axios";
 import Link from "@mui/material/Link";
 import Container from "@mui/material/Container";
 
+const host = 'https://hcv-demo.herokuapp.com/opportunities/';
 const OpportunityDetails = () => {
     const { id } = useParams();
     const [data, setData] = useState({});
@@ -16,7 +17,7 @@ const OpportunityDetails = () => {
     }, []);
 
     const getOpportunities = async () => {
-        const response = await axios.get('https://hcv-demo.herokuapp.com/opportunities/' + id);
+        const response = await axios.get(host + id);
         console.log(response.data);
         setData(response.data);
     };
