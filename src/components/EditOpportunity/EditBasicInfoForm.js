@@ -51,7 +51,7 @@ export default function EditBasicInfoForm() {
     };
 
     const getOpportunitiyByID = async () => {
-        const response = await axios.get('https://hcv-demo.herokuapp.com/' + id);
+        const response = await axios.get('https://hcv-demo.herokuapp.com/opportunities/' + id);
         setFormValues(response.data);
         setDate(response.data.date);
         setSelectedImage(new Blob([(new Uint8Array(response.data.images.data))]))
@@ -201,23 +201,17 @@ export default function EditBasicInfoForm() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <FormControl variant="standard" fullWidth>
-                        <InputLabel id="ageRangeLabel">Targeted Age Group</InputLabel>
-                        <Select
-                            labelId="age_range"
-                            name="age_range"
+                        <TextField
+                            required
                             id="age_range"
-                            value={String(formValues.age_range)}
-                            label="Targeted Age Group"
+                            name="age_range"
+                            label="Age Range"
+                            fullWidth
+                            variant="standard"
+                            autoComplete="new-password"
+                            value={formValues.age_range}
                             onChange={handleInputChange}
-                        >
-                            {Object.values(searchCategories.age_categories).map((value) =>
-                                <MenuItem
-                                    value={value['ageRange']}
-                                >
-                                    <Typography align="left">{value['ageRange']} </Typography>
-                                </MenuItem>
-                            )}
-                        </Select>
+                        />
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>

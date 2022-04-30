@@ -214,7 +214,7 @@ export default function BasicInfoForm() {
                             required
                             id="age_range"
                             name="age_range"
-                            label="age_range"
+                            label="Age Range"
                             fullWidth
                             variant="standard"
                             autoComplete="new-password"
