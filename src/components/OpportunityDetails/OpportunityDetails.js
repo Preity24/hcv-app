@@ -16,7 +16,7 @@ const OpportunityDetails = () => {
     }, []);
 
     const getOpportunities = async () => {
-        const response = await axios.get('http://localhost:5001/opportunities/' + id);
+        const response = await axios.get('https://hcv-demo.herokuapp.com/' + id);
         console.log(response.data);
         setData(response.data);
     };

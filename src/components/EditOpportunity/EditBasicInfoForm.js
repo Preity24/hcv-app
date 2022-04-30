@@ -51,7 +51,7 @@ export default function EditBasicInfoForm() {
     };
 
     const getOpportunitiyByID = async () => {
-        const response = await axios.get('http://localhost:5001/opportunities/' + id);
+        const response = await axios.get('https://hcv-demo.herokuapp.com/' + id);
         setFormValues(response.data);
         setDate(response.data.date);
         setSelectedImage(new Blob([(new Uint8Array(response.data.images.data))]))
@@ -109,7 +109,7 @@ export default function EditBasicInfoForm() {
         data.append('event_zip', formValues.event_zip === null ? 0 : formValues.event_zip);
         await axios({
             method: "patch",
-            url: "http://localhost:5001/opportunities/" + id,
+            url: "https://hcv-demo.herokuapp.com/" + id,
             data: data,
             headers: {
                 'Content-Type': 'multipart/form-data'

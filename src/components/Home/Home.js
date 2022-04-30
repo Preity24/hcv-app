@@ -90,7 +90,7 @@ export default function Home() {
     };
 
     const getOpportunities = async () => {
-        const response = await axios.get('http://localhost:5001/opportunities/');
+        const response = await axios.get('https://hcv-demo.herokuapp.com/opportunities/');
         setData(response.data);
         setFilterData(response.data);
     };
