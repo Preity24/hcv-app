@@ -33,7 +33,7 @@ const OpportunityDetails = () => {
                             {data['description']}
                         </Typography>
                         <Typography component="p" align="left" variant="body1">
-                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Price:</strong> {data['cost'] === "" ? 0 : data['cost']}
+                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Grade Level:</strong> {data['grade_level']} | <strong>Price:</strong> {data['cost'] === "" ? 0 : data['cost']}
                         </Typography>
                     </Box>
                     <Typography component="p" align="left" variant="h6" sx={{mb: 4}}>

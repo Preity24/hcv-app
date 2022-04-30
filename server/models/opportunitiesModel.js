@@ -44,6 +44,9 @@ const Opportunity = db.define('hcv_data_opportunity',{
     age_range:{
         type: DataTypes.STRING
     },
+    grade_level:{
+        type: DataTypes.STRING
+    },
     org_name:{
         type: DataTypes.STRING
     },

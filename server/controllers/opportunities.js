@@ -36,9 +36,10 @@ export const createOpportunity = async (req, res) => {
             paid: req.body.paid === "true",
             cost: req.body.cost,
             website: req.body.website,
-            images: req.files[0]['buffer'],
+            images: req.files.length === 0 ? null : req.files[0]['buffer'],
             date: req.body.date === null ? null : req.body.date,
             age_range: req.body.age_range,
+            grade_level: req.body.grade_level,
             org_name: req.body.org_name,
             org_city: req.body.org_city,
             org_state: req.body.org_state,
@@ -67,10 +68,6 @@ export const createOpportunity = async (req, res) => {
 
 export const updateOpportunity = async (req, res) => {
     try {
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        console.log(req);
-        console.log(req.files);
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         const data = {
             opportunity_id: req.body.opportunity_id,
             program_name: req.body.program_name,
@@ -85,6 +82,7 @@ export const updateOpportunity = async (req, res) => {
             images: req.files.length === 0 ? null : req.files[0]['buffer'],
             date: req.body.date === "" ? null : req.body.date,
             age_range: req.body.age_range,
+            grade_level: req.body.grade_level,
             org_name: req.body.org_name,
             org_city: req.body.org_city,
             org_state: req.body.org_state,
@@ -101,7 +99,6 @@ export const updateOpportunity = async (req, res) => {
             event_city: req.body.event_city,
             event_zip: req.body.event_zip
         };
-        console.log(data);
         await Opportunity.update(data, {
             where: {
                 opportunity_id: req.params.id

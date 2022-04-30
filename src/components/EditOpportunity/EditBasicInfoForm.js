@@ -54,7 +54,14 @@ export default function EditBasicInfoForm() {
         const response = await axios.get('http://localhost:5001/opportunities/' + id);
         setFormValues(response.data);
         setDate(response.data.date);
+        setSelectedImage(new Blob([(new Uint8Array(response.data.images.data))]))
     };
+
+    function toBase64(arr) {
+        return window.btoa(
+            arr.reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+    }
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -69,8 +76,9 @@ export default function EditBasicInfoForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(formValues);
-
+        debugger;
         let data = new FormData();
+        data.append('images', selectedImage);
         data.append('opportunity_id', id);
         data.append('category', formValues.category);
         data.append('description', formValues.description);
@@ -79,10 +87,10 @@ export default function EditBasicInfoForm() {
         data.append('paid', formValues.paid);
         data.append('cost', formValues.cost);
         data.append('website', formValues.website);
-        data.append('images', selectedImage);
         data.append('subprogram_name', formValues.program_name);
         data.append('program_name', formValues.program_name);
         data.append('age_range', formValues.age_range);
+        data.append('grade_level', formValues.grade_level);
         data.append('org_name', formValues.org_name);
         data.append('org_city', formValues.org_city);
         data.append('date', date === null ? new Date().toISOString().slice(0, 10) : date);
@@ -225,6 +233,27 @@ export default function EditBasicInfoForm() {
                         >
                             <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
                             <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="gradeLevelLabel">Grade Level</InputLabel>
+                        <Select
+                            labelId="grade_level"
+                            name="grade_level"
+                            id="grade_level"
+                            value={String(formValues.grade_level)}
+                            label="Grade Level"
+                            onChange={handleInputChange}
+                        >
+                            {Object.values(searchCategories.age_categories).map((value) =>
+                                <MenuItem
+                                    value={value['grade_level']}
+                                >
+                                    <Typography align="left">{value['grade_level']} </Typography>
+                                </MenuItem>
+                            )}
                         </Select>
                     </FormControl>
                 </Grid>

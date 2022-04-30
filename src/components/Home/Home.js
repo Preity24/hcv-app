@@ -71,7 +71,7 @@ export default function Home() {
 
     const handleFilters = (e, newValue) => {
         newValue = data.filter(item => {
-            return (item.age_range === null ? false : item.age_range.includes(filterData_by_age == null ? "" : filterData_by_age)) &&
+            return (item.grade_level === null ? false : item.grade_level.includes(filterData_by_age == null ? "" : filterData_by_age)) &&
                 (item.org_city === null ? false : item.org_city.includes(filterData_by_region == null ? "" : filterData_by_region)) &&
                 (item.category === null ? false : item.category.includes(filterData_by_category));
         });
@@ -101,8 +101,8 @@ export default function Home() {
             <main>
                 <form className={classes.formContainer}>
                     <Container maxWidth="lg" sx={{ mt: 4 }}>
-                        <Grid container spacing={2} columns={45}>
-                            <Grid item xs={8}>
+                        <Grid container spacing={2} columns={46}>
+                            <Grid item xs={10}>
                                 <Autocomplete
                                     id="ageGroup"
                                     inputValue={dropdown_ageRange}
@@ -114,17 +114,17 @@ export default function Home() {
                                         }
                                     }
                                     }
-                                    getOptionLabel={(option) => option['ageRange']}
+                                    getOptionLabel={(option) => option['grade_level']}
                                     options={searchCategories.age_categories}
                                     noOptionsText={"No information"}
                                     onChange={(e, v) => {
                                         if (v !== null) {
-                                            setFilterData_by_age(v.ageRange);
+                                            setFilterData_by_age(v.grade_level);
                                             return
                                         }
                                         setFilterData_by_age("");
                                     }}
-                                    renderInput={(params) => <TextField {...params} label="Age Group"
+                                    renderInput={(params) => <TextField {...params} label="Grade Level"
                                                                         variant="outlined"/>}
                                 />
                             </Grid>
@@ -236,7 +236,7 @@ export default function Home() {
                                             {card['subprogram_name'] === null ? card['program_name'] : card['subprogram_name']}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
-                                            Age Group: {card['age_range']}
+                                            Grade Level: {card['grade_level']}
                                         </Typography>
                                         <Typography variant="h7" component="div" align="justify">
                                             Region: {card['org_city']}

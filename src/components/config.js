@@ -1,13 +1,13 @@
 export const searchCategories = {
     age_categories: [
         {
-            ageRange: "5-11",
+            grade_level: "Elementary School",
         },
         {
-            ageRange: "11-14",
+            grade_level: "Middle School",
         },
         {
-            ageRange: "14-18",
+            grade_level: "High School",
         }
     ], 
     region_categories:

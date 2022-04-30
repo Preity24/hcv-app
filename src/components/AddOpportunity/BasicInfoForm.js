@@ -101,6 +101,7 @@ export default function BasicInfoForm() {
         data.append('subprogram_name', formValues.program_name);
         data.append('program_name', formValues.program_name);
         data.append('age_range', formValues.age_range);
+        data.append('grade_level', formValues.grade_level);
         data.append('org_name', formValues.org_name);
         data.append('org_city', formValues.org_city);
         data.append('date', date);
@@ -241,6 +242,27 @@ export default function BasicInfoForm() {
                         >
                             <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
                             <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="gradeLevelLabel">Grade Level</InputLabel>
+                        <Select
+                            labelId="grade_level"
+                            name="grade_level"
+                            id="grade_level"
+                            value={String(formValues.grade_level)}
+                            label="Grade Level"
+                            onChange={handleInputChange}
+                        >
+                            {Object.values(searchCategories.age_categories).map((value) =>
+                                <MenuItem
+                                    value={value['grade_level']}
+                                >
+                                    <Typography align="left">{value['grade_level']} </Typography>
+                                </MenuItem>
+                            )}
                         </Select>
                     </FormControl>
                 </Grid>
