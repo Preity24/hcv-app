@@ -47,8 +47,8 @@ const OpportunityDetails = () => {
                         // bgcolor: '#F2F2F2',
                     }}>
                         <Typography component="p" align="left" variant="body1" sx={{mb: 3}}>
-                            <strong>Event Address:</strong> {(data['event_address_line1'] === null || data['event_address_line1'] === 'null') ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2']
-                         + ", " + data['event_city'] + ", " + data['event_state'] + ", " +  data['event_zip']}
+                            <strong>Event Address:</strong> {(data['event_address_line1'] === null || data['event_address_line1'] === 'null' || data['event_address_line1'] === '') ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2']
+                         + ", " + data['event_city'] + ", "  +  data['event_zip']}
                         </Typography>
                         <Typography component="p" align="left" variant="body1">
                             <strong>Start Date:</strong> {data['date'] === null ? "Not Applicable" : data['date']}
@@ -81,7 +81,7 @@ const OpportunityDetails = () => {
                             variant="body1"
                             gutterBottom={true}
                         >
-                            <strong>{data['contact_title'] ? data['contact_full_name'] + ", " + data['contact_title'] : data['contact_full_name']}</strong>
+                            <strong>{(data['contact_title'] === null || data['contact_title'] === 'null') ? data['contact_full_name'] : data['contact_full_name'] + ", " + data['contact_title']}</strong>
                         </Typography>
                         <Typography
                             variant="body1"
@@ -118,8 +118,8 @@ const OpportunityDetails = () => {
                             component="p"
                             gutterBottom={true}
                         >
-                            Address: {(data['event_address_line1'] === null || data['event_address_line1'] === 'null') ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2'] + ", " +
-                            data['event_city'] + ", " + data['event_state'] + ", " + data['event_zip']}
+                            Address: {(data['org_address_name_line_1'] === null || data['org_address_name_line_1'] === 'null' || data['org_address_name_line_1'] === '') ? "Not Applicable" : data['org_address_name_line_1'] + ", " + (data['org_address_name_line_2'] === null || data['org_address_name_line_2'] === '' ? "" : data['org_address_name_line_2'] + ", ") +
+                            data['org_city'] +  ", " + data['org_zip']}
                         </Typography>
                         <Typography
                             style={{ marginBottom: '20px'}}

@@ -235,8 +235,8 @@ export default function BasicInfoForm() {
                             label="paid"
                             onChange={handleInputChange}
                         >
-                            <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
-                            <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
+                            <MenuItem value={true}><Typography align="left">Yes</Typography></MenuItem>
+                            <MenuItem value={false}><Typography align="left">No</Typography></MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>

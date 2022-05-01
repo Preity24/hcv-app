@@ -34,6 +34,7 @@ export default function EditBasicInfoForm() {
     const [date_status, setDateStatus] = useState("Success");
     const [selectedImage, setSelectedImage] = useState(null);
     const [uploadAlert, setUploadAlert] = useState(false);
+    const [formAlert, setFormAlert] = useState(false);
     const [resetAlert, setResetAlert] = useState(false);
     const [alertContent, setAlertContent] = useState('');
 
@@ -58,10 +59,20 @@ export default function EditBasicInfoForm() {
         setSelectedImage(new Blob([(new Uint8Array(response.data.images.data))]))
     };
 
-    function toBase64(arr) {
-        return window.btoa(
-            arr.reduce((data, byte) => data + String.fromCharCode(byte), '')
-        );
+    let elm;
+    function isValidURL(u){
+        //A precaution/solution for the problem written in the ***note***
+        if(u!==""){
+            if(!elm){
+                elm = document.createElement('input');
+                elm.setAttribute('type', 'url');
+            }
+            elm.value = u;
+            return elm.validity.valid;
+        }
+        else{
+            return false
+        }
     }
 
     const handleInputChange = (e) => {
@@ -78,54 +89,59 @@ export default function EditBasicInfoForm() {
         event.preventDefault();
         console.log(formValues);
         debugger;
-        let data = new FormData();
-        data.append('images', selectedImage);
-        data.append('opportunity_id', id);
-        data.append('category', formValues.category);
-        data.append('description', formValues.description);
-        data.append('qualification',"null");
-        data.append('modality', 0);
-        data.append('paid', formValues.paid);
-        data.append('cost', formValues.cost);
-        data.append('website', formValues.website);
-        data.append('subprogram_name', formValues.program_name);
-        data.append('program_name', formValues.program_name);
-        data.append('age_range', formValues.age_range);
-        data.append('grade_level', formValues.grade_level);
-        data.append('org_name', formValues.org_name);
-        data.append('org_city', formValues.org_city);
-        data.append('date', date === null ? new Date().toISOString().slice(0, 10) : date);
-        data.append('org_state', formValues.org_state);
-        data.append('org_zip', formValues.org_zip === null ? 0 : formValues.org_zip);
-        data.append('org_address_name_line_1', formValues.org_address_name_line_1);
-        data.append('org_address_name_line_2', formValues.org_address_name_line_2);
-        data.append('program_email', formValues.program_email);
-        data.append('phone_number', formValues.phone_number);
-        data.append('contact_full_name', formValues.contact_full_name);
-        data.append('contact_title', formValues.contact_title);
-        data.append('contact_email', formValues.contact_email);
-        data.append('event_address_line1', formValues.event_address_line1);
-        data.append('event_address_line2', formValues.event_address_line2);
-        data.append('event_city', formValues.event_city);
-        data.append('event_zip', formValues.event_zip === null ? 0 : formValues.event_zip);
-        await axios({
-            method: "patch",
-            url: host + id,
-            data: data,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
-            .then(function (response) {
-                //handle success
-                console.log(response);
+        if (!isValidURL(formValues.website)) {
+            setFormAlert(true);
+            setAlertContent("Website URL wrong format! Ex: https://www.google.com");
+        } else {
+            setFormAlert(false);
+            let data = new FormData();
+            data.append('images', selectedImage);
+            data.append('opportunity_id', id);
+            data.append('category', formValues.category);
+            data.append('description', formValues.description);
+            data.append('qualification', "null");
+            data.append('modality', 0);
+            data.append('paid', formValues.paid);
+            data.append('cost', formValues.cost);
+            data.append('website', formValues.website);
+            data.append('subprogram_name', formValues.program_name);
+            data.append('program_name', formValues.program_name);
+            data.append('age_range', formValues.age_range);
+            data.append('grade_level', formValues.grade_level);
+            data.append('org_name', formValues.org_name);
+            data.append('org_city', formValues.org_city);
+            data.append('date', date === null ? new Date().toISOString().slice(0, 10) : date);
+            data.append('org_state', formValues.org_state);
+            data.append('org_zip', formValues.org_zip === null ? 0 : formValues.org_zip);
+            data.append('org_address_name_line_1', formValues.org_address_name_line_1);
+            data.append('org_address_name_line_2', formValues.org_address_name_line_2);
+            data.append('program_email', formValues.program_email);
+            data.append('phone_number', formValues.phone_number);
+            data.append('contact_full_name', formValues.contact_full_name);
+            data.append('contact_title', formValues.contact_title);
+            data.append('contact_email', formValues.contact_email);
+            data.append('event_address_line1', formValues.event_address_line1);
+            data.append('event_address_line2', formValues.event_address_line2);
+            data.append('event_city', formValues.event_city);
+            data.append('event_zip', formValues.event_zip === null ? 0 : formValues.event_zip);
+            await axios({
+                method: "patch",
+                url: host + id,
+                data: data,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
+                .then(function (response) {
+                    //handle success
+                    console.log(response);
+                })
+                .catch(function (response) {
+                    //handle error
+                    console.log(response);
+                });
             navigate("/home");
-        // }
+        }
     };
 
     return (
@@ -212,6 +228,7 @@ export default function EditBasicInfoForm() {
                             autoComplete="new-password"
                             value={formValues.age_range}
                             onChange={handleInputChange}
+                            InputLabelProps={{ shrink: true }}
                         />
                     </FormControl>
                 </Grid>
@@ -226,8 +243,8 @@ export default function EditBasicInfoForm() {
                             label="paid"
                             onChange={handleInputChange}
                         >
-                            <MenuItem value={true}><Typography align="left">True</Typography></MenuItem>
-                            <MenuItem value={false}><Typography align="left">False</Typography></MenuItem>
+                            <MenuItem value={true}><Typography align="left">Yes</Typography></MenuItem>
+                            <MenuItem value={false}><Typography align="left">No</Typography></MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
@@ -370,7 +387,7 @@ export default function EditBasicInfoForm() {
                         required
                         id="event_zip"
                         name="event_zip"
-                        label="Event Zip:"
+                        label="Event Zip Code:"
                         fullWidth
                         variant="standard"
                         type="standard"
@@ -533,6 +550,10 @@ export default function EditBasicInfoForm() {
                     variant="contained"
                     onClick={handleSubmit}
                     sx={{ mt: 3, ml: 1 }}
+                    style={{
+                        backgroundColor: "green",
+                        color: "white"
+                    }}
                 >
                     Submit
                 </Button>
@@ -540,6 +561,7 @@ export default function EditBasicInfoForm() {
             {date_status === 'Success' ? null : <AlertMessage key={date_status.key} message={date_status.msg}/> }
             {!uploadAlert ? null : <AlertMessage message={alertContent}/> }
             {!resetAlert ? null : <AlertMessage message={alertContent}/> }
+            {!formAlert ? null : <AlertMessage message={alertContent}/> }
         </React.Fragment>
     );
 }
