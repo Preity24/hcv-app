@@ -9,7 +9,18 @@ export const searchCategories = {
         {
             grade_level: "High School",
         }
-    ], 
+    ],
+    modality_categories: [
+        {
+            modality: "In Person",
+        },
+        {
+            modality: "Virtual",
+        },
+        {
+            modality: "Hybrid",
+        }
+    ],
     region_categories:
         [
             {

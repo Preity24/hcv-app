@@ -23,6 +23,17 @@ export const getOpportunityById = async (req, res) => {
 };
 
 export const createOpportunity = async (req, res) => {
+    console.log("!!!!!!!!!!!!!!!");
+    console.log(req.body);
+    console.log(req.body.modality);
+    let modality_value = "";
+    if (req.body.modality === "In Person") {
+        modality_value = "0"
+    } else if (req.body.modality === "Virtual") {
+        modality_value = "1"
+    } else {
+        modality_value = "2"
+    }
     try {
         // Create a opportunity data json
         const data = {
@@ -32,7 +43,7 @@ export const createOpportunity = async (req, res) => {
             category: req.body.category,
             description: req.body.description,
             qualification: req.body.qualification === "" ? "null" : req.body.qualification,
-            modality: req.body.modality === "" ? "null" : req.body.modality,
+            modality: modality_value,
             paid: req.body.paid === "true",
             cost: req.body.cost,
             website: req.body.website,
@@ -67,6 +78,16 @@ export const createOpportunity = async (req, res) => {
 };
 
 export const updateOpportunity = async (req, res) => {
+    console.log("!!!!!!!!!!!!!!!");
+    console.log(req.body.modality);
+    let modality_value = "";
+    if (req.body.modality === "In Person") {
+        modality_value = "0"
+    } else if (req.body.modality === "Virtual") {
+        modality_value = "1"
+    } else {
+        modality_value = "2"
+    }
     try {
         const data = {
             opportunity_id: req.body.opportunity_id,
@@ -75,7 +96,7 @@ export const updateOpportunity = async (req, res) => {
             category: req.body.category,
             description: req.body.description,
             qualification: req.body.qualification === "" ? "null" : req.body.qualification,
-            modality: req.body.modality === "" ? "null" : req.body.modality,
+            modality: modality_value,
             paid: req.body.paid === "true",
             cost: req.body.cost,
             website: req.body.website,

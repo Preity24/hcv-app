@@ -44,7 +44,7 @@ const defaultValues = {
     event_zip: 0
 };
 const host = 'https://hcv-demo.herokuapp.com/opportunities/';
-
+// const host = 'http://localhost:5001/opportunities/';
 
 export default function BasicInfoForm() {
 
@@ -89,14 +89,13 @@ export default function BasicInfoForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(formValues);
-
         let data = new FormData();
         data.append('category', formValues.category);
         data.append('description', formValues.description);
         data.append('qualification',"null");
-        data.append('modality', 0);
         data.append('paid', formValues.paid);
         data.append('cost', formValues.cost);
+        data.append('modality', formValues.modality);
         data.append('website', formValues.website);
         data.append('images', selectedImage);
         data.append('subprogram_name', formValues.program_name);
@@ -261,7 +260,7 @@ export default function BasicInfoForm() {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={6}>
                     <TextField
                         id="cost"
                         name="cost"
@@ -272,6 +271,27 @@ export default function BasicInfoForm() {
                         value={formValues.cost}
                         onChange={handleInputChange}
                     />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="modalityLabel">Modality</InputLabel>
+                        <Select
+                            labelId="modality"
+                            name="modality"
+                            id="modality"
+                            value={String(formValues.modality === "0" ? "In Person" : (formValues.modality === "1" ? "Virtual" : "Hybrid"))}
+                            label="Modality"
+                            onChange={handleInputChange}
+                        >
+                            {Object.values(searchCategories.modality_categories).map((value) =>
+                                <MenuItem
+                                    value={value['modality']}
+                                >
+                                    <Typography align="left">{value['modality']} </Typography>
+                                </MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Stack direction="row" spacing={2}>
@@ -300,7 +320,7 @@ export default function BasicInfoForm() {
                                 component="label"
                                 onClick={handleResetImage}
                             >
-                                Reset
+                                Remove
                             </Button>
                     </Stack>
                 </Grid>
@@ -376,7 +396,7 @@ export default function BasicInfoForm() {
                         required
                         id="event_zip"
                         name="event_zip"
-                        label="Event Zip:"
+                        label="Event Zip Code:"
                         fullWidth
                         variant="standard"
                         type="standard"
@@ -530,6 +550,10 @@ export default function BasicInfoForm() {
                     variant="contained"
                     onClick={handleSubmit}
                     sx={{ mt: 3, ml: 1 }}
+                    style={{
+                        backgroundColor: "green",
+                        color: "white"
+                    }}
                 >
                     Submit
                 </Button>

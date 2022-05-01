@@ -8,6 +8,8 @@ import Link from "@mui/material/Link";
 import Container from "@mui/material/Container";
 
 const host = 'https://hcv-demo.herokuapp.com/opportunities/';
+// const host = 'http://localhost:5001/opportunities/';
+
 const OpportunityDetails = () => {
     const { id } = useParams();
     const [data, setData] = useState({});
@@ -34,7 +36,7 @@ const OpportunityDetails = () => {
                             {data['description']}
                         </Typography>
                         <Typography component="p" align="left" variant="body1">
-                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Grade Level:</strong> {data['grade_level']} | <strong>Price:</strong> {data['cost'] === "" ? 0 : data['cost']}
+                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Grade Level:</strong> {data['grade_level']} <br/> <strong>Price:</strong> {data['cost'] === "" ? 0 : data['cost']} | <strong>Modality:</strong> {data['modality'] === "0" ? "In Person" : (data['modality'] === "1" ? "Virtual" : "Hybrid")}
                         </Typography>
                     </Box>
                     <Typography component="p" align="left" variant="h6" sx={{mb: 4}}>

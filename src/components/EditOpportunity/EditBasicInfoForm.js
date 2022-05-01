@@ -21,6 +21,7 @@ import AlertMessage from "../../utils/AlertMessage";
 
 const id = window.location.href.split('/')[4];
 const host = 'https://hcv-demo.herokuapp.com/opportunities/';
+// const host = 'http://localhost:5001/opportunities/';
 
 
 export default function EditBasicInfoForm() {
@@ -88,7 +89,6 @@ export default function EditBasicInfoForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(formValues);
-        debugger;
         if (!isValidURL(formValues.website)) {
             setFormAlert(true);
             setAlertContent("Website URL wrong format! Ex: https://www.google.com");
@@ -100,9 +100,9 @@ export default function EditBasicInfoForm() {
             data.append('category', formValues.category);
             data.append('description', formValues.description);
             data.append('qualification', "null");
-            data.append('modality', 0);
             data.append('paid', formValues.paid);
             data.append('cost', formValues.cost);
+            data.append('modality', formValues.modality);
             data.append('website', formValues.website);
             data.append('subprogram_name', formValues.program_name);
             data.append('program_name', formValues.program_name);
@@ -269,7 +269,7 @@ export default function EditBasicInfoForm() {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={6}>
                     <TextField
                         id="cost"
                         name="cost"
@@ -280,6 +280,27 @@ export default function EditBasicInfoForm() {
                         onChange={handleInputChange}
                         InputLabelProps={{ shrink: true }}
                     />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="modalityLabel">Modality</InputLabel>
+                        <Select
+                            labelId="modality"
+                            name="modality"
+                            id="modality"
+                            value={String(formValues.modality === "0" ? "In Person" : (formValues.modality === "1" ? "Virtual" : "Hybrid"))}
+                            label="modality"
+                            onChange={handleInputChange}
+                        >
+                            {Object.values(searchCategories.modality_categories).map((value) =>
+                                <MenuItem
+                                    value={value['modality']}
+                                >
+                                    <Typography align="left">{value['modality']} </Typography>
+                                </MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Stack direction="row" spacing={2}>
@@ -308,7 +329,7 @@ export default function EditBasicInfoForm() {
                             component="label"
                             onClick={handleResetImage}
                         >
-                            Reset
+                            Remove
                         </Button>
                     </Stack>
                 </Grid>
