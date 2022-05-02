@@ -412,7 +412,7 @@ export default function EditBasicInfoForm() {
                         fullWidth
                         variant="standard"
                         type="standard"
-                        value={formValues.event_zip}
+                        value={formValues.event_zip === 0 ? "" : formValues.event_zip}
                         onChange={handleInputChange}
                         InputLabelProps={{ shrink: true }}
                     />
@@ -496,7 +496,7 @@ export default function EditBasicInfoForm() {
                         fullWidth
                         variant="standard"
                         type="standard"
-                        value={formValues.org_zip}
+                        value={formValues.org_zip === 0 ? "" : formValues.org_zip}
                         onChange={handleInputChange}
                         InputLabelProps={{ shrink: true }}
                     />

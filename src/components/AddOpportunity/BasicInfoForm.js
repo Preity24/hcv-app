@@ -31,7 +31,7 @@ const defaultValues = {
     org_city: "",
     org_name: "",
     org_state: "",
-    org_zip: 0,
+    org_zip: "",
     org_address_name_line_1: "",
     org_address_name_line_2: "",
     program_email: "",
@@ -41,7 +41,7 @@ const defaultValues = {
     event_address_line1: "",
     event_address_line2: "",
     event_city: "",
-    event_zip: 0
+    event_zip: ""
 };
 const host = 'https://hcv-demo.herokuapp.com/opportunities/';
 // const host = 'http://localhost:5001/opportunities/';
@@ -279,7 +279,7 @@ export default function BasicInfoForm() {
                             labelId="modality"
                             name="modality"
                             id="modality"
-                            value={String(formValues.modality === "0" ? "In Person" : (formValues.modality === "1" ? "Virtual" : "Hybrid"))}
+                            value={String(formValues.modality)}
                             label="Modality"
                             onChange={handleInputChange}
                         >

@@ -23,9 +23,6 @@ export const getOpportunityById = async (req, res) => {
 };
 
 export const createOpportunity = async (req, res) => {
-    console.log("!!!!!!!!!!!!!!!");
-    console.log(req.body);
-    console.log(req.body.modality);
     let modality_value = "";
     if (req.body.modality === "In Person") {
         modality_value = "0"
