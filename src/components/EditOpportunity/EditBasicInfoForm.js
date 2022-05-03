@@ -308,7 +308,7 @@ export default function EditBasicInfoForm() {
                             Upload Images:
                         </Typography>
                         <Button
-                            variant="outlined"
+                            variant="contained"
                             size="medium"
                             style={{fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
                             component="label"
@@ -323,7 +323,7 @@ export default function EditBasicInfoForm() {
                             />
                         </Button>
                         <Button
-                            variant="outlined"
+                            variant="contained"
                             size="medium"
                             style={{fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
                             component="label"

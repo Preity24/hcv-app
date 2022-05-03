@@ -184,9 +184,9 @@ export default function Home() {
                             </Grid>
                             <Grid item xs={5}>
                                 <Button
-                                    variant="outlined"
+                                    variant="contained"
                                     size="medium"
-                                    style={{fontSize: '12px', backgroundColor: "green", color: 'white', opacity: 0.7}}
+                                    style={{fontSize: '12px', fontWeight: 'bold', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
                                     onClick={handleFilters}
                                 >
                                     Apply Filters
@@ -194,9 +194,9 @@ export default function Home() {
                             </Grid>
                             <Grid item xs={5}>
                                 <Button
-                                    variant="outlined"
+                                    variant="contained"
                                     size="medium"
-                                    style={{fontSize: '12px', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
+                                    style={{fontSize: '12px',fontWeight: 'bold', backgroundColor: "#5e5996", color: 'white', opacity: 0.7}}
                                     onClick={handleOriginFilter}
                                 >
                                     Reset Filters

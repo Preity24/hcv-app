@@ -36,7 +36,7 @@ const OpportunityDetails = () => {
                             {data['description']}
                         </Typography>
                         <Typography component="p" align="left" variant="body1">
-                            <strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Grade Level:</strong> {data['grade_level']} <br/> <strong>Price:</strong> {data['cost'] === "" ? 0 : data['cost']} | <strong>Modality:</strong> {data['modality'] === "0" ? "In Person" : (data['modality'] === "1" ? "Virtual" : "Hybrid")}
+                            <br/><strong>Category:</strong> {data['category']} | <strong>Age Group:</strong> {data['age_range']} | <strong>Grade Level:</strong> {data['grade_level']} <br/><br/> <strong>Price:</strong> {data['cost'] === "" ? 0 : data['cost']} | <strong>Modality:</strong> {data['modality'] === "0" ? "In Person" : (data['modality'] === "1" ? "Virtual" : "Hybrid")}
                         </Typography>
                     </Box>
                     <Typography component="p" align="left" variant="h6" sx={{mb: 4}}>
@@ -83,7 +83,7 @@ const OpportunityDetails = () => {
                             variant="body1"
                             gutterBottom={true}
                         >
-                            <strong>{(data['contact_title'] === null || data['contact_title'] === 'null') ? data['contact_full_name'] : data['contact_full_name'] + ", " + data['contact_title']}</strong>
+                            <strong>{(data['contact_title'] === null || data['contact_title'] === 'null' || data['contact_title'] === '') ? data['contact_full_name'] : data['contact_full_name'] + ", " + data['contact_title']}</strong>
                         </Typography>
                         <Typography
                             variant="body1"
