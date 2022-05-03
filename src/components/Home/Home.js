@@ -186,7 +186,7 @@ export default function Home() {
                                 <Button
                                     variant="outlined"
                                     size="medium"
-                                    style={{fontSize: '12px', backgroundColor: "#8DC540", color: 'white', opacity: 0.7}}
+                                    style={{fontSize: '12px', backgroundColor: "green", color: 'white', opacity: 0.7}}
                                     onClick={handleFilters}
                                 >
                                     Apply Filters
