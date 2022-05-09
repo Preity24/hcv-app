@@ -1,0 +1,154 @@
+program_id,program_name,program_email,org_id
+1,Spark Saturdays,eceoutreach@gmail.com,1
+2,Snap Circuits Lab,eceoutreach@gmail.com,1
+3,CMU Engineering Workshop,engineeringworkshop@cmu.edu,1
+4,Moving 4th Into Engineering ,,1
+5,Everyday Engineering,,1
+6,Summer Engineering Experience for Girls (SEE),swsgcmu@gmail.com,1
+7,"SUCCEED: the Summer Center for Climate, Energy, and Environmental Decision-making",succeed-program@lists.andrew.cmu.edu,1
+8,Be an Engineer,,1
+9,Career Exploration Series (virtual),,1
+10,FIRST Robotics Competition (FRC),girlsofsteelrobotics@gmail.com,1
+11,Linguistic Olymiad,lsl@cs.cmu.edu,2
+12,The Pennsylvania Governor's School for the Sciences (PGSS),pgss@cmu.edu,3
+13,SWE++ Coding Camp,cmuswe@andrew.cmu.edu,1
+14,National – CodeBozu CS Fellowship learning coding with Ivy League Students,,4
+15,National – Blacks at Microsoft (BAM) Scholarship,BAMScholarshipInfo@microsoft.com,5
+16,National – HOLA,HOLAscholarship@microsoft.com,5
+17,National – Microsoft Disability Scholarship,disscholarshipinfo@microsoft.com,5
+18,National – Carnegie Mellon University picoCTF,other@picoctf.org,1
+19,National – Your Voice is Power 2022,afe-contact@amazon.com,6
+20,National – Robotics Education & Competition (REC) Foundation,support@roboticseducation.org,7
+21,Architecture Explorations,soa-cae@andrew.cmu.edu,1
+22,Arts Greenhouse,,1
+23,CMU Athletic Camps ,,1
+24,International Science & Engineering Fair (Society for Science),society@societyforscience.org,8
+25,Regeneron Science Talent Search (Regeneron STS),society@societyforscience.org,8
+26,Research at Home (Society for Science),society@societyforscience.org,8
+27,Camp Kesem Carnegie Mellon,cmu@campkesem.org,9
+28,CareerLink - Keystone Education Yields Success (KEYS),,10
+29,CareerLink - Apprenticeships,Apprenticeship@pa.gov,11
+30,Project Ignite ,projectignitecmu@gmail.com,1
+31,Carnegie Mellon Splash,cmusplash@andrew.cmu.edu,1
+32,CMU Science Olympiad,cmuscioly@gmail.com,1
+33,YES - All About Me,info@yespgh.org,12
+34,YES - Teen Cafe,info@yespgh.org,12
+35,YES - College Prep,info@yespgh.org,12
+36,YES - FeWi,info@yespgh.org,12
+37,YES - Voices to Men,info@yespgh.org,12
+38,YES - Pathways to Access Program,info@yespgh.org,12
+39,Learn and Earn,summer@partner4work.org,12
+40,YES - Faith Ranch,info@yespgh.org,12
+41,YES - Summer Work,info@yespgh.org,12
+42,YES - Summer Magic,info@yespgh.org,12
+43,YES - Summer Study ,info@yespgh.org,12
+44,Tech Nights for Girls,scs-dei@cs.cmu.edu,1
+45,Women@SCS - Outreach Roadshow,,1
+46,Hospital Elder Life Program (HELP) - Allegheny Health Network,,13
+47,Clinical volunteer opportunities - Allegheny Health Network,,13
+48,Specialized volunteer opportunities  - Allegheny Health Network,,13
+49,Pet therapy  - Allegheny Health Network,,13
+50,Art therapy - Allegheny Health Network,,13
+51,Volunteer musicians - Allegheny Health Network,,13
+52,Reiki volunteers - Allegheny Health Network,,13
+53,Licensed cosmetologists - Allegheny Health Network,,13
+54,Shadow Observer Experience - Allegheny Health Network,,13
+55,High-School Students/Medical Explorers,diversityaffairs@medschool.pitt.edu,14
+56,Magee-Women's Biomedical Research Institute Summer Internship Program,MWRHighSchoolInternships@mwri.magee.edu,15
+57,Gene Team Summer Program,,14
+58,Summer Health Career Academy,,16
+59,UMPC Hillman Cancer Center Academy,,62
+60,Health Career Scholars Academy,pgshc@pitt.edu,14
+61,PA Free Entreprise Week,info@pfew.org,19
+62,Carnegie Mellon's Pre-College Programs,precollege@andrew.cmu.edu,1
+63,Tour Your Future,CustomerService@CarnegieScienceCenter.org,20
+64,Carengie Science Center 's Summer Camps,CustomerService@CarnegieScienceCenter.org,20
+65,Pittsburgh Regional Science & Engineering Fair,PRSEF@CarnegieScienceCenter.org,20
+66,Visiting High School/Minor Students,thehub@andrew.cmu.edu,1
+67,Summer Institute for High School Students,,21
+68,STEM Summer Camp,,21
+69,National – The GenCyber Program,gen-cyber@iup.edu,22
+70,Year Round High School U ,info@neighborhoodlearning.org,23
+71,High School 2 Health Careers,info@neighborhoodlearning.org,23
+72,Warrier Movement ,info@neighborhoodlearning.org,23
+73,Summer High School U ,info@neighborhoodlearning.org,23
+74,Youth Art Initiative,teens@cmoa.org,24
+75,High School Summer Workshops,teens@cmoa.org,24
+76,Youth Artist Studio,_programregistration@carnegiemuseums.org,24
+77,Teen Internship,teens@cmoa.org,24
+78,Video Production Workshop,,25
+79,Intro to Metals and Jewelry,,25
+80,Creative Writing Workshop,,25
+81,SiO2 Youth Programs ,,26
+82,SiO2 Teen Boot Camp,,26
+83,ATP (After-School Apprenticeship Training Program),RMGubser@manchesterbidwell.org,27
+84,Cargenie Museum of Art - Volunteer,volunteers@carnegiemuseums.org,24
+85,Carnegie Museum of Natural History - Volunteer,volunteers@carnegiemuseums.org,28
+86,Carnegie Science Center -Volunteer,VolunteerPrograms@CarnegieScienceCenter.org,20
+87,Carnegie Science Center -Internships,volunteerprograms@carnegiesciencecenter.org,20
+88,Phipps Conservatory and Botanical Gardens - Internships,,29
+89,Fab Lab Public Workshops,CustomerService@CarnegieScienceCenter.org,20
+90,Hack PGH,info@hackpittsburgh.org,33
+91,Sustainable Leadership Academy,,32
+92,Beta Builder Program,mhbetabuilder@gmail.com,34
+93,ACE Mentory Program ,,38
+94,Accelerated High School,accelhs@pitt.edu,14
+95,ALCOSAN - Internships,soevents@alcosan.org,35
+96,ALCOSAN - Job Shadowing,soevents@alcosan.org,35
+97,Workforce And Vocational Exploration (W.A.V.E.) Hands-On Saturday,soevents@alcosan.org,35
+98,Youth Open Studio ,information@warhol.org,36
+99,School of Drag ,teens@warhol.org,36
+100,Youth Invasion ,teens@warhol.org,36
+101,Youth Arts Council ,teens@warhol.org,36
+102,Student Assistant Program ,teens@warhol.org,36
+103,Chain Reaction Contraption Contest,chainreactioncontraption@gmail.com,20
+104,Carnegie STEM Girls,,20
+105,Museum Lab  After School Program,,37
+106,Muesum Lab Workshops,,37
+107,Be a smart shopper,,17
+108,ibiology,,39
+109,Hope Academy of Music and the Arts,HopeAcademyArts@gmail.com,40
+110,School 2 Career (S2C),,41
+111,The Life Skills Just for Girls Forum,,42
+112,Ruth’s Way’s Remarkable Readiness and Employment Forum,,42
+113,The Junior Toastmasters Communication and Leadership Development Forum,,42
+114,The Smart Money Management Forum,,42
+115,The Virtuous Young Ladies Summer Scholarship Forum,,42
+116,The Marvelous Mentoring Program,,42
+117,Remake Learning Days,,43
+118,Sea AIr and Land Challenge,seaairland@arl.psu.edu,44
+119,SMART-ER - CMU Robotics Academy,,1
+120,Smithsonian Learning Lab,,45
+121,Storm Drain Stenciling Program,SOevents@alcosan.org,35
+122,Summer Tech Camps (CMU),,1
+123,The Citizen Science Lab,thecitizensciencelab@gmail.com,46
+124,The Fairchild Challenge at Phipps,kborger@phipps.conservatory.org,29
+125,The Labs @ CLP,thelabs@carnegielibrary.org,47
+126,The Irma Freeman Center for Imagination - Classes,info@irmafreeman.org,48
+127,The Irma Freeman Center for Imagination - Camps,info@irmafreeman.org,48
+128,The Queen's Gambit Chess Institutiute's Masters in Residence,ashleylynnpriore@tqgchess.institute,49
+129,The National Academies Press - What You Need to Know About Energy,,50
+130,The Mattress Factory Art Museum - Teen Summer Workshop Series,,51
+131,The Mattress Factory Art Museum - Tean Art Cooperative,,51
+132,University of Pittsburgh: Hillman YES Academy (two summers),,14
+133,YMCA Pittsburgh: Y Creator Space,ycs@ymcapgh.org,53
+134,TechGYRLS®,,52
+135,STEM Stars,,53
+136,Fully Online Virtual Robotics Curriculum,cmra@nrec.ri.cmu.edu,54
+137,College and Career Readiness Program (CCRP),,56
+138,"Bloomfield 
+Garfield Corporation - Learn and Earn",,56
+139,School to Work Transition Program (STW),,57
+140,Learning Innovation,,58
+141,Bootup PGH,,59
+142,Phase 4 - Learn and Earn,,60
+143,Alternative Education Program,,60
+144,Diploma Workforce Program,,60
+145,Best Buy Teen Tech Center,,60
+146,YES - Learn and Earn,,12
+147,The 412 Youth Zone - Learn and Earn,,58
+148,YP Ignite,,61
+149,Nursing Assistant/Patient Care Technician - EIC Program,pathwaystowork@upmc.edu,62
+150,EVS Aide EIC,pathwaystowork@upmc.edu,62
+151,Shuttle Bus Operator Trainee,pathwaystowork@upmc.edu,62
+152,Medical Assistant Trainee,pathwaystowork@upmc.edu,62

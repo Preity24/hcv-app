@@ -1,0 +1,146 @@
+event_address_id,event_address_lIne_1,event_address_lIne_2,event_city,event_state,event_zip,opportunity_name,date
+1,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Boolean Logic and Binary Lab,2022-04-27
+2,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Programming Lab,2022-04-27
+3,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Smart Light Lab,2022-04-27
+4,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Sound Sensation Lab,2022-04-27
+5,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Radio Lab,2022-04-27
+6,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Arduino Lab,2022-04-27
+7,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Enegry Harvesting Lab,2022-04-27
+8,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Python Ez Interpreter,2022-04-27
+9,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Music Manipulation Lab ,2022-04-27
+10,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Spark Saturdays:Oscillators Lab,2022-04-27
+11,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Snap Circuits Lab,2022-04-27
+12,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,CMU Engineering Workshop,2022-04-27
+13,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Moving 4th Into Engineering ,2022-04-27
+14,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Summer Engineering Experience for Girls (SEE),2022-04-27
+15,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,"SUCCEED: the Summer Center for Climate, Energy, and Environmental Decision-making",2022-04-27
+16,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Be an Engineer,2022-04-27
+17,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,FIRST Robotics Competition (FRC),2022-04-27
+18,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Linguistic Olymiad,2022-04-27
+19,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,The Pennsylvania Governor's School for the Sciences (PGSS),2022-04-27
+20,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,SWE++ Coding Camp,2022-04-27
+21,5000 Forbes Avenue,College of Fine Arts Building ,Pittsburgh,PA,15213,Architecture Explorations:Architecture Explorations - Tours ,2022-04-27
+22,5000 Forbes Avenue,College of Fine Arts Building ,Pittsburgh,PA,15213,Architecture Explorations:Architecture Explorations - Workshops,2022-04-27
+23,5000 Forbes Avenue,College of Fine Arts Building ,Pittsburgh,PA,15213,Architecture Explorations:Architecture Explorations - SATURDAY SEQUENCE,2022-04-27
+24,5000 Forbes Avenue,College of Fine Arts Building ,Pittsburgh,PA,15213,Architecture Explorations:Architecture Explorations - SUMMER CAMPS,2022-04-27
+25,5000 Forbes Ave #259,Baker Hall,Pittsburgh,PA,15213,Arts Greenhouse:Arts Greenhouse - Studios,2022-04-27
+26,5000 Forbes Ave #259,Baker Hall,Pittsburgh,PA,15213,Arts Greenhouse:Trip Tech,2022-04-27
+27,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Men's Plaid Premier ID Camp - Session 1,2022-04-27
+28,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Men's Plaid Premier ID Camp - Session 2,2022-04-27
+29,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Men's Plaid Premier October ID Camp,2022-04-27
+30,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Plaid Premier Boys and Girls Youth Soccer Day Camp,2022-04-27
+31,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Women's Elite ID Residential Camp - Session 1,2022-04-27
+32,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Women's Elite ID Residential Camp - Session 2,2022-04-27
+33,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Elite ID Youth Camp for Boys and Girls- Full Day,2022-04-27
+34,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Elite ID Youth Camp for BOYS AND GIRLS - Half Day,2022-04-27
+35,5000 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Women's Elite ID Fall Mini Camp - Fall 2022,2022-04-27
+36,5001 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Men's Basketball Elite Camp,2022-04-27
+37,5002 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Tartan Volleyball Prospect Camp,2022-04-27
+38,5003 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Softball Prospect Camp,2022-04-27
+39,5004 Forbes Avenue,Carnegie Mellon Unvisersity,Pittsburgh,PA,15213,CMU Athletic Camps :Summer Nike Swim Camp,2022-04-27
+40,285 Andrew Young International Blvd NW,,Atlanta,GA,30313,International Science & Engineering Fair (Society for Science),2022-04-27
+41,5000 Forbes Avenue,Cohon University Center Suite 103,Pittsburgh,PA,15213,Camp Kesem Carnegie Mellon,2022-04-27
+42,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Project Ignite ,2022-04-27
+43,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon Splash,2022-04-27
+44,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Tech Nights for Girls,2022-04-27
+45,532 Scaife Hall,,Pittsburgh,PA,15261,High-School Students/Medical Explorers,2022-04-27
+46,204 Craft Avenue,Magee-Womens Research Institute,Pittsburgh,PA,15213,Magee-Women's Biomedical Research Institute Summer Internship Program,2022-04-27
+47,4249 Fifth Avenue,Langley Hall,Pittsburgh,PA,15260,Gene Team Summer Program,2022-04-27
+48,3550 Terrace St,,Pittsburgh,PA,15213,Summer Health Career Academy,2022-04-27
+49,3591 Fifth Avenue ,Biomedical Science Tower (BST) III,Pittsbrugh,PA,15213,UMPC Hillman Cancer Center Academy:The Ophthalmology (OPT),2022-04-27
+50,204 craft Ave,Magee-Womens Research Institute,Pittsbrugh,PA ,15213,UMPC Hillman Cancer Center Academy:Women's Cancer Research Center (WCRC),2022-04-27
+51,200 Lothrop St,Thomas E. Starzl Biomedical Science Tower (BST) I,Pittsbrugh,PA,15213,UMPC Hillman Cancer Center Academy:Immunology and Cancer Immunotherapy (ICI),2022-04-27
+52,3591 Fifth Avenue ,Biomedical Science Tower (BST) III,Pittsbrugh,PA,15213,UMPC Hillman Cancer Center Academy:Computational Biology (CompBio),2022-04-27
+53,5697 Baum Blvd,Department of Biomedical Informatics,Pittsbrugh,PA,15206,"UMPC Hillman Cancer Center Academy:Computer Sciences, Biology, and Biomedical Informatics (CoSBBI)",2022-04-27
+54,Technology Drive,Bridge Point II,Pittsbrugh,PA,15219,UMPC Hillman Cancer Center Academy:Tech Drive X (TDX) ,2022-04-27
+55,5115 Centre Ave,Hillman Cancer Center,Pittsbrugh,PA,15232,UMPC Hillman Cancer Center Academy:Cancer Biology (CB),2022-04-27
+56,3600 Forbes Avenue,Suite 300 Iroquois Building,Pittsbrugh,PA,15213,Health Career Scholars Academy,2022-04-27
+57,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:A14All@Carnegie,2022-04-27
+58,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Architecture ,2022-04-27
+59,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Art ,2022-04-27
+60,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Computer Biology ,2022-04-27
+61,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Computer Science Scholars ,2022-04-27
+62,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Design ,2022-04-27
+63,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Drama,2022-04-27
+64,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Music ,2022-04-27
+65,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:National High School Game Academy,2022-04-27
+66,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Summer Academy for Math And Science,2022-04-27
+67,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Summer Session,2022-04-27
+68,5000 Forbes Avenue,Carnegie Mellon University,Pittsburgh,PA,15213,Carnegie Mellon's Pre-College Programs:Writing and Culture,2022-04-27
+69,One Allegheny Ave.,,Pittsburgh,PA ,15212,Carengie Science Center 's Summer Camps,2022-04-27
+70,One Allegheny Ave.,,Pittsburgh,PA ,15212,Pittsburgh Regional Science & Engineering Fair,2022-04-27
+71,5000 Forbes Avenue,Warner Hall A12,Pittsburgh,PA ,15213,Visiting High School/Minor Students,2022-04-27
+72,600 Forbes Ave,Dusquesne University ,Pittsburgh,PA ,15282,Summer Institute for High School Students,2022-04-27
+73,600 Forbes Ave,Dusquesne University ,Pittsburgh,PA ,15282,STEM Summer Camp,2022-04-27
+74,210 South Tenth Street,"Stright Hall, Room 233",Indiana,PA ,15705,National – The GenCyber Program,2022-04-27
+75,4400 Forbes Avenue,,Pittsburgh,PA,15213,Youth Art Initiative,2022-04-27
+76,4400 Forbes Avenue,,Pittsburgh,PA,15213,High School Summer Workshops,2022-04-27
+77,4400 Forbes Avenue,,Pittsburgh,PA,15213,Youth Artist Studio,2022-04-27
+78,4400 Forbes Avenue,,Pittsburgh,PA,15213,Teen Internship,2022-04-27
+79,1047 Shady Avenue,,Pittsburgh,PA,15232,Video Production Workshop,2022-04-27
+80,1047 Shady Avenue,,Pittsburgh,PA,15232,Intro to Metals and Jewelry,2022-04-27
+81,1047 Shady Avenue,,Pittsburgh,PA,15232,Creative Writing Workshop,2022-04-27
+82,5472 Penn Ave,,Pittsburgh,PA,15206,SiO2 Youth Programs ,2022-04-27
+83,5472 Penn Ave,,Pittsburgh,PA,15206,SiO2 Teen Boot Camp,2022-04-27
+84,1815 Metropolitan Street ,,Pittsburgh,PA ,15233,ATP (After-School Apprenticeship Training Program),2022-04-27
+85,4401 Forbes Avenue,,Pittsburgh,PA,15213,Cargenie Museum of Art - Volunteer,2022-04-27
+86,4401 Forbes Avenue,,Pittsburgh,PA,15213,Carnegie Museum of Natural History - Volunteer,2022-04-27
+87,One Allegeny Avenue,,Pittsburgh,PA ,15212,Carnegie Science Center -Volunteer,2022-04-27
+88,One Allegeny Avenue,,Pittsburgh,PA ,15212,Carnegie Science Center -Internships,2022-04-27
+89,One Schenley Park,,Pittsburgh,PA,15213,Phipps Conservatory and Botanical Gardens - Internships,2022-04-27
+90,One Allegheny Ave.,,Pittsburgh,PA ,15212,Fab Lab Public Workshops:3D Printing 101,2022-04-27
+91,One Allegheny Ave.,,Pittsburgh,PA ,15212,Fab Lab Public Workshops:Basic Circuitry and Soldering 101,2022-04-27
+92,One Allegheny Ave.,,Pittsburgh,PA ,15212,Fab Lab Public Workshops:Laser Cutting 101,2022-04-27
+93,One Allegheny Ave.,,Pittsburgh,PA ,15212,Fab Lab Public Workshops:Laser Rotary Attachment 101 ,2022-04-27
+94,One Allegheny Ave.,,Pittsburgh,PA ,15212,Fab Lab Public Workshops:3D Design for the Laser,2022-04-27
+95,One Allegheny Ave.,,Pittsburgh,PA ,15212,Fab Lab Public Workshops:Vinyl Cutting 101,2022-04-27
+96,One Allegheny Ave.,,Pittsburgh,PA ,15212,Fab Lab Public Workshops:Free FLOW – Fab Lab Open Workshop,2022-04-27
+97,1936 5th Ave.,,Pittsburgh,PA,15219,Hack PGH,2022-04-27
+98,Woodland Rd,,Pittsburgh,PA ,15232,Sustainable Leadership Academy,2022-04-27
+99,744 E Warrington Ave,,Pittsburgh,PA ,15210,Beta Builder Program,2022-04-27
+100,2545 Railroad St,Suite 300,Pittsburgh,PA,15222,ACE Mentory Program ,2022-04-27
+101,130 Thackeray Avenue,,Pittsburgh,PA,15260,Accelerated High School,2022-04-27
+102,3300 Preble Avenue  ,,Pittsburgh,PA,15233,ALCOSAN - Internships,2022-04-27
+103,3300 Preble Avenue  ,,Pittsburgh,PA,15233,ALCOSAN - Job Shadowing,2022-04-27
+104,3300 Preble Avenue  ,,Pittsburgh,PA,15233,Workforce And Vocational Exploration (W.A.V.E.) Hands-On Saturday,2022-04-27
+105,117 Sandusky Street,,Pittsburgh,PA,15212,Youth Open Studio ,2022-04-27
+106,117 Sandusky Street,,Pittsburgh,PA,15212,School of Drag ,2022-04-27
+107,117 Sandusky Street,,Pittsburgh,PA,15212,Youth Invasion ,2022-04-27
+108,117 Sandusky Street,,Pittsburgh,PA,15212,Youth Arts Council ,2022-04-27
+109,117 Sandusky Street,,Pittsburgh,PA,15212,Student Assistant Program ,2022-04-27
+110,One Allegheny Ave.,,Pittsburgh,PA ,15212,Chain Reaction Contraption Contest,2022-04-27
+111,One Allegheny Ave.,,Pittsburgh,PA ,15212,Carnegie STEM Girls,2022-04-27
+112,6 allegheny square e,,Pittsburgh,PA,15212,Museum Lab  After School Program,2022-04-27
+113,6 allegheny square e,,Pittsburgh,PA,15212,Muesum Lab Workshops,2022-04-27
+114,116 South Highland Avenue,,Pittsburgh,PA,15206,Hope Academy of Music and the Arts,2022-04-27
+115,286 Semple Street ,,Pittsburgh,PA,15213,School 2 Career (S2C),2022-04-27
+116,509 Long Road ,Suite #2,Penn Hills ,PA,15235,The Life Skills Just for Girls Forum,2022-04-27
+117,509 Long Road ,Suite #2,Penn Hills ,PA,15235,Ruth’s Way’s Remarkable Readiness and Employment Forum,2022-04-27
+118,509 Long Road ,Suite #2,Penn Hills ,PA,15235,The Junior Toastmasters Communication and Leadership Development Forum,2022-04-27
+119,509 Long Road ,Suite #2,Penn Hills ,PA,15235,The Smart Money Management Forum,2022-04-27
+120,509 Long Road ,Suite #2,Penn Hills ,PA,15235,The Virtuous Young Ladies Summer Scholarship Forum,2022-04-27
+121,509 Long Road ,Suite #2,Penn Hills ,PA,15235,The Marvelous Mentoring Program,2022-04-27
+122,222 Northpointe Blvd,,Freeport,PA,16229,Sea AIr and Land Challenge,2022-04-27
+123,10 40th Street,,Pittsburgh,PA,15201,SMART-ER - CMU Robotics Academy,2022-04-27
+124,3300 Preble Avenue,,Pittsburgh,PA,15233,Storm Drain Stenciling Program,2022-04-27
+125,5000 Forbes Ave.,Carnegie Mellon University,Pittsburgh,PA,15213,Summer Tech Camps (CMU),2022-04-27
+126,1699 Washington Rd.,Suite 200,Pittsburgh,PA,15228,The Citizen Science Lab,2022-04-27
+127,One Schenley Park,,Pittsburgh,PA,15213,The Fairchild Challenge at Phipps,2022-04-27
+128,130 S. Whitfield Street,,Piitsburgh,PA,15206,The Labs @ CLP,2022-04-27
+129,5006 Penn Ave,,Piitsburgh,PA,15224,The Irma Freeman Center for Imagination - Classes,2022-04-27
+130,5006 Penn Ave,,Piitsburgh,PA,15224,The Irma Freeman Center for Imagination - Camps,2022-04-27
+131,4716 Ellsworth Ave,Apt #823,Piitsburgh,PA,15213,The Queen's Gambit Chess Institutiute's Masters in Residence,2022-04-27
+132,500 Sampsonia Way,,Pittsburgh,PA,15212,The Mattress Factory Art Museum - Teen Summer Workshop Series,2022-04-27
+133,500 Sampsonia Way,,Pittsburgh,PA,15212,The Mattress Factory Art Museum - Tean Art Cooperative,2022-04-27
+134,305 Wood St,,Pittsburgh,PA,15222,TechGYRLS®,2022-04-27
+135,305 Wood St,,Pittsburgh,PA,15222,STEM Stars,2022-04-27
+136,113 North Pacific Ave.,,Pittsburgh,PA,15224,College and Career Readiness Program (CCRP),2022-04-27
+137,1256 Franklin Ave.,,Pittsburgh,PA,15221,Bootup PGH: Middle School Tech Program,2022-04-27
+138,1256 Franklin Ave.,"3rd floor, Room 19",Pittsburgh,PA,15221,Bootup PGH: High School Tech Program,2022-04-27
+139,1256 Franklin Ave.,,Pittsburgh,PA,15221,Bootup PGH: Teen Mentorship,2022-04-27
+140,5850 Centre Ave,,Pittsburgh,PA,15206,Diploma Workforce Program,2022-04-27
+141,304 Wood Street,,Pittsburgh,PA,15222,YES - Learn and Earn,2022-04-27
+142,200 Lothrop Street,,Pittsburgh,PA,15213,Nursing Assistant/Patient Care Technician - EIC Program,2022-04-27
+143,5230 Centre Avenue,,Pittsburgh,PA,15232,EVS Aide EIC,2022-04-27
+144,1920 Forbes Avenue,,Pittsburgh,PA,15219,Shuttle Bus Operator Trainee,2022-04-27
+145,3550 Terrace Stree,,Pittsburgh,PA,15213,Medical Assistant Trainee,2022-04-27
