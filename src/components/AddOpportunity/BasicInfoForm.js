@@ -105,7 +105,6 @@ export default function BasicInfoForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(formValues);
         if (!isValidURL(formValues.website)) {
             setFormAlert(true);
             setAlertContent("Website URL wrong format! Ex: https://www.google.com");
@@ -149,7 +148,6 @@ export default function BasicInfoForm() {
             })
                 .then(function (response) {
                     //handle success
-
                     console.log(response);
                 })
                 .catch(function (response) {

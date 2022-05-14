@@ -120,6 +120,7 @@ export default function Home() {
                                     noOptionsText={"No information"}
                                     onChange={(e, v) => {
                                         if (v !== null) {
+                                            // middle school
                                             setFilterData_by_age(v.grade_level);
                                             return
                                         }

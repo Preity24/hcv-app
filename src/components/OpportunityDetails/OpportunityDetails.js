@@ -20,7 +20,6 @@ const OpportunityDetails = () => {
 
     const getOpportunities = async () => {
         const response = await axios.get(host + id);
-        console.log(response.data);
         setData(response.data);
     };
 
@@ -43,10 +42,8 @@ const OpportunityDetails = () => {
                         <strong>Event Info</strong>
                     </Typography>
                     <Box sx={{
-                        // p: 3,
                         width: 1200,
                         height: 275,
-                        // bgcolor: '#F2F2F2',
                     }}>
                         <Typography component="p" align="left" variant="body1" sx={{mb: 3}}>
                             <strong>Event Address:</strong> {(data['event_address_line1'] === null || data['event_address_line1'] === 'null' || data['event_address_line1'] === '') ? "Not Applicable" : data['event_address_line1'] + ", " + data['event_address_line2']
