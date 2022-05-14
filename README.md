@@ -1,36 +1,27 @@
 # Backend Server Settings
 
-Reference: [link](https://mfikri.com/en/blog/node-express-react-mysql)
+Reference: [link](https://mfikri.com/en/blog/node-express-react-mysql) (This is the tutorial I followed to finish this project)
 
 First you need to enter the server folder and run
 
 ```
-nodemon index
+npx nodemon index
 ```
 
 This will start the server and then you can direct to http://localhost:5001/ to visit server.
 
-For now we have four routers:
+For now we have four routers: (You may use your host so please replace localhost to your server host)
 
 ```
 	http://localhost:5001/   Get all opportunities
 	http://localhost:5001/:id   Get opportunities based on their id
-	http://localhost:5001/opportunities/  Insert one opportunity(You need to use Postman to set the data into request body)
-	http://localhost:5001/opportunities/:id  Update the opportunity based on their id(You need to use Postman to set the data into request body)
+	http://localhost:5001/opportunities/  Insert one opportunity
+	http://localhost:5001/opportunities/:id  Update the opportunity based on their id
 ```
 
 You could use postman to test these routers, but before that you should have your database ready on your local machine.
 
-# Database Settings
 
-Checked sql_scripts folder and find create_table_scripts.sql. It's script for you to create the table and insert some demo data.
-
-You may need to grant permission to the database user and you may use this script:
-
-```mysql
-CREATE USER 'admin'@'%' IDENTIFIED BY 'password';
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON *.* TO 'admin'@'%' WITH GRANT OPTION;
-```
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
